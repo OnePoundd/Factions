@@ -52,6 +52,7 @@ import org.bukkit.plugin.PluginManager;
 import org.bukkit.scheduler.BukkitScheduler;
 
 public class Factions extends MassivePlugin {
+	//med
 	public static final String FACTION_MONEY_ACCOUNT_ID_PREFIX = "faction-";
 	public static final String ID_NONE = "none";
 	public static final String ID_SAFEZONE = "safezone";
