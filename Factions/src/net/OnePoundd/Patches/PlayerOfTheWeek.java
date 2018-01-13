@@ -27,11 +27,9 @@ import net.minecraft.server.v1_12_R1.EntityPlayer;
 public class PlayerOfTheWeek implements Listener{
 	
 	private static Map<MPlayer, Integer> currentTop = new HashMap<MPlayer, Integer>();
-	public static List<NPC> npcs;
+	public static NPC npc = null;	
 	
-	
-	public static void startPlayerOfTheWeekProcesses() {
-		npcs = new ArrayList<NPC>();	
+	public static void startPlayerOfTheWeekProcesses() {	
 		// causes the player of the week leaderboard to every 5 mins
 		BukkitScheduler scheduler = Factions.get().getServer().getScheduler();
 		scheduler.scheduleSyncRepeatingTask(Factions.get(), new Runnable() {
@@ -43,19 +41,6 @@ public class PlayerOfTheWeek implements Listener{
 	
 	
 	public static void updatePlayerOfTheWeek() {
-		// Firstly checks to see if the time is between 00:00 and 00:06 and the day is friday
-		// if so, it resets every players weekly experience. This updater is called every 5
-		// minutes to update the leaderboard in spawn, so this update is garunteed to be run.
-		Calendar cal = Calendar.getInstance();
-		if(cal.get(Calendar.DAY_OF_WEEK) == 6) {
-			if(cal.get(Calendar.HOUR_OF_DAY) == 0 && cal.get(Calendar.MINUTE) <= 6) {
-				for(MPlayer mplayer : MPlayerColl.get().getAll()) {
-					mplayer.setExperienceOnFriday(mplayer.getExperience());
-				}
-				System.out.println("[Factions] Successfully Reset Weekly Player Experiences");
-			}
-		}
-		
 		// This sorts the leaderboard every time this method is called (every 5 mins)
 		HashMap<MPlayer, Integer> entries = new HashMap<MPlayer, Integer>();
 		for (MPlayer player : MPlayerColl.get().getAll()) {
@@ -65,41 +50,44 @@ public class PlayerOfTheWeek implements Listener{
 		Map<MPlayer, Integer> sorted = sortByValue(entries);
 		currentTop = sorted;
 		
-		// makes sure that all npc locations are defined for all positions, and then removes old npcs and replaces them with new ones.
-		if(MConf.get().WeeklyPlayer1Location != null && MConf.get().WeeklyPlayer2Location != null && MConf.get().WeeklyPlayer3Location != null && currentTop.size() >= 3) {
-			for(NPC npc : npcs) {
-				npc.delete();
-			}
-			int i = 1;
-			for (Map.Entry<MPlayer, Integer> entry : currentTop.entrySet()) {
-				if(i == 1) {
-					NPC leaderboard1 = new NPC(entry.getKey().getName(), MConf.get().WeeklyPlayer1Location.asBukkitLocation());
-					npcs.add(leaderboard1);
-				}else if(i == 2) {
-					NPC leaderboard2 = new NPC(entry.getKey().getName(), MConf.get().WeeklyPlayer2Location.asBukkitLocation());
-					npcs.add(leaderboard2);
-				}else if(i == 3) {
-					NPC leaderboard3 = new NPC(entry.getKey().getName(), MConf.get().WeeklyPlayer3Location.asBukkitLocation());
-					npcs.add(leaderboard3);
-				}else {
+		// checks to see if the time is between 00:00 and 00:06 and the day is friday and if
+		// so, it resets every players weekly experience. This updater is called every 5
+		// minutes to update the leaderboard in spawn, so this update is garunteed to be run.
+		Calendar cal = Calendar.getInstance();
+		if(cal.get(Calendar.DAY_OF_WEEK) == 6) {
+			if(cal.get(Calendar.HOUR_OF_DAY) == 0 && cal.get(Calendar.MINUTE) <= 6) {
+				for(MPlayer mplayer : MPlayerColl.get().getAll()) {
+					mplayer.setExperienceOnFriday(mplayer.getExperience());
+				}
+				for (Map.Entry<MPlayer, Integer> entry : currentTop.entrySet()) {
+					// entry.getKey().getName() give money to
 					break;
 				}
-				i ++;
+				System.out.println("[Factions] Successfully reset the weekly experience gain leaderboard and rewarded the number 1 player!");
+			}
+		}
+		
+		// makes sure that all npc locations are defined for all positions, and then removes old npcs and replaces them with new ones.
+		if(MConf.get().WeeklyPlayer1Location != null && currentTop.size() >= 1) {
+			if(npc != null) {
+				npc.delete();
+			}
+			for (Map.Entry<MPlayer, Integer> entry : currentTop.entrySet()) {
+				npc = new NPC(entry.getKey().getName(), MConf.get().WeeklyPlayer1Location.asBukkitLocation());
+				break;
 			}
 		}else {
-			System.out.println("[Factions] Failed to create NPCS for the player leaderboard as not all positions have been set or filled!");
+			System.out.println("[Factions] Failed to create NPC for the player leaderboard!");
 		}
 	}
 	
 	@EventHandler
 	public void onPlayerMove(PlayerMoveEvent event) {
-		for(NPC npc : npcs) {
-			EntityPlayer player = npc.get();
-			if(event.getPlayer().getWorld().getName().equals(player.getWorld().getWorldData().getName())){
-				double distance = event.getPlayer().getLocation().distance(new Location(Bukkit.getWorld(player.getWorld().getWorldData().getName()), player.getX(), player.getY(), player.getZ()));
-				if(distance < 50) {
-					npc.showToPlayer(event.getPlayer());
-				}
+		EntityPlayer player = npc.get();
+		if(event.getPlayer().getWorld().getName().equals(player.getWorld().getWorldData().getName())){
+			double distance = event.getPlayer().getLocation().distance(new Location(Bukkit.getWorld(player.getWorld().getWorldData().getName()), player.getX(), player.getY(), player.getZ()));
+			if(distance < 50) {
+				npc.showToPlayer(event.getPlayer());
 			}
 		}
 	}

@@ -335,8 +335,6 @@ public class MConf extends Entity<MConf> {
 	}
 	
 	public PS WeeklyPlayer1Location = null;
-	public PS WeeklyPlayer2Location = null;
-	public PS WeeklyPlayer3Location = null;
 }
 
 /*
