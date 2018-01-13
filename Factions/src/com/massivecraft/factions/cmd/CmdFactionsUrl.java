@@ -18,9 +18,9 @@ public class CmdFactionsUrl extends FactionsCommand {
 		if (MPerm.getPermURL().has(msender, msenderFaction, true)) {
 			if (((String) getArgs().get(0)).contains("http://www.hyperionfactions.net/forums")) {
 				msender.getFaction().setUrl((String) args.get(0));
-				msg("ยงaยงl(!)ยง7 Your faction's recruitment link has been updated! Players can now click to visit your recruitment thread on /f find!");
+				msg("งaงl(!)ง7 Your faction's recruitment link has been updated! Players can now click to visit your recruitment thread on /f find!");
 			} else {
-				msg("ยงcยงl(!)ยง7 You must link to a page on our forums!");
+				msg("งcงl(!)ง7 You must link to a page on our forums!");
 			}
 		}
 	}

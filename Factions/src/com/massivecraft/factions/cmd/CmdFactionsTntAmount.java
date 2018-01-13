@@ -15,10 +15,10 @@ public class CmdFactionsTntAmount extends FactionsCommand {
 	public void perform() throws MassiveException {
 		int level = msenderFaction.getTntUpgradeLevel();
 		if (level == 0) {
-			msender.msg("ยงcยงl(!)ยง7 Your faction has not yet unlocked the tnt storage upgrade!");
+			msender.msg("งcงl(!)ง7 Your faction has not yet unlocked the tnt storage upgrade!");
 		} else if ((level > 0) && (MPerm.getPermTntView().has(msender, msenderFaction, true))) {
 			msender.msg(
-					"ยงbยงl(!)ยง7 Your faction currently has ยงl" + msenderFaction.getTntCount() + "ยง7 tnt stored!");
+					"งbงl(!)ง7 Your faction currently has งl" + msenderFaction.getTntCount() + "ง7 tnt stored!");
 		}
 	}
 }

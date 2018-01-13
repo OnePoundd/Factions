@@ -27,18 +27,18 @@ public class CmdFactionsSetwarp extends FactionsCommand {
 			return;
 		}
 		if ((!msender.isOverriding()) && (!faction.isValidWarp(newHome))) {
-			msender.msg("ยงcยงl(!)ยง7 Faction warps can only be set inside your own territory.");
+			msender.msg("งcงl(!)ง7 Faction warps can only be set inside your own territory.");
 			return;
 		}
 		if (faction.getAllWarps().size() >= faction.getMaxWarps()) {
-			msender.msg("ยงcยงl(!)ยง7 You must upgrade your faction to unlock more warps!");
+			msender.msg("งcงl(!)ง7 You must upgrade your faction to unlock more warps!");
 			return;
 		}
 		if (faction.setWarp(newHome, (String) readArgAt(0), password)) {
-			faction.msg("ยงdยงl(!)ยง7 " + msender.getName() + " has created a new warp named " + (String) readArgAt(0)
+			faction.msg("งdงl(!)ง7 " + msender.getName() + " has created a new warp named " + (String) readArgAt(0)
 					+ "!");
 		} else {
-			msg("ยงdยงl(!)ยง7 There is already a warp with that name!");
+			msg("งdงl(!)ง7 There is already a warp with that name!");
 		}
 	}
 }

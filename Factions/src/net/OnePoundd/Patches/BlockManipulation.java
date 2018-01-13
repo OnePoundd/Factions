@@ -97,12 +97,12 @@ public class BlockManipulation implements Listener {
 							int newDurability = block.getDurability() - 1;
 							if (newDurability == 0) {
 								CastleBlocks.remove(block);
-								event.getPlayer().sendMessage("ยง5ยงl(!)ยง7 This block has shattered to pieces!");
+								event.getPlayer().sendMessage("ง5งl(!)ง7 This block has shattered to pieces!");
 								event.getBlock().setType(Material.AIR);
 								return;
 							}
 							event.getPlayer()
-									.sendMessage("ยง5ยงl(!)ยง7 This block is now at " + newDurability + " durability!");
+									.sendMessage("ง5งl(!)ง7 This block is now at " + newDurability + " durability!");
 							block.setDurability(newDurability);
 							return;
 						}

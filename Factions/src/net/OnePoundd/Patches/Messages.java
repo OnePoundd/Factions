@@ -35,23 +35,23 @@ public class Messages implements Listener {
 			if (!player.getFaction().getName().equals("Wilderness")) {
 				for (MPlayer mp : player.getFaction().getMPlayers()) {
 					if (!mp.getName().equals(player.getName())) {
-						mp.msg("ยงaยงl(!)ยง7 " + player.getName() + " is now online!");
+						mp.msg("งaงl(!)ง7 " + player.getName() + " is now online!");
 					}
 				}
 			} else {
 				new FancyMessage(
-						"ยงbยงl(!)ยง7 You have no faction! Click this message to find factions which are looking for new players, otherwise run /f create to get started!")
+						"งbงl(!)ง7 You have no faction! Click this message to find factions which are looking for new players, otherwise run /f create to get started!")
 								.command("/f find").color(ChatColor.GRAY).send(player.getPlayer());
 			}
 			if (!player.hasPlayedBefore()) {
 				if (MConf.get().getWarp("introduction") != null) {
 					player.getPlayer().teleport(MConf.get().getWarp("introduction"));
 					player.msg(
-							"ยงbยงl(!)ยง7 Welcome to Icewynd Factions! To help get you firmiliar with all the custom features our server has to offer, we have put together a quick introduction world for you to explore. We hope you enjoy your stay, and should you ever get confused you can always type /help or return here by typing /warp introduction!");
+							"งbงl(!)ง7 Welcome to Icewynd Factions! To help get you firmiliar with all the custom features our server has to offer, we have put together a quick introduction world for you to explore. We hope you enjoy your stay, and should you ever get confused you can always type /help or return here by typing /warp introduction!");
 
 					ItemStack kit = new ItemStack(Material.CHEST);
 					ItemMeta kitmeta = kit.getItemMeta();
-					kitmeta.setDisplayName("ยงeยงlKit Member");
+					kitmeta.setDisplayName("งeงlKit Member");
 					kit.setItemMeta(kitmeta);
 					player.getPlayer().getInventory().addItem(new ItemStack[] { kit });
 				} else {
@@ -68,7 +68,7 @@ public class Messages implements Listener {
 		event.setQuitMessage("");
 		MPlayer player = MPlayer.get(event.getPlayer());
 		if (!player.getFaction().getName().equals("Wilderness")) {
-			player.getFaction().msg("ยงcยงl(!)ยง7 " + player.getName() + " is now offline!");
+			player.getFaction().msg("งcงl(!)ง7 " + player.getName() + " is now offline!");
 		}
 	}
 
@@ -84,16 +84,16 @@ public class Messages implements Listener {
 					&& (item.getItemMeta().getDisplayName().contains(""))) {
 				for (Player player : Bukkit.getOnlinePlayers()) {
 					MPlayer mplayer = MPlayer.get(player);
-					player.sendMessage("ยง8ยงl>> " + mplayer.getColorTo(MPlayer.get(killed)) + killed.getName()
-							+ "ยง8 was killed by " + mplayer.getColorTo(MPlayer.get(killer)) + killer.getName()
-							+ "ยง8 with a " + item.getItemMeta().getDisplayName() + "ยง7!");
+					player.sendMessage("ง8งl>> " + mplayer.getColorTo(MPlayer.get(killed)) + killed.getName()
+							+ "ง8 was killed by " + mplayer.getColorTo(MPlayer.get(killer)) + killer.getName()
+							+ "ง8 with a " + item.getItemMeta().getDisplayName() + "ง7!");
 				}
 			} else {
 				for (Player player : Bukkit.getOnlinePlayers()) {
 					MPlayer mplayer = MPlayer.get(player);
-					player.sendMessage("ยง8ยงl>> " + mplayer.getColorTo(MPlayer.get(killed)) + killed.getName()
-							+ "ยง8 was killed by " + mplayer.getColorTo(MPlayer.get(killer)) + killer.getName()
-							+ "ยง8!");
+					player.sendMessage("ง8งl>> " + mplayer.getColorTo(MPlayer.get(killed)) + killed.getName()
+							+ "ง8 was killed by " + mplayer.getColorTo(MPlayer.get(killer)) + killer.getName()
+							+ "ง8!");
 				}
 			}
 		}
@@ -105,11 +105,11 @@ public class Messages implements Listener {
 		if ((!player.hasPermission("server.admin"))
 				&& (player.getLocation().getWorld().getName().equals("world_introduction"))) {
 			if (!event.getMessage().equals("/spawn")) {
-				player.sendMessage("ยงcยงl(!)ยง7 You must leave this area to use commands, type /spawn!");
+				player.sendMessage("งcงl(!)ง7 You must leave this area to use commands, type /spawn!");
 				event.setCancelled(true);
 			} else if (MPlayer.get(player).getLevel() < 1) {
 				player.sendMessage(
-						"ยงcยงl(!)ยง7 You must complete the introduction by talking to the Skill Master before using /spawn!");
+						"งcงl(!)ง7 You must complete the introduction by talking to the Skill Master before using /spawn!");
 				event.setCancelled(true);
 			}
 		}
@@ -119,7 +119,7 @@ public class Messages implements Listener {
 	public void onChatEvent(AsyncPlayerChatEvent event) {
 		Player sender = event.getPlayer();
 		if (sender.getLocation().getWorld().getName().equals("world_introduction")) {
-			sender.sendMessage("ยงcยงl(!)ยง7 You must complete the introduction to use chat!");
+			sender.sendMessage("งcงl(!)ง7 You must complete the introduction to use chat!");
 			event.setCancelled(true);
 		} else {
 			for (Player receiver : event.getRecipients()) {
@@ -130,9 +130,3 @@ public class Messages implements Listener {
 		}
 	}
 }
-
-/*
- * Location:
- * C:\Users\Alan\Desktop\Factions.jar!\net\OnePoundd\Patches\Messages.class Java
- * compiler version: 8 (52.0) JD-Core Version: 0.7.1
- */

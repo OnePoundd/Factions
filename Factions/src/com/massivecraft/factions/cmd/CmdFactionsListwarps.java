@@ -16,13 +16,13 @@ public class CmdFactionsListwarps extends FactionsCommand {
 	public void perform() throws MassiveException {
 		Faction fac = (Faction) readArg(msenderFaction);
 		if (msenderFaction.getAllWarps().size() == 0) {
-			sender.sendMessage("ยงcยงl(!)ยง7 Your faction has no warps. Use: /f setwarp <name>");
+			sender.sendMessage("งcงl(!)ง7 Your faction has no warps. Use: /f setwarp <name>");
 		} else {
 			String warpList = "  ";
 			for (String s : msenderFaction.getAllWarps()) {
 				warpList = warpList + s + ", ";
 			}
-			sender.sendMessage("ยง6ยงl(!)ยง7 Warps [" + msenderFaction.getAllWarps().size() + "/"
+			sender.sendMessage("ง6งl(!)ง7 Warps [" + msenderFaction.getAllWarps().size() + "/"
 					+ msenderFaction.getMaxWarps() + "]: " + warpList.substring(0, warpList.length() - 2).trim() + ".");
 		}
 	}

@@ -25,6 +25,8 @@ public class CmdFactionsFaction extends FactionsCommand {
 	public void perform() throws MassiveException {
 		Faction faction = (Faction) readArg(msenderFaction);
 		CommandSender sender = this.sender;
+		
+		System.out.println("Faction Looked Up: " + msenderFaction.getName());
 
 		int size = faction.getName().length();
 		String name = faction.getColorTo(msenderFaction) + faction.getName();

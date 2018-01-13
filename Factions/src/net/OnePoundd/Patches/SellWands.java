@@ -24,7 +24,7 @@ public class SellWands implements Listener {
 	public void onRightClick(PlayerInteractEvent event) {
 		if ((event.getAction().equals(Action.RIGHT_CLICK_BLOCK)) && (event.getItem() != null)
 				&& (event.getItem().hasItemMeta()) && (event.getItem().getItemMeta().getDisplayName() != null)
-				&& (event.getItem().getItemMeta().getDisplayName().equals("Â§cÂ§lSell Wand"))
+				&& (event.getItem().getItemMeta().getDisplayName().equals("§c§lSell Wand"))
 				&& ((event.getClickedBlock().getType().equals(Material.CHEST))
 						|| (event.getClickedBlock().getType().equals(Material.TRAPPED_CHEST)))) {
 			if (BoardColl.get().getFactionAt(PS.valueOf(event.getClickedBlock().getLocation()))
@@ -43,7 +43,7 @@ public class SellWands implements Listener {
 				event.getPlayer().performCommand("sell all");
 				event.setCancelled(true);
 			} else {
-				event.getPlayer().sendMessage("Â§cÂ§l(!)Â§7 You cannot use sell wands on other faction's chests!");
+				event.getPlayer().sendMessage("§c§l(!)§7 You cannot use sell wands on other faction's chests!");
 			}
 		}
 	}

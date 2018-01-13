@@ -46,8 +46,8 @@ public class CmdFactionsCreate extends FactionsCommand {
 				EventFactionsMembershipChange.MembershipChangeReason.CREATE);
 		joinEvent.run();
 
-		msg("ยงaยงl(!)ยง7 You created a faction! Invite others by running /f invite!");
-		msg("ยงbยงl(!)ยง7 The next thing to do is make a base! Use /f wild to go to a random location in the world. Once you're there, run the command /f claim to mark your land! Oh, and if you want more players to make your faction more powerful, run /f recruitment!");
+		msg("งaงl(!)ง7 You created a faction! Invite others by running /f invite!");
+		msg("งbงl(!)ง7 The next thing to do is make a base! Use /f wild to go to a random location in the world. Once you're there, run the command /f claim to mark your land! Oh, and if you want more players to make your faction more powerful, run /f recruitment!");
 
 		EventFactionsCreate createEvent = new EventFactionsCreate(sender, factionId, newName);
 		createEvent.run();

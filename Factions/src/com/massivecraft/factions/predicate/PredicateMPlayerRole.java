@@ -26,10 +26,3 @@ public class PredicateMPlayerRole implements Predicate<MPlayer> {
 		return mplayer.getRole() == role;
 	}
 }
-
-/*
- * Location:
- * C:\Users\Alan\Desktop\Factions.jar!\com\massivecraft\factions\predicate\
- * PredicateMPlayerRole.class Java compiler version: 8 (52.0) JD-Core Version:
- * 0.7.1
- */

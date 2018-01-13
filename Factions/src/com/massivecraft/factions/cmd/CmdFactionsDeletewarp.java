@@ -18,14 +18,14 @@ public class CmdFactionsDeletewarp extends FactionsCommand {
 	public void perform() throws MassiveException {
 		Faction faction = (Faction) readArgAt(1, msenderFaction);
 		if (!MPerm.getPermDeleteWarp().has(msender, faction, true)) {
-			msender.msg("ยงcยงl(!)ยง7 Your faction does not allow you to delete warps.");
+			msender.msg("งcงl(!)ง7 Your faction does not allow you to delete warps.");
 			return;
 		}
 		boolean deleted = faction.deleteWarp((String) readArgAt(0));
 		if (deleted) {
-			msender.msg("ยงdยงl(!)ยง7 The warp has successfully been deleted!");
+			msender.msg("งdงl(!)ง7 The warp has successfully been deleted!");
 		} else {
-			msender.msg("ยงcยงl(!)ยง7 That is not a valid warp name!");
+			msender.msg("งcงl(!)ง7 That is not a valid warp name!");
 		}
 	}
 }

@@ -72,14 +72,14 @@ public class Main implements Listener {
 		MPlayer mplayer = MPlayer.get(player);
 		if ((player.getGameMode().equals(GameMode.SURVIVAL)) && (mplayer.getMPlayerFlight())) {
 			if (!canPlayerFly(mplayer)) {
-				player.sendMessage("ยงcยงl(!)ยง7 Your flight has been disabled!");
+				player.sendMessage("งcงl(!)ง7 Your flight has been disabled!");
 				mplayer.setMPlayerFlight(false);
 				mplayer.setNoFallDamageStartTimeMillis(System.currentTimeMillis());
 				player.setAllowFlight(false);
 			}
 		} else if ((player.getGameMode().equals(GameMode.SURVIVAL)) && (!mplayer.getMPlayerFlight())
 				&& (canPlayerFly(mplayer))) {
-			player.sendMessage("ยงaยงl(!)ยง7 Your flight has been enabled!");
+			player.sendMessage("งaงl(!)ง7 Your flight has been enabled!");
 			mplayer.setMPlayerFlight(true);
 			player.setAllowFlight(true);
 		}

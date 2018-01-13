@@ -22,7 +22,7 @@ public class CmdFactionsTntTake extends FactionsCommand {
 	public void perform() throws MassiveException {
 		int level = msenderFaction.getTntUpgradeLevel();
 		if (level == 0) {
-			msender.msg("ยงcยงl(!)ยง7 Your faction has not yet unlocked the tnt storage upgrade!");
+			msender.msg("งcงl(!)ง7 Your faction has not yet unlocked the tnt storage upgrade!");
 		} else if ((level > 0) && (MPerm.getPermTntTake().has(msender, msenderFaction, true))) {
 			int amountToTake = ((Integer) readArgAt(0)).intValue();
 			if (msenderFaction.getTntCount() - amountToTake >= 0) {
@@ -47,13 +47,13 @@ public class CmdFactionsTntTake extends FactionsCommand {
 							amountToAddToInventory = 0;
 						}
 					}
-					msender.msg("ยงaยงl(!)ยง7 Successfully withdrew ยงl" + amountToTake
-							+ " ยง7tnt from your factions storage!");
+					msender.msg("งaงl(!)ง7 Successfully withdrew งl" + amountToTake
+							+ " ง7tnt from your factions storage!");
 				} else {
-					msender.msg("ยงcยงl(!)ยง7 You do not have enough inventory space to do that!");
+					msender.msg("งcงl(!)ง7 You do not have enough inventory space to do that!");
 				}
 			} else {
-				msender.msg("ยงcยงl(!)ยง7 Your faction does not have that much tnt stored!");
+				msender.msg("งcงl(!)ง7 Your faction does not have that much tnt stored!");
 			}
 		}
 	}

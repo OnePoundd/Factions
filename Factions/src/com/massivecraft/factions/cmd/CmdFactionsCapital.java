@@ -23,28 +23,28 @@ public class CmdFactionsCapital extends FactionsCommand {
 			if ((factionAt.hasCapital()) && (factionAt != msenderFaction)
 					&& (factionAt.getCapitalChunkX() == ps.getChunkX().intValue())
 					&& (factionAt.getCapitalChunkZ() == ps.getChunkZ().intValue())) {
-				msg("ยงcยงl(!)ยง7 You cannot place your capital within 50 chunks of another!");
-				msg("ยงbยงl(!)ยง7 Incase you don't know, 50 chunks is the minimum distance between two capitals so that each faction can have 20 chunks worth of 'buffer' claims and still leave a 10 chunk gap for other factions to build cannons in to raid from!");
+				msg("งcงl(!)ง7 You cannot place your capital within 50 chunks of another!");
+				msg("งbงl(!)ง7 Incase you don't know, 50 chunks is the minimum distance between two capitals so that each faction can have 20 chunks worth of 'buffer' claims and still leave a 10 chunk gap for other factions to build cannons in to raid from!");
 
 				return;
 			}
 		}
 		if (msenderFaction.isUnderAttack()) {
-			msg("ยงcยงl(!)ยง7 You cannot move your faction's capital whilst under attack!");
+			msg("งcงl(!)ง7 You cannot move your faction's capital whilst under attack!");
 			return;
 		}
 		if (MPerm.getPermSetCapital().has(msender, msenderFaction, true)) {
 			if (BoardColl.get().getFactionAt(PS.valueOf(msender.getPlayer().getLocation())).equals(msenderFaction)) {
-				msenderFaction.msg("ยงaยงl(!)ยง7 Your faction's capital has successfully been set!");
+				msenderFaction.msg("งaงl(!)ง7 Your faction's capital has successfully been set!");
 				msenderFaction.msg(
-						"ยงbยงl(!)ยง7 Your faction can now begin to gain victory points! Attend and win events such as conquest or koth, kill mob bosses in warzone, capture and hold the castle, grind your way up /f wealth or even raid another faction to start collecting victory points and climb your way up /f top!");
+						"งbงl(!)ง7 Your faction can now begin to gain victory points! Attend and win events such as conquest or koth, kill mob bosses in warzone, capture and hold the castle, grind your way up /f wealth or even raid another faction to start collecting victory points and climb your way up /f top!");
 
 				msenderFaction.setCapitalChunkX(msender.getPlayer().getLocation().getChunk().getX());
 				msenderFaction.setCapitalChunkZ(msender.getPlayer().getLocation().getChunk().getZ());
 				msenderFaction.setHasCapital(true);
 				return;
 			}
-			msg("ยงcยงl(!)ยง7 Your faction must own this chunk before making it the capital!");
+			msg("งcงl(!)ง7 Your faction must own this chunk before making it the capital!");
 		}
 	}
 

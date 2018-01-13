@@ -17,7 +17,7 @@ public class CmdFactionsTntAdd extends FactionsCommand {
 	public void perform() {
 		int level = msenderFaction.getTntUpgradeLevel();
 		if (level == 0) {
-			msender.msg("ยงcยงl(!)ยง7 Your faction has not yet unlocked the tnt storage upgrade!");
+			msender.msg("งcงl(!)ง7 Your faction has not yet unlocked the tnt storage upgrade!");
 		} else if (level > 0) {
 			int tntInInventory = 0;
 			ItemStack[] arrayOfItemStack;
@@ -30,13 +30,13 @@ public class CmdFactionsTntAdd extends FactionsCommand {
 			}
 			int maxTnt = msenderFaction.getTntUpgradeLevel() * 50000;
 			if (msenderFaction.getTntCount() + tntInInventory > maxTnt) {
-				msender.msg("ยงcยงl(!)ยง7 Your faction's virtual tnt storage cannot fit your tnt in!");
+				msender.msg("งcงl(!)ง7 Your faction's virtual tnt storage cannot fit your tnt in!");
 			} else if (tntInInventory > 0) {
 				msender.getPlayer().getInventory().remove(Material.TNT);
 				msenderFaction.setTntCount(msenderFaction.getTntCount() + tntInInventory);
-				msender.msg("ยงaยงl(!)ยง7 Your tnt has been moved to the factions virtual storage!");
+				msender.msg("งaงl(!)ง7 Your tnt has been moved to the factions virtual storage!");
 			} else {
-				msender.msg("ยงcยงl(!)ยง7 You must have tnt in your inventory to perform this command!");
+				msender.msg("งcงl(!)ง7 You must have tnt in your inventory to perform this command!");
 			}
 		}
 	}

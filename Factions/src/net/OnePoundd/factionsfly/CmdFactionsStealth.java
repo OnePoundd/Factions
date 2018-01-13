@@ -13,12 +13,12 @@ public class CmdFactionsStealth extends FactionsCommand {
 	public void perform() throws MassiveException {
 		if (argAt(0).equals("on")) {
 			msender.setStealth(true);
-			msg("ยงaยงl(!)ยง7 Stealth enabled, you will not effect other's flight!");
+			msg("งaงl(!)ง7 Stealth enabled, you will not effect other's flight!");
 		} else if (argAt(0).equals("off")) {
 			msender.setStealth(false);
-			msg("ยงaยงl(!)ยง7 Stealth disabled, you will now effect other's flight!");
+			msg("งaงl(!)ง7 Stealth disabled, you will now effect other's flight!");
 		} else {
-			msg("ยงcยงl(!)ยง7 Usage: /f stealth <on/off>");
+			msg("งcงl(!)ง7 Usage: /f stealth <on/off>");
 		}
 	}
 }

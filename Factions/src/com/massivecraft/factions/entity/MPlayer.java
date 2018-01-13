@@ -61,33 +61,33 @@ public class MPlayer extends SenderEntity<MPlayer> implements FactionsParticipat
 	}
 
 	public MPlayer load(MPlayer that) {
-		setLastActivityMillis(lastActivityMillis);
-		setFactionId(factionId);
-		setRole(role);
-		setTitle(title);
-		setPowerBoost(powerBoost);
-		setPower(power);
-		setMapAutoUpdating(mapAutoUpdating);
-		setOverriding(overriding);
-		setTerritoryInfoTitles(territoryInfoTitles);
-		setExperience(experience);
-		setLevel(Level);
-		setStealth(stealth);
-		setBoost(boost);
-		setBoostEndMillis(boostEndMillis);
+		setLastActivityMillis(that.lastActivityMillis);
+		setFactionId(that.factionId);
+		setRole(that.role);
+		setTitle(that.title);
+		setPowerBoost(that.powerBoost);
+		setPower(that.power);
+		setMapAutoUpdating(that.mapAutoUpdating);
+		setOverriding(that.overriding);
+		setTerritoryInfoTitles(that.territoryInfoTitles);
+		setExperience(that.experience);
+		setLevel(that.Level);
+		setStealth(that.stealth);
+		setBoost(that.boost);
+		setBoostEndMillis(that.boostEndMillis);
 
-		setTokens(tokens);
-		setSkillArcher(Archer);
-		setSkillBard(Bard);
-		setSkillCombatMcMMO(CombatMcMMO);
-		setSkillFlight(Flight);
-		setSkillGenBuckets(GenBuckets);
-		setSkillMiner(Miner);
-		setSkillMobDamage(MobDamage);
-		setSkillPlayerDamage(PlayerDamage);
-		setSkillSpeed(Speed);
-		setSkillTntFill(TntFill);
-		for (Map.Entry<String, PS> entry : homes.entrySet()) {
+		setTokens(that.tokens);
+		setSkillArcher(that.Archer);
+		setSkillBard(that.Bard);
+		setSkillCombatMcMMO(that.CombatMcMMO);
+		setSkillFlight(that.Flight);
+		setSkillGenBuckets(that.GenBuckets);
+		setSkillMiner(that.Miner);
+		setSkillMobDamage(that.MobDamage);
+		setSkillPlayerDamage(that.PlayerDamage);
+		setSkillSpeed(that.Speed);
+		setSkillTntFill(that.TntFill);
+		for (Map.Entry<String, PS> entry : that.homes.entrySet()) {
 			setHome((PS) entry.getValue(), (String) entry.getKey());
 		}
 		return this;

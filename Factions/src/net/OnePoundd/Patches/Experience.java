@@ -29,9 +29,9 @@ public class Experience implements Listener {
 				}
 			} else if ((Entity.getType().equals(EntityType.ZOMBIE)) || (Entity.getType().equals(EntityType.SKELETON))) {
 				if (Entity.getCustomName() != null) {
-					if (Entity.getCustomName().equals("Â§cHyperion's Minion")) {
+					if (Entity.getCustomName().equals("§cHyperion's Minion")) {
 						player.addExperience(30);
-					} else if (Entity.getCustomName().equals("Â§cÂ§lHyperion's Disciple")) {
+					} else if (Entity.getCustomName().equals("§c§lHyperion's Disciple")) {
 						player.addExperience(75);
 					} else {
 						player.addExperience(3);

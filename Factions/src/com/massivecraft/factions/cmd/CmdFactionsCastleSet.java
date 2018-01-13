@@ -22,16 +22,16 @@ public class CmdFactionsCastleSet extends FactionsCommand {
 			if (point.equals("1")) {
 				Location loc = msender.getPlayer().getLocation();
 				MConf.get().setCastleBound1(PS.valueOf(loc));
-				msender.message("ยงaยงl(!)ยง7 Successfully set the first point of the castle!");
+				msender.message("งaงl(!)ง7 Successfully set the first point of the castle!");
 			} else if (point.equals("2")) {
 				Location loc = msender.getPlayer().getLocation();
 				MConf.get().setCastleBound2(PS.valueOf(loc));
-				msender.message("ยงaยงl(!)ยง7 Successfully set the second point of the castle!");
+				msender.message("งaงl(!)ง7 Successfully set the second point of the castle!");
 			} else {
-				msender.message("ยงcยงl(!)ยง7 Command usage /f castle set 1/2");
+				msender.message("งcงl(!)ง7 Command usage /f castle set 1/2");
 			}
 		} else {
-			msender.message("ยงcยงl(!)ยง7 You do not have permission to use this command!");
+			msender.message("งcงl(!)ง7 You do not have permission to use this command!");
 		}
 	}
 }

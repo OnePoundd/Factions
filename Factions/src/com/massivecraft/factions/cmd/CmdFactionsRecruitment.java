@@ -13,10 +13,10 @@ public class CmdFactionsRecruitment extends FactionsCommand {
 	public void perform() throws MassiveException {
 		if (MPerm.getPermRecruitment().has(msender, msenderFaction, true)) {
 			if (msender.getFaction().getRecruiting()) {
-				msg("ยงcยงl(!)ยง7 Your faction's recruitment status is now marked as closed!");
+				msg("งcงl(!)ง7 Your faction's recruitment status is now marked as closed!");
 				msender.getFaction().setRecruiting(false);
 			} else {
-				msg("ยงaยงl(!)ยง7 You have opened recruitment for your faction! Your faction will now be displayed on /f find so that new players can find you. Run /f url to add a link to a recruitment post on our forums, otherwise they will be prompted to message you instead!");
+				msg("งaงl(!)ง7 You have opened recruitment for your faction! Your faction will now be displayed on /f find so that new players can find you. Run /f url to add a link to a recruitment post on our forums, otherwise they will be prompted to message you instead!");
 
 				msender.getFaction().setRecruiting(true);
 			}

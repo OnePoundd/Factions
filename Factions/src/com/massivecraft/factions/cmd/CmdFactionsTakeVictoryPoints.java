@@ -22,11 +22,11 @@ public class CmdFactionsTakeVictoryPoints extends FactionsCommand {
 		try {
 			FactionColl.get().getByName((String) getArgs().get(1))
 					.takeVicotryPoints(Integer.parseInt((String) getArgs().get(0)));
-			sender.sendMessage("Â§bÂ§lNoticeÂ§3- Â§aSuccessfully took points from the faction!");
+			sender.sendMessage("§b§lNotice§3- §aSuccessfully took points from the faction!");
 		} catch (NumberFormatException e) {
-			sender.sendMessage("Â§bÂ§lNoticeÂ§3- Â§cYou must give an integer number of points!");
+			sender.sendMessage("§b§lNotice§3- §cYou must give an integer number of points!");
 		} catch (NullPointerException e) {
-			sender.sendMessage("Â§bÂ§lNoticeÂ§3- Â§cThe faction stated could not be found!");
+			sender.sendMessage("§b§lNotice§3- §cThe faction stated could not be found!");
 		}
 	}
 }

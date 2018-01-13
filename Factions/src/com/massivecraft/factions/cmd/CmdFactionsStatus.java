@@ -36,52 +36,52 @@ public class CmdFactionsStatus extends FactionsCommand {
 		String name = faction.getName(msender);
 		String title = "";
 		if (size == 3) {
-			title = "ยง8ยงlยงm-------------------ยง7ยงl[ ยงd" + name + "ยง7ยงl ]ยง8ยงlยงm---------------------";
+			title = "ง8งlงm-------------------ง7งl[ งd" + name + "ง7งl ]ง8งlงm---------------------";
 		} else if (size == 4) {
-			title = "ยง8ยงlยงm-------------------ยง7ยงl[ ยงd" + name + "ยง7ยงl ]ยง8ยงlยงm--------------------";
+			title = "ง8งlงm-------------------ง7งl[ งd" + name + "ง7งl ]ง8งlงm--------------------";
 		} else if (size == 5) {
-			title = "ยง8ยงlยงm-------------------ยง7ยงl[ ยงd" + name + "ยง7ยงl ]ยง8ยงlยงm-------------------";
+			title = "ง8งlงm-------------------ง7งl[ งd" + name + "ง7งl ]ง8งlงm-------------------";
 		} else if (size == 6) {
-			title = "ยง8ยงlยงm------------------ยง7ยงl[ ยงd" + name + "ยง7ยงl ]ยง8ยงlยงm-------------------";
+			title = "ง8งlงm------------------ง7งl[ งd" + name + "ง7งl ]ง8งlงm-------------------";
 		} else if (size == 7) {
-			title = "ยง8ยงlยงm------------------ยง7ยงl[ ยงd" + name + "ยง7ยงl ]ยง8ยงlยงm------------------";
+			title = "ง8งlงm------------------ง7งl[ งd" + name + "ง7งl ]ง8งlงm------------------";
 		} else if (size == 8) {
-			title = "ยง8ยงlยงm-----------------ยง7ยงl[ ยงd" + name + "ยง7ยงl ]ยง8ยงlยงm------------------";
+			title = "ง8งlงm-----------------ง7งl[ งd" + name + "ง7งl ]ง8งlงm------------------";
 		} else if (size == 9) {
-			title = "ยง8ยงlยงm-----------------ยง7ยงl[ ยงd" + name + "ยง7ยงl ]ยง8ยงlยงm-----------------";
+			title = "ง8งlงm-----------------ง7งl[ งd" + name + "ง7งl ]ง8งlงm-----------------";
 		} else if (size == 10) {
-			title = "ยง8ยงlยงm----------------ยง7ยงl[ ยงd" + name + "ยง7ยงl ]ยง8ยงlยงm-----------------";
+			title = "ง8งlงm----------------ง7งl[ งd" + name + "ง7งl ]ง8งlงm-----------------";
 		} else if (size == 11) {
-			title = "ยง8ยงlยงm---------------ยง7ยงl[ ยงd" + name + "ยง7ยงl ]ยง8ยงlยงm-----------------";
+			title = "ง8งlงm---------------ง7งl[ งd" + name + "ง7งl ]ง8งlงm-----------------";
 		} else {
-			title = "ยง8ยงlยงm---------------ยง7ยงl[ ยงdWildernessยง7ยงl ]ยง8ยงlยงm-----------------";
+			title = "ง8งlงm---------------ง7งl[ งdWildernessง7งl ]ง8งlงm-----------------";
 		}
 		msg(title);
 		for (MPlayer mplayer : faction.getMPlayers()) {
 			String displayName;
 			if (mplayer.isOnline()) {
-				displayName = "ยง7 - ยงa" + mplayer.getName();
+				displayName = "ง7 - งa" + mplayer.getName();
 			} else {
-				displayName = "ยง7 - ยงc" + mplayer.getName();
+				displayName = "ง7 - งc" + mplayer.getName();
 			}
 			double currentPower = mplayer.getPower();
 			double maxPower = mplayer.getPowerMax();
-			String power = Txt.parse("ยง7Power: ยงb%s/%s", new Object[] {
+			String power = Txt.parse("ง7Power: งb%s/%s", new Object[] {
 					String.format("%.1f", new Object[] { Double.valueOf(currentPower) }), Double.valueOf(maxPower) });
 
 			double bal = Money.get(mplayer);
-			String balance = "ยง7Balance: ยงb" + Money.format(bal);
+			String balance = "ง7Balance: งb" + Money.format(bal);
 
 			long lastActiveMillis = mplayer.getLastActivityMillis() - System.currentTimeMillis();
 			LinkedHashMap<TimeUnit, Long> activeTimes = TimeDiffUtil
 					.limit(TimeDiffUtil.unitcounts(lastActiveMillis, TimeUnit.getAllButMillis()), 3);
 			String lastActive = "";
 			if (!mplayer.isOnline()) {
-				lastActive = Txt.parse("ยง7Last active: ยงb" + TimeDiffUtil.formatedMinimal(activeTimes, "<i>"));
+				lastActive = Txt.parse("ง7Last active: งb" + TimeDiffUtil.formatedMinimal(activeTimes, "<i>"));
 			}
 			msg("%s %s %s %s", new Object[] { displayName, balance, power, lastActive });
 		}
-		msg("ยง8ยงlยงm---------------------------------------------");
+		msg("ง8งlงm---------------------------------------------");
 	}
 }
 

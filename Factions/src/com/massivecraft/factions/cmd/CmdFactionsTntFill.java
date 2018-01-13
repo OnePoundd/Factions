@@ -31,12 +31,12 @@ public class CmdFactionsTntFill extends FactionsCommand {
 	public void perform() throws MassiveException {
 		if (msender.getSkillTntFill()) {
 			if (msenderFaction.getTntCount() == 0) {
-				msender.msg("ยงcยงl(!)ยง7 Your faction does not have any tnt stored!");
+				msender.msg("งcงl(!)ง7 Your faction does not have any tnt stored!");
 			} else {
 				int radius = ((Integer) readArgAt(0)).intValue();
 				int amount = ((Integer) readArgAt(1)).intValue();
 				if (radius > 50) {
-					msender.msg("ยงcยงl(!)ยง7 The maximum radius is 50 blocks!");
+					msender.msg("งcงl(!)ง7 The maximum radius is 50 blocks!");
 				} else {
 					List<Block> dispensers = getNearbyDispensers(msender.getPlayer().getLocation(), radius);
 					if (msenderFaction.getTntCount() >= dispensers.size() * amount) {
@@ -64,18 +64,18 @@ public class CmdFactionsTntFill extends FactionsCommand {
 								}
 							}
 							msender.message(
-									"ยงaยงl(!)ยง7 ยงl" + dispensersFilled + " ยง7dispenser(s) were filled with tnt!");
+									"งaงl(!)ง7 งl" + dispensersFilled + " ง7dispenser(s) were filled with tnt!");
 							msenderFaction.setTntCount(msenderFaction.getTntCount() + tntReturned);
 						} else {
-							msender.msg("ยงcยงl(!)ยง7 There are no dispensers within that radius!");
+							msender.msg("งcงl(!)ง7 There are no dispensers within that radius!");
 						}
 					} else {
-						msender.msg("ยงcยงl(!)ยง7 Your faction does not have enough tnt stored to do that!");
+						msender.msg("งcงl(!)ง7 Your faction does not have enough tnt stored to do that!");
 					}
 				}
 			}
 		} else {
-			msender.msg("ยงcยงl(!)ยง7 You must unlock the tnt fill skill!");
+			msender.msg("งcงl(!)ง7 You must unlock the tnt fill skill!");
 		}
 	}
 

@@ -15,13 +15,13 @@ public class CmdFactionsBoost extends FactionsCommand {
 	public void perform() {
 		double boost = 1.0D;
 
-		msg("Â§8Â§lÂ§m-----------------Â§7Â§l[ Â§dMcMMO XP BoostÂ§7Â§l ]Â§8Â§lÂ§m-----------------");
+		msg("§8§l§m-----------------§7§l[ §dMcMMO XP Boost§7§l ]§8§l§m-----------------");
 		if (sender.hasPermission("mcmmo.boost.100")) {
 			boost += 1.0D;
 		} else if (sender.hasPermission("mcmmo.boost.50")) {
 			boost += 0.5D;
 		}
-		msg("Â§f> Â§7Your rank increases your mcmmo xp gains by Â§b" + (boost - 1.0D) + "Â§7x!");
+		msg("§f> §7Your rank increases your mcmmo xp gains by §b" + (boost - 1.0D) + "§7x!");
 
 		int upgradeLevel = msenderFaction.getMcmmoUpgradeLevel();
 		double factionUpgradeMultiplier = 0.0D;
@@ -35,21 +35,21 @@ public class CmdFactionsBoost extends FactionsCommand {
 			boost += 0.3D;
 			factionUpgradeMultiplier = 0.3D;
 		}
-		msg("Â§f> Â§7Your faction upgrade increases your mcmmo xp gains by Â§b" + factionUpgradeMultiplier + "Â§7x!");
+		msg("§f> §7Your faction upgrade increases your mcmmo xp gains by §b" + factionUpgradeMultiplier + "§7x!");
 
 		double factionBoost = msenderFaction.getMcmmoBoost();
 		if ((factionBoost > 0.0D) && (System.currentTimeMillis() < msenderFaction.getBoostEndMillis())) {
 			boost += factionBoost;
-			msg("Â§f> Â§7Your faction booster increases your mcmmo xp gains by Â§b" + (factionBoost + 1.0D) + "Â§7x!");
+			msg("§f> §7Your faction booster increases your mcmmo xp gains by §b" + (factionBoost + 1.0D) + "§7x!");
 		}
 		System.out.println("FACTION END MILLIS " + msenderFaction.getBoostEndMillis());
 
 		double playerBoost = msender.getBoost();
 		if ((playerBoost > 0.0D) && (System.currentTimeMillis() < msender.getBoostEndMillis())) {
 			boost += playerBoost;
-			msg("Â§f> Â§7Your personal booster increases your mcmmo xp gains by Â§b" + (playerBoost + 1.0D) + "Â§7x!");
+			msg("§f> §7Your personal booster increases your mcmmo xp gains by §b" + (playerBoost + 1.0D) + "§7x!");
 		}
-		msg("Â§6> Â§7Your total mcmmo gain is multiplied by Â§b" + boost + "Â§7x!");
+		msg("§6> §7Your total mcmmo gain is multiplied by §b" + boost + "§7x!");
 	}
 }
 

@@ -14,20 +14,20 @@ public class CmdFactionsFind extends FactionsCommand {
 	}
 
 	public void perform() throws MassiveException {
-		msg("Â§8Â§lÂ§m---------------Â§7Â§l[ Â§dFaction FinderÂ§7Â§l ]Â§8Â§lÂ§m---------------");
-		msg("Â§7A list of factions which are currently looking for more players!");
+		msg("§8§l§m---------------§7§l[ §dFaction Finder§7§l ]§8§l§m---------------");
+		msg("§7A list of factions which are currently looking for more players!");
 		for (Faction f : FactionColl.get().getAll()) {
 			if (f.getRecruiting()) {
 				if (f.getUrl() != null) {
-					new FancyMessage("Â§b" + f.getName() + " Â§7- F Top Posisiton: Â§b" + f.getVictoryPoints()
-							+ " Â§7, Click this message to apply!").link(f.getUrl()).send(sender);
+					new FancyMessage("§b" + f.getName() + " §7- F Top Posisiton: §b" + f.getVictoryPoints()
+							+ " §7, Click this message to apply!").link(f.getUrl()).send(sender);
 				} else {
-					msg("Â§b" + f.getName() + " Â§7- F Top Posisiton: Â§b" + f.getVictoryPoints()
-							+ " Â§7, Message an officer to apply!");
+					msg("§b" + f.getName() + " §7- F Top Posisiton: §b" + f.getVictoryPoints()
+							+ " §7, Message an officer to apply!");
 				}
 			}
 		}
-		msg("Â§8Â§lÂ§m--------------------------------------------");
+		msg("§8§l§m--------------------------------------------");
 	}
 }
 

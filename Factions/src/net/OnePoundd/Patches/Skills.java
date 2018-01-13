@@ -23,49 +23,49 @@ public class Skills implements Listener {
 	}
 
 	public static void openInventory(Player player) {
-		Inventory SkillsGUI = Bukkit.createInventory(null, 9, "Â§cÂ§l>> Â§8Skills Master Â§cÂ§l<<");
+		Inventory SkillsGUI = Bukkit.createInventory(null, 9, "§c§l>> §8Skills Master §c§l<<");
 
 		ItemStack Info = new ItemStack(Material.ENCHANTED_BOOK);
 		ItemMeta InfoMeta = Info.getItemMeta();
-		InfoMeta.setDisplayName("Â§cÂ§l>> Â§fInformation Â§cÂ§l<<");
+		InfoMeta.setDisplayName("§c§l>> §fInformation §c§l<<");
 		ArrayList<String> InfoLore = new ArrayList();
-		InfoLore.add("Â§7Player Level: Â§c" + MPlayer.get(player).getLevel() + " Â§7Skill Tokens: Â§c"
+		InfoLore.add("§7Player Level: §c" + MPlayer.get(player).getLevel() + " §7Skill Tokens: §c"
 				+ MPlayer.get(player).getTokens());
-		InfoLore.add("Â§fEach time you level up your account, you will earn");
-		InfoLore.add("Â§fone skill token. Use these tokens to unlock skills");
-		InfoLore.add("Â§ffrom the various categories in this menu!");
+		InfoLore.add("§fEach time you level up your account, you will earn");
+		InfoLore.add("§fone skill token. Use these tokens to unlock skills");
+		InfoLore.add("§ffrom the various categories in this menu!");
 		InfoMeta.setLore(InfoLore);
 		Info.setItemMeta(InfoMeta);
 
 		ItemStack Movement = new ItemStack(Material.FEATHER);
 		ItemMeta MovementMeta = Movement.getItemMeta();
-		MovementMeta.setDisplayName("Â§cÂ§l>> Â§fMovement Â§cÂ§l<<");
+		MovementMeta.setDisplayName("§c§l>> §fMovement §c§l<<");
 		ArrayList<String> MovementLore = new ArrayList();
-		MovementLore.add("Â§cÂ§l> Â§7Click to view the various movement skills!");
+		MovementLore.add("§c§l> §7Click to view the various movement skills!");
 		MovementMeta.setLore(MovementLore);
 		Movement.setItemMeta(MovementMeta);
 
 		ItemStack Combat = new ItemStack(Material.DIAMOND_SWORD);
 		ItemMeta CombatMeta = Combat.getItemMeta();
-		CombatMeta.setDisplayName("Â§cÂ§l>> Â§fCombat Â§cÂ§l<<");
+		CombatMeta.setDisplayName("§c§l>> §fCombat §c§l<<");
 		ArrayList<String> CombatLore = new ArrayList();
-		CombatLore.add("Â§cÂ§l> Â§7Click to view the various combat skills!");
+		CombatLore.add("§c§l> §7Click to view the various combat skills!");
 		CombatMeta.setLore(CombatLore);
 		Combat.setItemMeta(CombatMeta);
 
 		ItemStack Classes = new ItemStack(Material.ARMOR_STAND);
 		ItemMeta ClassesMeta = Classes.getItemMeta();
-		ClassesMeta.setDisplayName("Â§cÂ§l>> Â§fClasses Â§cÂ§l<<");
+		ClassesMeta.setDisplayName("§c§l>> §fClasses §c§l<<");
 		ArrayList<String> ClassesLore = new ArrayList();
-		ClassesLore.add("Â§cÂ§l> Â§7Click to view the various class skills!");
+		ClassesLore.add("§c§l> §7Click to view the various class skills!");
 		ClassesMeta.setLore(ClassesLore);
 		Classes.setItemMeta(ClassesMeta);
 
 		ItemStack Factions = new ItemStack(Material.TNT);
 		ItemMeta FactionsMeta = Factions.getItemMeta();
-		FactionsMeta.setDisplayName("Â§cÂ§l>> Â§fFactions Â§cÂ§l<<");
+		FactionsMeta.setDisplayName("§c§l>> §fFactions §c§l<<");
 		ArrayList<String> FactionsLore = new ArrayList();
-		FactionsLore.add("Â§cÂ§l> Â§7Click to view the various factions related skills!");
+		FactionsLore.add("§c§l> §7Click to view the various factions related skills!");
 		FactionsMeta.setLore(FactionsLore);
 		Factions.setItemMeta(FactionsMeta);
 
@@ -78,33 +78,33 @@ public class Skills implements Listener {
 	}
 
 	public static void openMovementInventory(Player player) {
-		Inventory SkillsGUI = Bukkit.createInventory(null, 9, "Â§cÂ§l>> Â§8Movement Skills Â§cÂ§l<<");
+		Inventory SkillsGUI = Bukkit.createInventory(null, 9, "§c§l>> §8Movement Skills §c§l<<");
 
 		ItemStack Flight = new ItemStack(Material.FEATHER);
 		ItemMeta FlightMeta = Flight.getItemMeta();
-		FlightMeta.setDisplayName("Â§cÂ§l>> Â§fFactions Flight Â§cÂ§l<<");
+		FlightMeta.setDisplayName("§c§l>> §fFactions Flight §c§l<<");
 		ArrayList<String> FlightLore = new ArrayList();
-		FlightLore.add("Â§7This skill will allow you to fly in your faction's");
-		FlightLore.add("Â§7territory when no enemies are near!");
-		FlightLore.add("Â§cÂ§l> Â§7Â§lCost: Â§c1 Skill Token");
+		FlightLore.add("§7This skill will allow you to fly in your faction's");
+		FlightLore.add("§7territory when no enemies are near!");
+		FlightLore.add("§c§l> §7§lCost: §c1 Skill Token");
 		FlightMeta.setLore(FlightLore);
 		Flight.setItemMeta(FlightMeta);
 
 		ItemStack Speed = new ItemStack(Material.SUGAR);
 		ItemMeta SpeedMeta = Speed.getItemMeta();
-		SpeedMeta.setDisplayName("Â§cÂ§l>> Â§fSpeed Â§cÂ§l<<");
+		SpeedMeta.setDisplayName("§c§l>> §fSpeed §c§l<<");
 		ArrayList<String> SpeedLore = new ArrayList();
-		SpeedLore.add("Â§7This skill will increase your overall");
-		SpeedLore.add("Â§7movement speed by 2.5%!");
-		SpeedLore.add("Â§cÂ§l> Â§7Â§lCost: Â§c5 Skill Tokens");
+		SpeedLore.add("§7This skill will increase your overall");
+		SpeedLore.add("§7movement speed by 2.5%!");
+		SpeedLore.add("§c§l> §7§lCost: §c5 Skill Tokens");
 		SpeedMeta.setLore(SpeedLore);
 		Speed.setItemMeta(SpeedMeta);
 
 		ItemStack Back = new ItemStack(Material.REDSTONE_BLOCK);
 		ItemMeta BackMeta = Back.getItemMeta();
-		BackMeta.setDisplayName("Â§cÂ§l>> Â§fBack Â§cÂ§l<<");
+		BackMeta.setDisplayName("§c§l>> §fBack §c§l<<");
 		ArrayList<String> BackLore = new ArrayList();
-		BackLore.add("Â§cÂ§l> Â§7Click to go back to the previous menu!");
+		BackLore.add("§c§l> §7Click to go back to the previous menu!");
 		BackMeta.setLore(BackLore);
 		Back.setItemMeta(BackMeta);
 
@@ -115,43 +115,43 @@ public class Skills implements Listener {
 	}
 
 	public static void openCombatInventory(Player player) {
-		Inventory SkillsGUI = Bukkit.createInventory(null, 9, "Â§cÂ§l>> Â§8Combat Skills Â§cÂ§l<<");
+		Inventory SkillsGUI = Bukkit.createInventory(null, 9, "§c§l>> §8Combat Skills §c§l<<");
 
 		ItemStack MobDamage = new ItemStack(Material.MOB_SPAWNER);
 		ItemMeta MobDamageMeta = MobDamage.getItemMeta();
-		MobDamageMeta.setDisplayName("Â§cÂ§l>> Â§fMob Damage Â§cÂ§l<<");
+		MobDamageMeta.setDisplayName("§c§l>> §fMob Damage §c§l<<");
 		ArrayList<String> MobDamageLore = new ArrayList();
-		MobDamageLore.add("Â§7This skill will increase damage");
-		MobDamageLore.add("Â§7dealt to all mobs by 25%!");
-		MobDamageLore.add("Â§cÂ§l> Â§7Â§lCost: Â§c2 Skill Tokens");
+		MobDamageLore.add("§7This skill will increase damage");
+		MobDamageLore.add("§7dealt to all mobs by 25%!");
+		MobDamageLore.add("§c§l> §7§lCost: §c2 Skill Tokens");
 		MobDamageMeta.setLore(MobDamageLore);
 		MobDamage.setItemMeta(MobDamageMeta);
 
 		ItemStack McMMO = new ItemStack(Material.EXP_BOTTLE);
 		ItemMeta McMMOMeta = McMMO.getItemMeta();
-		McMMOMeta.setDisplayName("Â§cÂ§l>> Â§fCombat McMMO Â§cÂ§l<<");
+		McMMOMeta.setDisplayName("§c§l>> §fCombat McMMO §c§l<<");
 		ArrayList<String> McMMOLore = new ArrayList();
-		McMMOLore.add("Â§7This skill will allow you to gain");
-		McMMOLore.add("Â§7combat McMMO from monster spawners!");
-		McMMOLore.add("Â§cÂ§l> Â§7Â§lCost: Â§c5 Skill Tokens");
+		McMMOLore.add("§7This skill will allow you to gain");
+		McMMOLore.add("§7combat McMMO from monster spawners!");
+		McMMOLore.add("§c§l> §7§lCost: §c5 Skill Tokens");
 		McMMOMeta.setLore(McMMOLore);
 		McMMO.setItemMeta(McMMOMeta);
 
 		ItemStack Damage = new ItemStack(Material.BLAZE_POWDER);
 		ItemMeta DamageMeta = Damage.getItemMeta();
-		DamageMeta.setDisplayName("Â§cÂ§l>> Â§fPlayer Damage Â§cÂ§l<<");
+		DamageMeta.setDisplayName("§c§l>> §fPlayer Damage §c§l<<");
 		ArrayList<String> DamageLore = new ArrayList();
-		DamageLore.add("Â§7This skill will increase damage");
-		DamageLore.add("Â§7dealt to all players by 2.5%!");
-		DamageLore.add("Â§cÂ§l> Â§7Â§lCost: Â§c10 Skill Tokens");
+		DamageLore.add("§7This skill will increase damage");
+		DamageLore.add("§7dealt to all players by 2.5%!");
+		DamageLore.add("§c§l> §7§lCost: §c10 Skill Tokens");
 		DamageMeta.setLore(DamageLore);
 		Damage.setItemMeta(DamageMeta);
 
 		ItemStack Back = new ItemStack(Material.REDSTONE_BLOCK);
 		ItemMeta BackMeta = Back.getItemMeta();
-		BackMeta.setDisplayName("Â§cÂ§l>> Â§fBack Â§cÂ§l<<");
+		BackMeta.setDisplayName("§c§l>> §fBack §c§l<<");
 		ArrayList<String> BackLore = new ArrayList();
-		BackLore.add("Â§cÂ§l> Â§7Click to go back to the previous menu!");
+		BackLore.add("§c§l> §7Click to go back to the previous menu!");
 		BackMeta.setLore(BackLore);
 		Back.setItemMeta(BackMeta);
 
@@ -163,43 +163,43 @@ public class Skills implements Listener {
 	}
 
 	public static void openClassesInventory(Player player) {
-		Inventory SkillsGUI = Bukkit.createInventory(null, 9, "Â§cÂ§l>> Â§8Class Skills Â§cÂ§l<<");
+		Inventory SkillsGUI = Bukkit.createInventory(null, 9, "§c§l>> §8Class Skills §c§l<<");
 
 		ItemStack Miner = new ItemStack(Material.IRON_CHESTPLATE);
 		ItemMeta MinerMeta = Miner.getItemMeta();
-		MinerMeta.setDisplayName("Â§cÂ§l>> Â§fMiner Class Â§cÂ§l<<");
+		MinerMeta.setDisplayName("§c§l>> §fMiner Class §c§l<<");
 		ArrayList<String> MinerLore = new ArrayList();
-		MinerLore.add("Â§7This skill will grant you invisibility");
-		MinerLore.add("Â§7and haste 2 when wearing full iron armor!");
-		MinerLore.add("Â§cÂ§l> Â§7Â§lCost: Â§c1 Skill Token");
+		MinerLore.add("§7This skill will grant you invisibility");
+		MinerLore.add("§7and haste 2 when wearing full iron armor!");
+		MinerLore.add("§c§l> §7§lCost: §c1 Skill Token");
 		MinerMeta.setLore(MinerLore);
 		Miner.setItemMeta(MinerMeta);
 
 		ItemStack Archer = new ItemStack(Material.LEATHER_CHESTPLATE);
 		ItemMeta ArcherMeta = Archer.getItemMeta();
-		ArcherMeta.setDisplayName("Â§cÂ§l>> Â§fArcher Class Â§cÂ§l<<");
+		ArcherMeta.setDisplayName("§c§l>> §fArcher Class §c§l<<");
 		ArrayList<String> ArcherLore = new ArrayList();
-		ArcherLore.add("Â§7This skill will grant you speed 3 and resistance");
-		ArcherLore.add("Â§71 whilst wearing full leather armor!");
-		ArcherLore.add("Â§cÂ§l> Â§7Â§lCost: Â§c2 Skill Tokens");
+		ArcherLore.add("§7This skill will grant you speed 3 and resistance");
+		ArcherLore.add("§71 whilst wearing full leather armor!");
+		ArcherLore.add("§c§l> §7§lCost: §c2 Skill Tokens");
 		ArcherMeta.setLore(ArcherLore);
 		Archer.setItemMeta(ArcherMeta);
 
 		ItemStack Bard = new ItemStack(Material.GOLD_CHESTPLATE);
 		ItemMeta BardMeta = Bard.getItemMeta();
-		BardMeta.setDisplayName("Â§cÂ§l>> Â§fBard Class Â§cÂ§l<<");
+		BardMeta.setDisplayName("§c§l>> §fBard Class §c§l<<");
 		ArrayList<String> BardLore = new ArrayList();
-		BardLore.add("Â§7This skill will grant you speed 3 and");
-		BardLore.add("Â§7regen 2 when wearing full gold armor!");
-		BardLore.add("Â§cÂ§l> Â§7Â§lCost: Â§c5 Skill Tokens");
+		BardLore.add("§7This skill will grant you speed 3 and");
+		BardLore.add("§7regen 2 when wearing full gold armor!");
+		BardLore.add("§c§l> §7§lCost: §c5 Skill Tokens");
 		BardMeta.setLore(BardLore);
 		Bard.setItemMeta(BardMeta);
 
 		ItemStack Back = new ItemStack(Material.REDSTONE_BLOCK);
 		ItemMeta BackMeta = Back.getItemMeta();
-		BackMeta.setDisplayName("Â§cÂ§l>> Â§fBack Â§cÂ§l<<");
+		BackMeta.setDisplayName("§c§l>> §fBack §c§l<<");
 		ArrayList<String> BackLore = new ArrayList();
-		BackLore.add("Â§cÂ§l> Â§7Click to go back to the previous menu!");
+		BackLore.add("§c§l> §7Click to go back to the previous menu!");
 		BackMeta.setLore(BackLore);
 		Back.setItemMeta(BackMeta);
 
@@ -211,33 +211,33 @@ public class Skills implements Listener {
 	}
 
 	public static void openFactionsInventory(Player player) {
-		Inventory SkillsGUI = Bukkit.createInventory(null, 9, "Â§cÂ§l>> Â§8Factions Skills Â§cÂ§l<<");
+		Inventory SkillsGUI = Bukkit.createInventory(null, 9, "§c§l>> §8Factions Skills §c§l<<");
 
 		ItemStack GenBuckets = new ItemStack(Material.LAVA_BUCKET);
 		ItemMeta GenBucketsMeta = GenBuckets.getItemMeta();
-		GenBucketsMeta.setDisplayName("Â§cÂ§l>> Â§fGen Buckets Â§cÂ§l<<");
+		GenBucketsMeta.setDisplayName("§c§l>> §fGen Buckets §c§l<<");
 		ArrayList<String> GenBucketsLore = new ArrayList();
-		GenBucketsLore.add("Â§7This skill will allow you to place gen-buckets,");
-		GenBucketsLore.add("Â§7which can be collected from within the nether!");
-		GenBucketsLore.add("Â§cÂ§l> Â§7Â§lCost: Â§c1 Skill Token");
+		GenBucketsLore.add("§7This skill will allow you to place gen-buckets,");
+		GenBucketsLore.add("§7which can be collected from within the nether!");
+		GenBucketsLore.add("§c§l> §7§lCost: §c1 Skill Token");
 		GenBucketsMeta.setLore(GenBucketsLore);
 		GenBuckets.setItemMeta(GenBucketsMeta);
 
 		ItemStack TntFill = new ItemStack(Material.DISPENSER);
 		ItemMeta TntFillMeta = TntFill.getItemMeta();
-		TntFillMeta.setDisplayName("Â§cÂ§l>> Â§fTNT Fill Â§cÂ§l<<");
+		TntFillMeta.setDisplayName("§c§l>> §fTNT Fill §c§l<<");
 		ArrayList<String> TntFillLore = new ArrayList();
-		TntFillLore.add("Â§7This skill will allow you to use /f tnt fill,");
-		TntFillLore.add("Â§7providing that your faction permits you to do so!");
-		TntFillLore.add("Â§cÂ§l> Â§7Â§lCost: Â§c2 Skill Tokens");
+		TntFillLore.add("§7This skill will allow you to use /f tnt fill,");
+		TntFillLore.add("§7providing that your faction permits you to do so!");
+		TntFillLore.add("§c§l> §7§lCost: §c2 Skill Tokens");
 		TntFillMeta.setLore(TntFillLore);
 		TntFill.setItemMeta(TntFillMeta);
 
 		ItemStack Back = new ItemStack(Material.REDSTONE_BLOCK);
 		ItemMeta BackMeta = Back.getItemMeta();
-		BackMeta.setDisplayName("Â§cÂ§l>> Â§fBack Â§cÂ§l<<");
+		BackMeta.setDisplayName("§c§l>> §fBack §c§l<<");
 		ArrayList<String> BackLore = new ArrayList();
-		BackLore.add("Â§cÂ§l> Â§7Click to go back to the previous menu!");
+		BackLore.add("§c§l> §7Click to go back to the previous menu!");
 		BackMeta.setLore(BackLore);
 		Back.setItemMeta(BackMeta);
 
@@ -251,81 +251,81 @@ public class Skills implements Listener {
 	public void onInventoryClickEvent(InventoryClickEvent event) {
 		if (event.getClickedInventory() != null) {
 			String inventoryName = event.getClickedInventory().getName();
-			if (inventoryName.equals("Â§cÂ§l>> Â§8Skills Master Â§cÂ§l<<")) {
+			if (inventoryName.equals("§c§l>> §8Skills Master §c§l<<")) {
 				event.setCancelled(true);
 				if ((event.getCurrentItem() != null) && (event.getCurrentItem().hasItemMeta())
 						&& (event.getCurrentItem().getItemMeta().hasDisplayName())) {
 					String itemName = event.getCurrentItem().getItemMeta().getDisplayName();
-					if (itemName.equals("Â§cÂ§l>> Â§fMovement Â§cÂ§l<<")) {
+					if (itemName.equals("§c§l>> §fMovement §c§l<<")) {
 						event.getWhoClicked().closeInventory();
 						openMovementInventory((Player) event.getWhoClicked());
-					} else if (itemName.equals("Â§cÂ§l>> Â§fCombat Â§cÂ§l<<")) {
+					} else if (itemName.equals("§c§l>> §fCombat §c§l<<")) {
 						event.getWhoClicked().closeInventory();
 						openCombatInventory((Player) event.getWhoClicked());
-					} else if (itemName.equals("Â§cÂ§l>> Â§fClasses Â§cÂ§l<<")) {
+					} else if (itemName.equals("§c§l>> §fClasses §c§l<<")) {
 						event.getWhoClicked().closeInventory();
 						openClassesInventory((Player) event.getWhoClicked());
-					} else if (itemName.equals("Â§cÂ§l>> Â§fFactions Â§cÂ§l<<")) {
+					} else if (itemName.equals("§c§l>> §fFactions §c§l<<")) {
 						event.getWhoClicked().closeInventory();
 						openFactionsInventory((Player) event.getWhoClicked());
 					}
 				}
-			} else if (inventoryName.equals("Â§cÂ§l>> Â§8Movement Skills Â§cÂ§l<<")) {
+			} else if (inventoryName.equals("§c§l>> §8Movement Skills §c§l<<")) {
 				event.setCancelled(true);
 				if ((event.getCurrentItem() != null) && (event.getCurrentItem().hasItemMeta())
 						&& (event.getCurrentItem().getItemMeta().hasDisplayName())) {
 					String itemName = event.getCurrentItem().getItemMeta().getDisplayName();
-					if (itemName.equals("Â§cÂ§l>> Â§fFactions Flight Â§cÂ§l<<")) {
+					if (itemName.equals("§c§l>> §fFactions Flight §c§l<<")) {
 						tryBuy("Flight", MPlayer.get((Player) event.getWhoClicked()), 1);
-					} else if (itemName.equals("Â§cÂ§l>> Â§fSpeed Â§cÂ§l<<")) {
+					} else if (itemName.equals("§c§l>> §fSpeed §c§l<<")) {
 						tryBuy("Speed", MPlayer.get((Player) event.getWhoClicked()), 5);
-					} else if (itemName.equals("Â§cÂ§l>> Â§fBack Â§cÂ§l<<")) {
+					} else if (itemName.equals("§c§l>> §fBack §c§l<<")) {
 						event.getWhoClicked().closeInventory();
 						openInventory((Player) event.getWhoClicked());
 					}
 				}
-			} else if (inventoryName.equals("Â§cÂ§l>> Â§8Combat Skills Â§cÂ§l<<")) {
+			} else if (inventoryName.equals("§c§l>> §8Combat Skills §c§l<<")) {
 				event.setCancelled(true);
 				if ((event.getCurrentItem() != null) && (event.getCurrentItem().hasItemMeta())
 						&& (event.getCurrentItem().getItemMeta().hasDisplayName())) {
 					String itemName = event.getCurrentItem().getItemMeta().getDisplayName();
-					if (itemName.equals("Â§cÂ§l>> Â§fMob Damage Â§cÂ§l<<")) {
+					if (itemName.equals("§c§l>> §fMob Damage §c§l<<")) {
 						tryBuy("MobDamage", MPlayer.get((Player) event.getWhoClicked()), 2);
-					} else if (itemName.equals("Â§cÂ§l>> Â§fCombat McMMO Â§cÂ§l<<")) {
+					} else if (itemName.equals("§c§l>> §fCombat McMMO §c§l<<")) {
 						tryBuy("CombatMcMMO", MPlayer.get((Player) event.getWhoClicked()), 5);
-					} else if (itemName.equals("Â§cÂ§l>> Â§fPlayer Damage Â§cÂ§l<<")) {
+					} else if (itemName.equals("§c§l>> §fPlayer Damage §c§l<<")) {
 						tryBuy("PlayerDamage", MPlayer.get((Player) event.getWhoClicked()), 10);
-					} else if (itemName.equals("Â§cÂ§l>> Â§fBack Â§cÂ§l<<")) {
+					} else if (itemName.equals("§c§l>> §fBack §c§l<<")) {
 						event.getWhoClicked().closeInventory();
 						openInventory((Player) event.getWhoClicked());
 					}
 				}
-			} else if (inventoryName.equals("Â§cÂ§l>> Â§8Class Skills Â§cÂ§l<<")) {
+			} else if (inventoryName.equals("§c§l>> §8Class Skills §c§l<<")) {
 				event.setCancelled(true);
 				if ((event.getCurrentItem() != null) && (event.getCurrentItem().hasItemMeta())
 						&& (event.getCurrentItem().getItemMeta().hasDisplayName())) {
 					String itemName = event.getCurrentItem().getItemMeta().getDisplayName();
-					if (itemName.equals("Â§cÂ§l>> Â§fMiner Class Â§cÂ§l<<")) {
+					if (itemName.equals("§c§l>> §fMiner Class §c§l<<")) {
 						tryBuy("Miner", MPlayer.get((Player) event.getWhoClicked()), 1);
-					} else if (itemName.equals("Â§cÂ§l>> Â§fArcher Class Â§cÂ§l<<")) {
+					} else if (itemName.equals("§c§l>> §fArcher Class §c§l<<")) {
 						tryBuy("Archer", MPlayer.get((Player) event.getWhoClicked()), 2);
-					} else if (itemName.equals("Â§cÂ§l>> Â§fBard Class Â§cÂ§l<<")) {
+					} else if (itemName.equals("§c§l>> §fBard Class §c§l<<")) {
 						tryBuy("Bard", MPlayer.get((Player) event.getWhoClicked()), 5);
-					} else if (itemName.equals("Â§cÂ§l>> Â§fBack Â§cÂ§l<<")) {
+					} else if (itemName.equals("§c§l>> §fBack §c§l<<")) {
 						event.getWhoClicked().closeInventory();
 						openInventory((Player) event.getWhoClicked());
 					}
 				}
-			} else if (inventoryName.equals("Â§cÂ§l>> Â§8Factions Skills Â§cÂ§l<<")) {
+			} else if (inventoryName.equals("§c§l>> §8Factions Skills §c§l<<")) {
 				event.setCancelled(true);
 				if ((event.getCurrentItem() != null) && (event.getCurrentItem().hasItemMeta())
 						&& (event.getCurrentItem().getItemMeta().hasDisplayName())) {
 					String itemName = event.getCurrentItem().getItemMeta().getDisplayName();
-					if (itemName.equals("Â§cÂ§l>> Â§fGen Buckets Â§cÂ§l<<")) {
+					if (itemName.equals("§c§l>> §fGen Buckets §c§l<<")) {
 						tryBuy("GenBuckets", MPlayer.get((Player) event.getWhoClicked()), 1);
-					} else if (itemName.equals("Â§cÂ§l>> Â§fTnt Fill Â§cÂ§l<<")) {
+					} else if (itemName.equals("§c§l>> §fTnt Fill §c§l<<")) {
 						tryBuy("TntFill", MPlayer.get((Player) event.getWhoClicked()), 2);
-					} else if (itemName.equals("Â§cÂ§l>> Â§fBack Â§cÂ§l<<")) {
+					} else if (itemName.equals("§c§l>> §fBack §c§l<<")) {
 						event.getWhoClicked().closeInventory();
 						openInventory((Player) event.getWhoClicked());
 					}
@@ -338,90 +338,90 @@ public class Skills implements Listener {
 		if (mplayer.getTokens() - cost >= 0) {
 			if (skillName.equalsIgnoreCase("Flight")) {
 				if (mplayer.getSkillFlight()) {
-					mplayer.message("Â§cÂ§l(!)Â§7 You have already purchased this skill!");
+					mplayer.message("§c§l(!)§7 You have already purchased this skill!");
 				} else {
 					mplayer.setSkillFlight(true);
 					mplayer.setTokens(mplayer.getTokens() - cost);
-					mplayer.message("Â§aÂ§l(!)Â§7 You have aquired the flight skill!");
+					mplayer.message("§a§l(!)§7 You have aquired the flight skill!");
 				}
 			} else if (skillName.equalsIgnoreCase("Speed")) {
 				if (mplayer.getSkillSpeed()) {
-					mplayer.message("Â§cÂ§l(!)Â§7 You have already purchased this skill!");
+					mplayer.message("§c§l(!)§7 You have already purchased this skill!");
 				} else {
 					mplayer.setSkillSpeed(true);
 					mplayer.setTokens(mplayer.getTokens() - cost);
 					mplayer.getPlayer().setWalkSpeed(0.205F);
-					mplayer.message("Â§aÂ§l(!)Â§7 You have aquired the speed skill!");
+					mplayer.message("§a§l(!)§7 You have aquired the speed skill!");
 				}
 			} else if (skillName.equalsIgnoreCase("MobDamage")) {
 				if (mplayer.getSkillMobDamage()) {
-					mplayer.message("Â§cÂ§l(!)Â§7 You have already purchased this skill!");
+					mplayer.message("§c§l(!)§7 You have already purchased this skill!");
 				} else {
 					mplayer.setSkillMobDamage(true);
 					mplayer.setTokens(mplayer.getTokens() - cost);
-					mplayer.message("Â§aÂ§l(!)Â§7 You have aquired the mob-damage skill!");
+					mplayer.message("§a§l(!)§7 You have aquired the mob-damage skill!");
 				}
 			} else if (skillName.equalsIgnoreCase("CombatMcMMO")) {
 				if (mplayer.getSkillCombatMcMMO()) {
-					mplayer.message("Â§cÂ§l(!)Â§7 You have already purchased this skill!");
+					mplayer.message("§c§l(!)§7 You have already purchased this skill!");
 				} else {
 					mplayer.setSkillCombatMcMMO(true);
 					mplayer.setTokens(mplayer.getTokens() - cost);
-					mplayer.message("Â§aÂ§l(!)Â§7 You have aquired the combat mcmmo skill!");
+					mplayer.message("§a§l(!)§7 You have aquired the combat mcmmo skill!");
 				}
 			} else if (skillName.equalsIgnoreCase("PlayerDamage")) {
 				if (mplayer.getSkillPlayerDamage()) {
-					mplayer.message("Â§cÂ§l(!)Â§7 You have already purchased this skill!");
+					mplayer.message("§c§l(!)§7 You have already purchased this skill!");
 				} else {
 					mplayer.setSkillPlayerDamage(true);
 					mplayer.setTokens(mplayer.getTokens() - cost);
-					mplayer.message("Â§aÂ§l(!)Â§7 You have aquired the player damage skill!");
+					mplayer.message("§a§l(!)§7 You have aquired the player damage skill!");
 				}
 			} else if (skillName.equalsIgnoreCase("GenBuckets")) {
 				if (mplayer.getSkillGenBuckets()) {
-					mplayer.message("Â§cÂ§l(!)Â§7 You have already purchased this skill!");
+					mplayer.message("§c§l(!)§7 You have already purchased this skill!");
 				} else {
 					mplayer.setSkillGenBuckets(true);
 					mplayer.setTokens(mplayer.getTokens() - cost);
-					mplayer.message("Â§aÂ§l(!)Â§7 You have aquired the gen-buckets skill!");
+					mplayer.message("§a§l(!)§7 You have aquired the gen-buckets skill!");
 				}
 			} else if (skillName.equalsIgnoreCase("TntFill")) {
 				if (mplayer.getSkillTntFill()) {
-					mplayer.message("Â§cÂ§l(!)Â§7 You have already purchased this skill!");
+					mplayer.message("§c§l(!)§7 You have already purchased this skill!");
 				} else {
 					mplayer.setSkillTntFill(true);
 					mplayer.setTokens(mplayer.getTokens() - cost);
-					mplayer.message("Â§aÂ§l(!)Â§7 You have aquired the tnt fill skill!");
+					mplayer.message("§a§l(!)§7 You have aquired the tnt fill skill!");
 				}
 			} else if (skillName.equalsIgnoreCase("Miner")) {
 				if (mplayer.getSkillMiner()) {
-					mplayer.message("Â§cÂ§l(!)Â§7 You have already purchased this skill!");
+					mplayer.message("§c§l(!)§7 You have already purchased this skill!");
 				} else {
 					mplayer.setSkillMiner(true);
 					mplayer.setTokens(mplayer.getTokens() - cost);
-					mplayer.message("Â§aÂ§l(!)Â§7 You have aquired the miner skill!");
+					mplayer.message("§a§l(!)§7 You have aquired the miner skill!");
 				}
 			} else if (skillName.equalsIgnoreCase("Archer")) {
 				if (mplayer.getSkillArcher()) {
-					mplayer.message("Â§cÂ§l(!)Â§7 You have already purchased this skill!");
+					mplayer.message("§c§l(!)§7 You have already purchased this skill!");
 				} else {
 					mplayer.setSkillArcher(true);
 					mplayer.setTokens(mplayer.getTokens() - cost);
-					mplayer.message("Â§aÂ§l(!)Â§7 You have aquired the archer skill!");
+					mplayer.message("§a§l(!)§7 You have aquired the archer skill!");
 				}
 			} else if (skillName.equalsIgnoreCase("Bard")) {
 				if (mplayer.getSkillBard()) {
-					mplayer.message("Â§cÂ§l(!)Â§7 You have already purchased this skill!");
+					mplayer.message("§c§l(!)§7 You have already purchased this skill!");
 				} else {
 					mplayer.setSkillBard(true);
 					mplayer.setTokens(mplayer.getTokens() - cost);
-					mplayer.message("Â§aÂ§l(!)Â§7 You have aquired the bard skill!");
+					mplayer.message("§a§l(!)§7 You have aquired the bard skill!");
 				}
 			} else {
 				System.out.println("[Factions] Error: Incorrect skill name used in net.OnePoundd.Patches.Skills.Java");
 			}
 		} else {
-			mplayer.message("Â§cÂ§l(!)Â§7 You do not have enough tokens to purchase this skill!");
+			mplayer.message("§c§l(!)§7 You do not have enough tokens to purchase this skill!");
 		}
 	}
 

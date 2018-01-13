@@ -53,40 +53,40 @@ public class Faction extends Entity<Faction> implements FactionsParticipator {
 	}
 
 	public Faction load(Faction that) {
-		setName(name);
-		setDescription(description);
-		setMotd(motd);
-		setCreatedAtMillis(createdAtMillis);
-		setHome(home);
-		setPowerBoost(powerBoost);
-		invitations.load(invitations);
-		setRelationWishes(relationWishes);
-		setFlagIds(flags);
-		setPermIds(perms);
-		setUrl(Url);
-		setRecruiting(Recruiting);
-		setSpawnerUpgradeLevel(SpawnerUpgradeLevel);
-		setCropGrowthUpgradeLevel(CropGrowthUpgradeLevel);
-		setDamageUpgradeLevel(DamageUpgradeLevel);
-		setHungerUpgradeLevel(HungerUpgradeLevel);
-		setSmeltingUpgradeLevel(SmeltingUpgradeLevel);
-		setExpUpgradeLevel(ExpUpgradeLevel);
-		setTntUpgradeLevel(TntUpgradeLevel);
-		setMcmmoUpgradeLevel(McmmoUpgradeLevel);
-		setMaxWarps(maxWarps);
-		setVictoryPoints(VictoryPoints);
-		setCapitalChunkX(capitalChunkX);
-		setCapitalChunkZ(capitalChunkZ);
-		setHasCapital(hasCapital);
-		setTimeRaidedAtMillis(timeRaidedAtMillis);
-		setWealth(wealth);
-		setChunksNearWarZone(chunksNearWarZone);
-		setTntCount(tntCount);
-		setMcmmoBoost(mcmmoBoost);
-		setBoostEndMillis(boostEndMillis);
-		setOwnsCastle(OwnsCastle);
-		for (Map.Entry<String, PS> entry : warps.entrySet()) {
-			setWarp((PS) entry.getValue(), (String) entry.getKey(), (String) warpsPasswords.get(entry.getValue()));
+		setName(that.name);
+		setDescription(that.description);
+		setMotd(that.motd);
+		setCreatedAtMillis(that.createdAtMillis);
+		setHome(that.home);
+		setPowerBoost(that.powerBoost);
+		invitations.load(that.invitations);
+		setRelationWishes(that.relationWishes);
+		setFlagIds(that.flags);
+		setPermIds(that.perms);
+		setUrl(that.Url);
+		setRecruiting(that.Recruiting);
+		setSpawnerUpgradeLevel(that.SpawnerUpgradeLevel);
+		setCropGrowthUpgradeLevel(that.CropGrowthUpgradeLevel);
+		setDamageUpgradeLevel(that.DamageUpgradeLevel);
+		setHungerUpgradeLevel(that.HungerUpgradeLevel);
+		setSmeltingUpgradeLevel(that.SmeltingUpgradeLevel);
+		setExpUpgradeLevel(that.ExpUpgradeLevel);
+		setTntUpgradeLevel(that.TntUpgradeLevel);
+		setMcmmoUpgradeLevel(that.McmmoUpgradeLevel);
+		setMaxWarps(that.maxWarps);
+		setVictoryPoints(that.VictoryPoints);
+		setCapitalChunkX(that.capitalChunkX);
+		setCapitalChunkZ(that.capitalChunkZ);
+		setHasCapital(that.hasCapital);
+		setTimeRaidedAtMillis(that.timeRaidedAtMillis);
+		setWealth(that.wealth);
+		setChunksNearWarZone(that.chunksNearWarZone);
+		setTntCount(that.tntCount);
+		setMcmmoBoost(that.mcmmoBoost);
+		setBoostEndMillis(that.boostEndMillis);
+		setOwnsCastle(that.OwnsCastle);
+		for (Map.Entry<String, PS> entry : that.warps.entrySet()) {
+			setWarp((PS) entry.getValue(), (String) entry.getKey(), (String) that.warpsPasswords.get(entry.getValue()));
 		}
 		return this;
 	}
@@ -928,18 +928,18 @@ public class Faction extends Entity<Faction> implements FactionsParticipator {
 		if (Recruiting) {
 			if (Url != null) {
 				new FancyMessage()
-						.text(getColorTo(MPlayer.get(sender)) + getName() + "Â§7 - Online: Â§a"
-								+ getOnlinePlayers().size() + "Â§7, Recruitment: Â§aOpen, click to applyÂ§7!")
+						.text(getColorTo(MPlayer.get(sender)) + getName() + "§7 - Online: §a"
+								+ getOnlinePlayers().size() + "§7, Recruitment: §aOpen, click to apply§7!")
 						.link(getUrl()).send(sender);
 			} else {
 				new FancyMessage()
-						.text(getColorTo(MPlayer.get(sender)) + getName() + "Â§7 - Online: Â§a"
-								+ getOnlinePlayers().size() + "Â§7, Recruitment: Â§aOpen, message an officerÂ§7!")
+						.text(getColorTo(MPlayer.get(sender)) + getName() + "§7 - Online: §a"
+								+ getOnlinePlayers().size() + "§7, Recruitment: §aOpen, message an officer§7!")
 						.link(getUrl()).send(sender);
 			}
 		} else {
-			new FancyMessage().text(getColorTo(MPlayer.get(sender)) + getName() + "Â§7 - Online: Â§a"
-					+ getOnlinePlayers().size() + "Â§7, Recruitment: Â§cClosedÂ§7.").link(getUrl()).send(sender);
+			new FancyMessage().text(getColorTo(MPlayer.get(sender)) + getName() + "§7 - Online: §a"
+					+ getOnlinePlayers().size() + "§7, Recruitment: §cClosed§7.").link(getUrl()).send(sender);
 		}
 	}
 
@@ -1094,9 +1094,9 @@ public class Faction extends Entity<Faction> implements FactionsParticipator {
 	public void addVicotryPoints(int num) {
 		if (hasCapital()) {
 			VictoryPoints += num;
-			msg("Â§cÂ§l(!)Â§7 Your faction just recieved Â§l" + num + " Â§7victory points!");
+			msg("§c§l(!)§7 Your faction just recieved §l" + num + " §7victory points!");
 		} else {
-			msg("Â§cÂ§l(!)Â§7 Your faction would've just earned victory points but you have no capital!");
+			msg("§c§l(!)§7 Your faction would've just earned victory points but you have no capital!");
 		}
 	}
 

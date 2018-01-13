@@ -25,18 +25,18 @@ public class CmdFactionsWealth extends FactionsCommand {
 	}
 
 	public void perform() throws MassiveException {
-		msg("Â§8Â§lÂ§m---------------Â§7Â§l[ Â§dTop 10 FactionsÂ§7Â§l ]Â§8Â§lÂ§m---------------");
-		msg("Â§7A list of the top 10 factions by their faction wealth!");
+		msg("§8§l§m---------------§7§l[ §dTop 10 Factions§7§l ]§8§l§m---------------");
+		msg("§7A list of the top 10 factions by their faction wealth!");
 		int i = 1;
 		for (Map.Entry<Faction, Integer> entry : currentTop.entrySet()) {
 			if (i <= 10) {
-				msg("Â§dÂ§l " + i + ") Â§b" + ((Faction) entry.getKey()).getName() + ", $" + entry.getValue() + ".");
+				msg("§d§l " + i + ") §b" + ((Faction) entry.getKey()).getName() + ", $" + entry.getValue() + ".");
 				i++;
 			} else {
 				return;
 			}
 		}
-		msg("Â§8Â§lÂ§m--------------------------------------------");
+		msg("§8§l§m--------------------------------------------");
 	}
 
 	public static void updateFactionsWealth() {

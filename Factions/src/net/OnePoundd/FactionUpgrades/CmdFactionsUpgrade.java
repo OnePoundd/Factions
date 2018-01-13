@@ -27,278 +27,278 @@ public class CmdFactionsUpgrade extends FactionsCommand implements Listener {
 			return;
 		}
 		if (msender.getFaction().getName().equalsIgnoreCase("wilderness")) {
-			msender.getPlayer().sendMessage("ยงbยงl(!)ยง7 You cannot upgrade wilderness!");
+			msender.getPlayer().sendMessage("งbงl(!)ง7 You cannot upgrade wilderness!");
 		} else {
 			openUpgradeInventory(msender);
 		}
 	}
 
 	public void openUpgradeInventory(MPlayer mPlayer) {
-		Inventory UpgradeGUI = Bukkit.createInventory(null, 9, "ยงcยงl>> ยง8Faction Upgrades ยงcยงl<<");
+		Inventory UpgradeGUI = Bukkit.createInventory(null, 9, "งcงl>> ง8Faction Upgrades งcงl<<");
 		Faction faction = msenderFaction;
 
 		ItemStack Spawner = new ItemStack(Material.MOB_SPAWNER);
 		ItemMeta SpawnerMeta = Spawner.getItemMeta();
-		SpawnerMeta.setDisplayName("ยงcยงl>> ยงfSpawner Rate Upgrade ยงcยงl<<");
+		SpawnerMeta.setDisplayName("งcงl>> งfSpawner Rate Upgrade งcงl<<");
 		ArrayList<String> SpawnerLore = new ArrayList();
-		SpawnerLore.add("ยงcยงl> ยง7ยงlIncreases spawner rates in your territory!");
+		SpawnerLore.add("งcงl> ง7งlIncreases spawner rates in your territory!");
 		int SpawnerUpgradeLevel = faction.getSpawnerUpgradeLevel();
-		SpawnerLore.add("ยงcยงl> ยง7Current Level: ยงc" + SpawnerUpgradeLevel);
+		SpawnerLore.add("งcงl> ง7Current Level: งc" + SpawnerUpgradeLevel);
 		if (SpawnerUpgradeLevel == 0) {
-			SpawnerLore.add("ยงcยงl> ยง7This Level: ยงcRates increased by 0%");
-			SpawnerLore.add("ยงcยงl> ยง7Next Level: ยงcRates increased by 25%!");
-			SpawnerLore.add("ยงbCost: ยง6$1,000,000");
+			SpawnerLore.add("งcงl> ง7This Level: งcRates increased by 0%");
+			SpawnerLore.add("งcงl> ง7Next Level: งcRates increased by 25%!");
+			SpawnerLore.add("งbCost: ง6$1,000,000");
 		} else if (SpawnerUpgradeLevel == 1) {
-			SpawnerLore.add("ยงcยงl> ยง7This Level: ยงcRates increased by 25%");
-			SpawnerLore.add("ยงcยงl> ยง7Next Level: ยงcRates increased by 50%!");
-			SpawnerLore.add("ยงbCost: ยง6$2,500,000");
+			SpawnerLore.add("งcงl> ง7This Level: งcRates increased by 25%");
+			SpawnerLore.add("งcงl> ง7Next Level: งcRates increased by 50%!");
+			SpawnerLore.add("งbCost: ง6$2,500,000");
 		} else if (SpawnerUpgradeLevel == 2) {
-			SpawnerLore.add("ยงcยงl> ยง7This Level: ยงcRates increased by 50%");
-			SpawnerLore.add("ยงcยงl> ยง7Next Level: ยงcRates increased by 75%!");
-			SpawnerLore.add("ยงbCost: ยง6$5,000,000");
+			SpawnerLore.add("งcงl> ง7This Level: งcRates increased by 50%");
+			SpawnerLore.add("งcงl> ง7Next Level: งcRates increased by 75%!");
+			SpawnerLore.add("งbCost: ง6$5,000,000");
 		} else if (SpawnerUpgradeLevel == 3) {
-			SpawnerLore.add("ยงcยงl> ยง7This Level: ยงcRates increased by 75%");
-			SpawnerLore.add("ยงcยงl> ยง7Next Level: ยงcRates increased by 100%!");
-			SpawnerLore.add("ยงbCost: ยง6$7,500,000");
+			SpawnerLore.add("งcงl> ง7This Level: งcRates increased by 75%");
+			SpawnerLore.add("งcงl> ง7Next Level: งcRates increased by 100%!");
+			SpawnerLore.add("งbCost: ง6$7,500,000");
 		} else if (SpawnerUpgradeLevel == 4) {
-			SpawnerLore.add("ยงcยงl> ยง7This Level: ยงcRates increased by 100%");
-			SpawnerLore.add("ยงaยงlMax Level Reached!");
+			SpawnerLore.add("งcงl> ง7This Level: งcRates increased by 100%");
+			SpawnerLore.add("งaงlMax Level Reached!");
 		}
 		SpawnerMeta.setLore(SpawnerLore);
 		Spawner.setItemMeta(SpawnerMeta);
 
 		ItemStack CropGrowth = new ItemStack(Material.SUGAR_CANE);
 		ItemMeta CropGrowthMeta = CropGrowth.getItemMeta();
-		CropGrowthMeta.setDisplayName("ยงcยงl>> ยงfSugarcane Growth Upgrade ยงcยงl<<");
+		CropGrowthMeta.setDisplayName("งcงl>> งfSugarcane Growth Upgrade งcงl<<");
 		ArrayList<String> CropLore = new ArrayList();
 		int CropGrowthLevel = faction.getCropGrowthUpgradeLevel();
-		CropLore.add("ยงcยงl> ยง7ยงlIncreases sugarcane growth rates in your territory!");
-		CropLore.add("ยงcยงl> ยง7Current Level: ยงc" + CropGrowthLevel);
+		CropLore.add("งcงl> ง7งlIncreases sugarcane growth rates in your territory!");
+		CropLore.add("งcงl> ง7Current Level: งc" + CropGrowthLevel);
 		if (CropGrowthLevel == 0) {
-			CropLore.add("ยงcยงl> ยง7This Level: ยงcRates increased by 0%");
-			CropLore.add("ยงcยงl> ยง7Next Level: ยงcRates increased by 25%!");
-			CropLore.add("ยงbCost: ยง6$500,000");
+			CropLore.add("งcงl> ง7This Level: งcRates increased by 0%");
+			CropLore.add("งcงl> ง7Next Level: งcRates increased by 25%!");
+			CropLore.add("งbCost: ง6$500,000");
 		} else if (CropGrowthLevel == 1) {
-			CropLore.add("ยงcยงl> ยง7This Level: ยงcRates increased by 25%");
-			CropLore.add("ยงcยงl> ยง7Next Level: ยงcRates increased by 50%!");
-			CropLore.add("ยงbCost: ยง6$1,000,000");
+			CropLore.add("งcงl> ง7This Level: งcRates increased by 25%");
+			CropLore.add("งcงl> ง7Next Level: งcRates increased by 50%!");
+			CropLore.add("งbCost: ง6$1,000,000");
 		} else if (CropGrowthLevel == 2) {
-			CropLore.add("ยงcยงl> ยง7This Level: ยงcRates increased by 50%");
-			CropLore.add("ยงcยงl> ยง7Next Level: ยงcRates increased by 75%!");
-			CropLore.add("ยงbCost: ยง6$2,500,000");
+			CropLore.add("งcงl> ง7This Level: งcRates increased by 50%");
+			CropLore.add("งcงl> ง7Next Level: งcRates increased by 75%!");
+			CropLore.add("งbCost: ง6$2,500,000");
 		} else if (CropGrowthLevel == 3) {
-			CropLore.add("ยงcยงl> ยง7This Level: ยงcRates increased by 75%");
-			CropLore.add("ยงcยงl> ยง7Next Level: ยงcRates increased by 100%!");
-			CropLore.add("ยงbCost: ยง6$5,000,000");
+			CropLore.add("งcงl> ง7This Level: งcRates increased by 75%");
+			CropLore.add("งcงl> ง7Next Level: งcRates increased by 100%!");
+			CropLore.add("งbCost: ง6$5,000,000");
 		} else if (CropGrowthLevel == 4) {
-			CropLore.add("ยงcยงl> ยง7This Level: ยงcRates increased by 100%");
-			CropLore.add("ยงaยงlMax Level Reached!");
+			CropLore.add("งcงl> ง7This Level: งcRates increased by 100%");
+			CropLore.add("งaงlMax Level Reached!");
 		}
 		CropGrowthMeta.setLore(CropLore);
 		CropGrowth.setItemMeta(CropGrowthMeta);
 
 		ItemStack DamageUpgrade = new ItemStack(Material.DIAMOND_SWORD);
 		ItemMeta DamageMeta = DamageUpgrade.getItemMeta();
-		DamageMeta.setDisplayName("ยงcยงl>> ยงfDamage Reduction Upgrade ยงcยงl<<");
+		DamageMeta.setDisplayName("งcงl>> งfDamage Reduction Upgrade งcงl<<");
 		ArrayList<String> DamageLore = new ArrayList();
 		int DamageUpgradeLevel = faction.getDamageUpgradeLevel();
-		DamageLore.add("ยงcยงl> ยง7ยงlReduces damage from enemies in your territory!");
-		DamageLore.add("ยงcยงl> ยง7Current Level: ยงc" + DamageUpgradeLevel);
+		DamageLore.add("งcงl> ง7งlReduces damage from enemies in your territory!");
+		DamageLore.add("งcงl> ง7Current Level: งc" + DamageUpgradeLevel);
 		if (DamageUpgradeLevel == 0) {
-			DamageLore.add("ยงcยงl> ยง7This Level: ยงc0% damage reduction!");
-			DamageLore.add("ยงcยงl> ยง7Next Level: ยงc5% damage reduction!");
-			DamageLore.add("ยงbCost: ยง6$250,000");
+			DamageLore.add("งcงl> ง7This Level: งc0% damage reduction!");
+			DamageLore.add("งcงl> ง7Next Level: งc5% damage reduction!");
+			DamageLore.add("งbCost: ง6$250,000");
 		} else if (DamageUpgradeLevel == 1) {
-			DamageLore.add("ยงcยงl> ยง7This Level: ยงc5% damage reduction!");
-			DamageLore.add("ยงcยงl> ยง7Next Level: ยงc10% damage reduction!");
-			DamageLore.add("ยงbCost: ยง6$500,000");
+			DamageLore.add("งcงl> ง7This Level: งc5% damage reduction!");
+			DamageLore.add("งcงl> ง7Next Level: งc10% damage reduction!");
+			DamageLore.add("งbCost: ง6$500,000");
 		} else if (DamageUpgradeLevel == 2) {
-			DamageLore.add("ยงcยงl> ยง7This Level: ยงc10% damage reduction!");
-			DamageLore.add("ยงcยงl> ยง7Next Level: ยงc15% damage reduction!");
-			DamageLore.add("ยงbCost: ยง6$51,000,000");
+			DamageLore.add("งcงl> ง7This Level: งc10% damage reduction!");
+			DamageLore.add("งcงl> ง7Next Level: งc15% damage reduction!");
+			DamageLore.add("งbCost: ง6$51,000,000");
 		} else if (DamageUpgradeLevel == 3) {
-			DamageLore.add("ยงcยงl> ยง7This Level: ยงc15% damage reduction!");
-			DamageLore.add("ยงcยงl> ยง7Next Level: ยงc20% damage reduction!");
-			DamageLore.add("ยงbCost: ยง6$1,500,000");
+			DamageLore.add("งcงl> ง7This Level: งc15% damage reduction!");
+			DamageLore.add("งcงl> ง7Next Level: งc20% damage reduction!");
+			DamageLore.add("งbCost: ง6$1,500,000");
 		} else if (DamageUpgradeLevel == 4) {
-			DamageLore.add("ยงcยงl> ยง7This Level: ยงc20% damage reduction!");
-			DamageLore.add("ยงcยงl> ยง7Next Level: ยงc25% damage reduction!");
-			DamageLore.add("ยงbCost: ยง6$2,000,000");
+			DamageLore.add("งcงl> ง7This Level: งc20% damage reduction!");
+			DamageLore.add("งcงl> ง7Next Level: งc25% damage reduction!");
+			DamageLore.add("งbCost: ง6$2,000,000");
 		} else if (DamageUpgradeLevel == 5) {
-			DamageLore.add("ยงcยงl> ยง7This Level: ยงc25% damage reduction!");
-			DamageLore.add("ยงaยงlMax Level Reached!");
+			DamageLore.add("งcงl> ง7This Level: งc25% damage reduction!");
+			DamageLore.add("งaงlMax Level Reached!");
 		}
 		DamageMeta.setLore(DamageLore);
 		DamageUpgrade.setItemMeta(DamageMeta);
 
 		ItemStack WarpUpgrade = new ItemStack(Material.ENDER_PEARL);
 		ItemMeta WarpMeta = WarpUpgrade.getItemMeta();
-		WarpMeta.setDisplayName("ยงcยงl>> ยงfFaction Warps Upgrade ยงcยงl<<");
+		WarpMeta.setDisplayName("งcงl>> งfFaction Warps Upgrade งcงl<<");
 		ArrayList<String> WarpLore = new ArrayList();
 		int WarpUpgradeLevel = faction.getMaxWarps();
-		WarpLore.add("ยงcยงl> ยง7ยงlIncreases the max amount of faction warps!");
-		WarpLore.add("ยงcยงl> ยง7Current Level: ยงc" + WarpUpgradeLevel);
+		WarpLore.add("งcงl> ง7งlIncreases the max amount of faction warps!");
+		WarpLore.add("งcงl> ง7Current Level: งc" + WarpUpgradeLevel);
 		if (WarpUpgradeLevel == 0) {
-			WarpLore.add("ยงcยงl> ยง7This Level: ยงc0 Faction Warps!");
-			WarpLore.add("ยงcยงl> ยง7Next Level: ยงc1 Faction Warp!");
-			WarpLore.add("ยงbCost: ยง6$150,000");
+			WarpLore.add("งcงl> ง7This Level: งc0 Faction Warps!");
+			WarpLore.add("งcงl> ง7Next Level: งc1 Faction Warp!");
+			WarpLore.add("งbCost: ง6$150,000");
 		} else if (WarpUpgradeLevel == 1) {
-			WarpLore.add("ยงcยงl> ยง7This Level: ยงc1 Faction Warp!");
-			WarpLore.add("ยงcยงl> ยง7Next Level: ยงc2 Faction Warps!");
-			WarpLore.add("ยงbCost: ยง6$150,000");
+			WarpLore.add("งcงl> ง7This Level: งc1 Faction Warp!");
+			WarpLore.add("งcงl> ง7Next Level: งc2 Faction Warps!");
+			WarpLore.add("งbCost: ง6$150,000");
 		} else if (WarpUpgradeLevel == 2) {
-			WarpLore.add("ยงcยงl> ยง7This Level: ยงc2 Faction Warps!");
-			WarpLore.add("ยงcยงl> ยง7Next Level: ยงc3 Faction Warps!");
-			WarpLore.add("ยงbCost: ยง6$150,000");
+			WarpLore.add("งcงl> ง7This Level: งc2 Faction Warps!");
+			WarpLore.add("งcงl> ง7Next Level: งc3 Faction Warps!");
+			WarpLore.add("งbCost: ง6$150,000");
 		} else if (WarpUpgradeLevel == 3) {
-			WarpLore.add("ยงcยงl> ยง7This Level: ยงc3 Faction Warps!");
-			WarpLore.add("ยงcยงl> ยง7Next Level: ยงc4 Faction Warps!");
-			WarpLore.add("ยงbCost: ยง6$150,000");
+			WarpLore.add("งcงl> ง7This Level: งc3 Faction Warps!");
+			WarpLore.add("งcงl> ง7Next Level: งc4 Faction Warps!");
+			WarpLore.add("งbCost: ง6$150,000");
 		} else if (WarpUpgradeLevel == 4) {
-			WarpLore.add("ยงcยงl> ยง7This Level: ยงc4 Faction Warps!");
-			WarpLore.add("ยงcยงl> ยง7Next Level: ยงc5 Faction Warps!");
-			WarpLore.add("ยงbCost: ยง6$150,000");
+			WarpLore.add("งcงl> ง7This Level: งc4 Faction Warps!");
+			WarpLore.add("งcงl> ง7Next Level: งc5 Faction Warps!");
+			WarpLore.add("งbCost: ง6$150,000");
 		} else if (WarpUpgradeLevel == 5) {
-			WarpLore.add("ยงcยงl> ยง7This Level: ยงc5 Faction Warps!");
-			WarpLore.add("ยงaยงlMax Level Reached!");
+			WarpLore.add("งcงl> ง7This Level: งc5 Faction Warps!");
+			WarpLore.add("งaงlMax Level Reached!");
 		}
 		WarpMeta.setLore(WarpLore);
 		WarpUpgrade.setItemMeta(WarpMeta);
 
 		ItemStack HungerUpgrade = new ItemStack(Material.COOKED_BEEF);
 		ItemMeta HungerMeta = HungerUpgrade.getItemMeta();
-		HungerMeta.setDisplayName("ยงcยงl>> ยงfHunger Loss Upgrade ยงcยงl<<");
+		HungerMeta.setDisplayName("งcงl>> งfHunger Loss Upgrade งcงl<<");
 		ArrayList<String> HungerLore = new ArrayList();
 		int HungerUpgradeLevel = faction.getHungerUpgradeLevel();
-		HungerLore.add("ยงcยงl> ยง7ยงlPrevents hunger loss in your factions territory!");
-		HungerLore.add("ยงcยงl> ยง7Current Level: ยงc" + HungerUpgradeLevel);
+		HungerLore.add("งcงl> ง7งlPrevents hunger loss in your factions territory!");
+		HungerLore.add("งcงl> ง7Current Level: งc" + HungerUpgradeLevel);
 		if (HungerUpgradeLevel == 0) {
-			HungerLore.add("ยงcยงl> ยง7This Level: ยงcHunger is lost in your territory!");
-			HungerLore.add("ยงcยงl> ยง7Next Level: ยงcHunger is not lost in your territory!");
-			HungerLore.add("ยงbCost: ยง6$1,000,000");
+			HungerLore.add("งcงl> ง7This Level: งcHunger is lost in your territory!");
+			HungerLore.add("งcงl> ง7Next Level: งcHunger is not lost in your territory!");
+			HungerLore.add("งbCost: ง6$1,000,000");
 		} else if (HungerUpgradeLevel == 1) {
-			HungerLore.add("ยงcยงl> ยง7This Level: ยงcHunger is not lost in your territory!");
-			HungerLore.add("ยงaยงlMax Level Reached!");
+			HungerLore.add("งcงl> ง7This Level: งcHunger is not lost in your territory!");
+			HungerLore.add("งaงlMax Level Reached!");
 		}
 		HungerMeta.setLore(HungerLore);
 		HungerUpgrade.setItemMeta(HungerMeta);
 
 		ItemStack SmeltingUpgrade = new ItemStack(Material.FURNACE);
 		ItemMeta SmeltingMeta = SmeltingUpgrade.getItemMeta();
-		SmeltingMeta.setDisplayName("ยงcยงl>> ยงfTnt Smelting Upgrade ยงcยงl<<");
+		SmeltingMeta.setDisplayName("งcงl>> งfTnt Smelting Upgrade งcงl<<");
 		ArrayList<String> SmeltingLore = new ArrayList();
 		int SmeltingUpgradeLevel = faction.getSmeltingUpgradeLevel();
-		SmeltingLore.add("ยงcยงl> ยง7ยงlAllows gunpowder to be smelted into tnt!");
-		SmeltingLore.add("ยงcยงl> ยง7Current Level: ยงc" + SmeltingUpgradeLevel);
+		SmeltingLore.add("งcงl> ง7งlAllows gunpowder to be smelted into tnt!");
+		SmeltingLore.add("งcงl> ง7Current Level: งc" + SmeltingUpgradeLevel);
 		if (SmeltingUpgradeLevel == 0) {
-			SmeltingLore.add("ยงcยงl> ยง7This Level: ยงc0% chance!");
-			SmeltingLore.add("ยงcยงl> ยง7Next Level: ยงc10% chance!");
-			SmeltingLore.add("ยงbCost: ยง6$500,000");
+			SmeltingLore.add("งcงl> ง7This Level: งc0% chance!");
+			SmeltingLore.add("งcงl> ง7Next Level: งc10% chance!");
+			SmeltingLore.add("งbCost: ง6$500,000");
 		} else if (SmeltingUpgradeLevel == 1) {
-			SmeltingLore.add("ยงcยงl> ยง7This Level: ยงc10% chance!");
-			SmeltingLore.add("ยงcยงl> ยง7Next Level: ยงc20% chance!");
-			SmeltingLore.add("ยงbCost: ยง6$1,000,000");
+			SmeltingLore.add("งcงl> ง7This Level: งc10% chance!");
+			SmeltingLore.add("งcงl> ง7Next Level: งc20% chance!");
+			SmeltingLore.add("งbCost: ง6$1,000,000");
 		} else if (SmeltingUpgradeLevel == 2) {
-			SmeltingLore.add("ยงcยงl> ยง7This Level: ยงc20% chance!");
-			SmeltingLore.add("ยงcยงl> ยง7Next Level: ยงc30% chance!");
-			SmeltingLore.add("ยงbCost: ยง6$2,000,000");
+			SmeltingLore.add("งcงl> ง7This Level: งc20% chance!");
+			SmeltingLore.add("งcงl> ง7Next Level: งc30% chance!");
+			SmeltingLore.add("งbCost: ง6$2,000,000");
 		} else if (SmeltingUpgradeLevel == 3) {
-			SmeltingLore.add("ยงcยงl> ยง7This Level: ยงc30% chance!");
-			SmeltingLore.add("ยงaยงlMax Level Reached!");
+			SmeltingLore.add("งcงl> ง7This Level: งc30% chance!");
+			SmeltingLore.add("งaงlMax Level Reached!");
 		}
 		SmeltingMeta.setLore(SmeltingLore);
 		SmeltingUpgrade.setItemMeta(SmeltingMeta);
 
 		ItemStack ExpUpgrade = new ItemStack(Material.EXP_BOTTLE);
 		ItemMeta ExpMeta = ExpUpgrade.getItemMeta();
-		ExpMeta.setDisplayName("ยงcยงl>> ยงfExperience Gain Upgrade ยงcยงl<<");
+		ExpMeta.setDisplayName("งcงl>> งfExperience Gain Upgrade งcงl<<");
 		ArrayList<String> ExpLore = new ArrayList();
 		int ExpUpgradeLevel = faction.getExpUpgradeLevel();
-		ExpLore.add("ยงcยงl> ยง7ยงlIncreases the amount of experience you gain!");
-		ExpLore.add("ยงcยงl> ยง7Current Level: ยงc" + ExpUpgradeLevel);
+		ExpLore.add("งcงl> ง7งlIncreases the amount of experience you gain!");
+		ExpLore.add("งcงl> ง7Current Level: งc" + ExpUpgradeLevel);
 		if (ExpUpgradeLevel == 0) {
-			ExpLore.add("ยงcยงl> ยง7This Level: ยงcExp gain increased by 0%!");
-			ExpLore.add("ยงcยงl> ยง7Next Level: ยงcExp gain increased by 5%!");
-			ExpLore.add("ยงbCost: ยง6$250,000");
+			ExpLore.add("งcงl> ง7This Level: งcExp gain increased by 0%!");
+			ExpLore.add("งcงl> ง7Next Level: งcExp gain increased by 5%!");
+			ExpLore.add("งbCost: ง6$250,000");
 		} else if (ExpUpgradeLevel == 1) {
-			ExpLore.add("ยงcยงl> ยง7This Level: ยงcExp gain increased by 5%!");
-			ExpLore.add("ยงcยงl> ยง7Next Level: ยงcExp gain increased by 10%!");
-			ExpLore.add("ยงbCost: ยง6$500,000");
+			ExpLore.add("งcงl> ง7This Level: งcExp gain increased by 5%!");
+			ExpLore.add("งcงl> ง7Next Level: งcExp gain increased by 10%!");
+			ExpLore.add("งbCost: ง6$500,000");
 		} else if (ExpUpgradeLevel == 2) {
-			ExpLore.add("ยงcยงl> ยง7This Level: ยงcExp gain increased by 10%!");
-			ExpLore.add("ยงcยงl> ยง7Next Level: ยงcExp gain increased by 15%!");
-			ExpLore.add("ยงbCost: ยง6$750,000");
+			ExpLore.add("งcงl> ง7This Level: งcExp gain increased by 10%!");
+			ExpLore.add("งcงl> ง7Next Level: งcExp gain increased by 15%!");
+			ExpLore.add("งbCost: ง6$750,000");
 		} else if (ExpUpgradeLevel == 3) {
-			ExpLore.add("ยงcยงl> ยง7This Level: ยงcExp gain increased by 15%!");
-			ExpLore.add("ยงcยงl> ยง7Next Level: ยงcExp gain increased by 20%!");
-			ExpLore.add("ยงbCost: ยง6$1,000,000");
+			ExpLore.add("งcงl> ง7This Level: งcExp gain increased by 15%!");
+			ExpLore.add("งcงl> ง7Next Level: งcExp gain increased by 20%!");
+			ExpLore.add("งbCost: ง6$1,000,000");
 		} else if (ExpUpgradeLevel == 4) {
-			ExpLore.add("ยงcยงl> ยง7This Level: ยงcExp gain increased by 20%!");
-			ExpLore.add("ยงcยงl> ยง7Next Level: ยงcExp gain increased by 25%!");
-			ExpLore.add("ยงbCost: ยง6$1,250,000");
+			ExpLore.add("งcงl> ง7This Level: งcExp gain increased by 20%!");
+			ExpLore.add("งcงl> ง7Next Level: งcExp gain increased by 25%!");
+			ExpLore.add("งbCost: ง6$1,250,000");
 		} else if (ExpUpgradeLevel == 5) {
-			ExpLore.add("ยงcยงl> ยง7This Level: ยงcExp gain increased by 25%!");
-			ExpLore.add("ยงaยงlMax Level Reached!");
+			ExpLore.add("งcงl> ง7This Level: งcExp gain increased by 25%!");
+			ExpLore.add("งaงlMax Level Reached!");
 		}
 		ExpMeta.setLore(ExpLore);
 		ExpUpgrade.setItemMeta(ExpMeta);
 
 		ItemStack TntUpgrade = new ItemStack(Material.TNT);
 		ItemMeta TntMeta = TntUpgrade.getItemMeta();
-		TntMeta.setDisplayName("ยงcยงl>> ยงfTnt Storage Upgrade ยงcยงl<<");
+		TntMeta.setDisplayName("งcงl>> งfTnt Storage Upgrade งcงl<<");
 		ArrayList<String> TntLore = new ArrayList();
 		int TntUpgradeLevel = faction.getTntUpgradeLevel();
-		TntLore.add("ยงcยงl> ยง7ยงlIncreases your virtual tnt storage (/f tnt)!");
-		TntLore.add("ยงcยงl> ยง7Current Level: ยงc" + TntUpgradeLevel);
+		TntLore.add("งcงl> ง7งlIncreases your virtual tnt storage (/f tnt)!");
+		TntLore.add("งcงl> ง7Current Level: งc" + TntUpgradeLevel);
 		if (TntUpgradeLevel == 0) {
-			TntLore.add("ยงcยงl> ยง7This Level: ยงcCapacity = 0!");
-			TntLore.add("ยงcยงl> ยง7Next Level: ยงcCapacity = 50,000!");
-			TntLore.add("ยงbCost: ยง6$200,000");
+			TntLore.add("งcงl> ง7This Level: งcCapacity = 0!");
+			TntLore.add("งcงl> ง7Next Level: งcCapacity = 50,000!");
+			TntLore.add("งbCost: ง6$200,000");
 		} else if (TntUpgradeLevel == 1) {
-			TntLore.add("ยงcยงl> ยง7This Level: ยงcCapacity = 50,000!");
-			TntLore.add("ยงcยงl> ยง7Next Level: ยงcCapacity = 100,000!");
-			TntLore.add("ยงbCost: ยง6$200,000");
+			TntLore.add("งcงl> ง7This Level: งcCapacity = 50,000!");
+			TntLore.add("งcงl> ง7Next Level: งcCapacity = 100,000!");
+			TntLore.add("งbCost: ง6$200,000");
 		} else if (TntUpgradeLevel == 2) {
-			TntLore.add("ยงcยงl> ยง7This Level: ยงcCapacity = 100,000!");
-			TntLore.add("ยงcยงl> ยง7Next Level: ยงcCapacity = 150,000!");
-			TntLore.add("ยงbCost: ยง6$200,000");
+			TntLore.add("งcงl> ง7This Level: งcCapacity = 100,000!");
+			TntLore.add("งcงl> ง7Next Level: งcCapacity = 150,000!");
+			TntLore.add("งbCost: ง6$200,000");
 		} else if (TntUpgradeLevel == 3) {
-			TntLore.add("ยงcยงl> ยง7This Level: ยงcCapacity = 150,000!");
-			TntLore.add("ยงcยงl> ยง7Next Level: ยงcCapacity = 200,000!");
-			TntLore.add("ยงbCost: ยง6$200,000");
+			TntLore.add("งcงl> ง7This Level: งcCapacity = 150,000!");
+			TntLore.add("งcงl> ง7Next Level: งcCapacity = 200,000!");
+			TntLore.add("งbCost: ง6$200,000");
 		} else if (TntUpgradeLevel == 4) {
-			TntLore.add("ยงcยงl> ยง7This Level: ยงcCapacity = 200,000!");
-			TntLore.add("ยงcยงl> ยง7Next Level: ยงcCapacity = 250,000!");
-			TntLore.add("ยงbCost: ยง6$200,000");
+			TntLore.add("งcงl> ง7This Level: งcCapacity = 200,000!");
+			TntLore.add("งcงl> ง7Next Level: งcCapacity = 250,000!");
+			TntLore.add("งbCost: ง6$200,000");
 		} else if (TntUpgradeLevel == 5) {
-			TntLore.add("ยงcยงl> ยง7This Level: ยงcCapacity =  250,000!");
-			TntLore.add("ยงaยงlMax Level Reached!");
+			TntLore.add("งcงl> ง7This Level: งcCapacity =  250,000!");
+			TntLore.add("งaงlMax Level Reached!");
 		}
 		TntMeta.setLore(TntLore);
 		TntUpgrade.setItemMeta(TntMeta);
 
 		ItemStack McmmoUpgrade = new ItemStack(Material.DIAMOND_SPADE);
 		ItemMeta McmmoMeta = McmmoUpgrade.getItemMeta();
-		McmmoMeta.setDisplayName("ยงcยงl>> ยงfMcMMO Gain Upgrade ยงcยงl<<");
+		McmmoMeta.setDisplayName("งcงl>> งfMcMMO Gain Upgrade งcงl<<");
 		ArrayList<String> McmmoLore = new ArrayList();
 		int McmmoUpgradeLevel = faction.getMcmmoUpgradeLevel();
-		McmmoLore.add("ยงcยงl> ยง7ยงlIncreases the amount of McMMO xp your faction gains!");
-		McmmoLore.add("ยงcยงl> ยง7Current Level: ยงc" + McmmoUpgradeLevel);
+		McmmoLore.add("งcงl> ง7งlIncreases the amount of McMMO xp your faction gains!");
+		McmmoLore.add("งcงl> ง7Current Level: งc" + McmmoUpgradeLevel);
 		if (McmmoUpgradeLevel == 0) {
-			McmmoLore.add("ยงcยงl> ยง7This Level: ยงc0% Increase!");
-			McmmoLore.add("ยงcยงl> ยง7Next Level: ยงc10% Increase!");
-			McmmoLore.add("ยงbCost: ยง6$500,000");
+			McmmoLore.add("งcงl> ง7This Level: งc0% Increase!");
+			McmmoLore.add("งcงl> ง7Next Level: งc10% Increase!");
+			McmmoLore.add("งbCost: ง6$500,000");
 		} else if (McmmoUpgradeLevel == 1) {
-			McmmoLore.add("ยงcยงl> ยง7This Level: ยงc10% Increase!");
-			McmmoLore.add("ยงcยงl> ยง7Next Level: ยงc20% Increase!");
-			McmmoLore.add("ยงbCost: ยง6$1,000,000");
+			McmmoLore.add("งcงl> ง7This Level: งc10% Increase!");
+			McmmoLore.add("งcงl> ง7Next Level: งc20% Increase!");
+			McmmoLore.add("งbCost: ง6$1,000,000");
 		} else if (McmmoUpgradeLevel == 2) {
-			McmmoLore.add("ยงcยงl> ยง7This Level: ยงc20% Increase!");
-			McmmoLore.add("ยงcยงl> ยง7Next Level: ยงc30% Increase!");
-			McmmoLore.add("ยงbCost: ยง6$2,000,000");
+			McmmoLore.add("งcงl> ง7This Level: งc20% Increase!");
+			McmmoLore.add("งcงl> ง7Next Level: งc30% Increase!");
+			McmmoLore.add("งbCost: ง6$2,000,000");
 		} else if (McmmoUpgradeLevel == 3) {
-			McmmoLore.add("ยงcยงl> ยง7This Level: ยงc30% Increase!");
-			McmmoLore.add("ยงaยงlMax Level Reached!");
+			McmmoLore.add("งcงl> ง7This Level: งc30% Increase!");
+			McmmoLore.add("งaงlMax Level Reached!");
 		}
 		McmmoMeta.setLore(McmmoLore);
 		McmmoUpgrade.setItemMeta(McmmoMeta);
@@ -318,7 +318,7 @@ public class CmdFactionsUpgrade extends FactionsCommand implements Listener {
 	@EventHandler
 	public void onInventoryClickEvent(InventoryClickEvent event) {
 		if ((event.getClickedInventory() != null)
-				&& (event.getClickedInventory().getName().equals("ยงcยงl>> ยง8Faction Upgrades ยงcยงl<<"))) {
+				&& (event.getClickedInventory().getName().equals("งcงl>> ง8Faction Upgrades งcงl<<"))) {
 			ItemStack itemClicked = event.getCurrentItem();
 			event.setCancelled(true);
 			if ((itemClicked != null) && (!itemClicked.getType().equals(Material.AIR)) && (itemClicked.hasItemMeta())) {
@@ -326,12 +326,12 @@ public class CmdFactionsUpgrade extends FactionsCommand implements Listener {
 				MPlayer mPlayer = MPlayer.get(player);
 				Faction faction = mPlayer.getFaction();
 				String upgrade = itemClicked.getItemMeta().getDisplayName();
-				if (upgrade.equals("ยงcยงl>> ยงfSpawner Rate Upgrade ยงcยงl<<")) {
+				if (upgrade.equals("งcงl>> งfSpawner Rate Upgrade งcงl<<")) {
 					int currentLevel = faction.getSpawnerUpgradeLevel();
 					if (currentLevel == 0) {
 						if (Econ.payForAction(1000000.0D, mPlayer, "upgrade spawner rates")) {
 							faction.setSpawnerUpgradeLevel(1);
-							faction.msg("ยงbยงl(!)ยง7 " + player.getName() + " just puchased the 1st spawner upgrade!");
+							faction.msg("งbงl(!)ง7 " + player.getName() + " just puchased the 1st spawner upgrade!");
 							faction.setWealth(faction.getWealth() + 1000000);
 							player.closeInventory();
 							player.performCommand("f upgrade");
@@ -339,7 +339,7 @@ public class CmdFactionsUpgrade extends FactionsCommand implements Listener {
 					} else if (currentLevel == 1) {
 						if (Econ.payForAction(2500000.0D, mPlayer, "upgrade spawner rates")) {
 							faction.setSpawnerUpgradeLevel(2);
-							faction.msg("ยงbยงl(!)ยง7 " + player.getName() + " just puchased the 2nd spawner upgrade!");
+							faction.msg("งbงl(!)ง7 " + player.getName() + " just puchased the 2nd spawner upgrade!");
 							faction.setWealth(faction.getWealth() + 2500000);
 							player.closeInventory();
 							player.performCommand("f upgrade");
@@ -347,7 +347,7 @@ public class CmdFactionsUpgrade extends FactionsCommand implements Listener {
 					} else if (currentLevel == 2) {
 						if (Econ.payForAction(5000000.0D, mPlayer, "upgrade spawner rates")) {
 							faction.setSpawnerUpgradeLevel(3);
-							faction.msg("ยงbยงl(!)ยง7 " + player.getName() + " just puchased the 3rd spawner upgrade!");
+							faction.msg("งbงl(!)ง7 " + player.getName() + " just puchased the 3rd spawner upgrade!");
 							faction.setWealth(faction.getWealth() + 5000000);
 							player.closeInventory();
 							player.performCommand("f upgrade");
@@ -355,18 +355,18 @@ public class CmdFactionsUpgrade extends FactionsCommand implements Listener {
 					} else if ((currentLevel == 3)
 							&& (Econ.payForAction(7500000.0D, mPlayer, "upgrade spawner rates"))) {
 						faction.setSpawnerUpgradeLevel(4);
-						faction.msg("ยงbยงl(!)ยง7 " + player.getName() + " just puchased the 4th spawner upgrade!");
+						faction.msg("งbงl(!)ง7 " + player.getName() + " just puchased the 4th spawner upgrade!");
 						faction.setWealth(faction.getWealth() + 7500000);
 						player.closeInventory();
 						player.performCommand("f upgrade");
 					}
-				} else if (upgrade.equals("ยงcยงl>> ยงfCrop Growth Upgrade ยงcยงl<<")) {
+				} else if (upgrade.equals("งcงl>> งfCrop Growth Upgrade งcงl<<")) {
 					int currentLevel = faction.getCropGrowthUpgradeLevel();
 					if (currentLevel == 0) {
 						if (Econ.payForAction(500000.0D, mPlayer, "upgrade crop growth rates")) {
 							faction.setCropGrowthUpgradeLevel(1);
 							faction.msg(
-									"ยงbยงl(!)ยง7 " + player.getName() + " just puchased the 1st crop growth upgrade!");
+									"งbงl(!)ง7 " + player.getName() + " just puchased the 1st crop growth upgrade!");
 							faction.setWealth(faction.getWealth() + 500000);
 							player.closeInventory();
 							player.performCommand("f upgrade");
@@ -375,7 +375,7 @@ public class CmdFactionsUpgrade extends FactionsCommand implements Listener {
 						if (Econ.payForAction(1000000.0D, mPlayer, "upgrade crop growth rates")) {
 							faction.setCropGrowthUpgradeLevel(2);
 							faction.msg(
-									"ยงbยงl(!)ยง7 " + player.getName() + " just puchased the 2nd crop growth upgrade!");
+									"งbงl(!)ง7 " + player.getName() + " just puchased the 2nd crop growth upgrade!");
 							faction.setWealth(faction.getWealth() + 1000000);
 							player.closeInventory();
 							player.performCommand("f upgrade");
@@ -384,7 +384,7 @@ public class CmdFactionsUpgrade extends FactionsCommand implements Listener {
 						if (Econ.payForAction(2500000.0D, mPlayer, "upgrade crop growth rates")) {
 							faction.setCropGrowthUpgradeLevel(3);
 							faction.msg(
-									"ยงbยงl(!)ยง7 " + player.getName() + " just puchased the 3rd crop growth upgrade!");
+									"งbงl(!)ง7 " + player.getName() + " just puchased the 3rd crop growth upgrade!");
 							faction.setWealth(faction.getWealth() + 2500000);
 							player.closeInventory();
 							player.performCommand("f upgrade");
@@ -392,17 +392,17 @@ public class CmdFactionsUpgrade extends FactionsCommand implements Listener {
 					} else if ((currentLevel == 3)
 							&& (Econ.payForAction(5000000.0D, mPlayer, "upgrade crop growth rates"))) {
 						faction.setCropGrowthUpgradeLevel(4);
-						faction.msg("ยงbยงl(!)ยง7 " + player.getName() + " just puchased the 4th crop growth upgrade!");
+						faction.msg("งbงl(!)ง7 " + player.getName() + " just puchased the 4th crop growth upgrade!");
 						faction.setWealth(faction.getWealth() + 5000000);
 						player.closeInventory();
 						player.performCommand("f upgrade");
 					}
-				} else if (upgrade.equals("ยงcยงl>> ยงfDamage Reduction Upgrade ยงcยงl<<")) {
+				} else if (upgrade.equals("งcงl>> งfDamage Reduction Upgrade งcงl<<")) {
 					int currentLevel = faction.getDamageUpgradeLevel();
 					if (currentLevel == 0) {
 						if (Econ.payForAction(250000.0D, mPlayer, "increase damage reduction")) {
 							faction.setDamageUpgradeLevel(1);
-							faction.msg("ยงbยงl(!)ยง7 " + player.getName()
+							faction.msg("งbงl(!)ง7 " + player.getName()
 									+ " just puchased the 1st damage reduction upgrade!");
 							faction.setWealth(faction.getWealth() + 250000);
 							player.closeInventory();
@@ -411,7 +411,7 @@ public class CmdFactionsUpgrade extends FactionsCommand implements Listener {
 					} else if (currentLevel == 1) {
 						if (Econ.payForAction(500000.0D, mPlayer, "increase damage reduction")) {
 							faction.setDamageUpgradeLevel(2);
-							faction.msg("ยงbยงl(!)ยง7 " + player.getName()
+							faction.msg("งbงl(!)ง7 " + player.getName()
 									+ " just puchased the 2nd damage reduction upgrade!");
 							faction.setWealth(faction.getWealth() + 500000);
 							player.closeInventory();
@@ -420,7 +420,7 @@ public class CmdFactionsUpgrade extends FactionsCommand implements Listener {
 					} else if (currentLevel == 2) {
 						if (Econ.payForAction(1000000.0D, mPlayer, "increase damage reduction")) {
 							faction.setDamageUpgradeLevel(3);
-							faction.msg("ยงbยงl(!)ยง7 " + player.getName()
+							faction.msg("งbงl(!)ง7 " + player.getName()
 									+ " just puchased the 3rd damage reduction upgrade!");
 							faction.setWealth(faction.getWealth() + 1000000);
 							player.closeInventory();
@@ -429,7 +429,7 @@ public class CmdFactionsUpgrade extends FactionsCommand implements Listener {
 					} else if (currentLevel == 3) {
 						if (Econ.payForAction(1500000.0D, mPlayer, "increase damage reduction")) {
 							faction.setDamageUpgradeLevel(4);
-							faction.msg("ยงbยงl(!)ยง7 " + player.getName()
+							faction.msg("งbงl(!)ง7 " + player.getName()
 									+ " just puchased the 4th damage reduction upgrade!");
 							faction.setWealth(faction.getWealth() + 1500000);
 							player.closeInventory();
@@ -438,18 +438,18 @@ public class CmdFactionsUpgrade extends FactionsCommand implements Listener {
 					} else if ((currentLevel == 4)
 							&& (Econ.payForAction(2000000.0D, mPlayer, "increase damage reduction"))) {
 						faction.setDamageUpgradeLevel(5);
-						faction.msg("ยงbยงl(!)ยง7 " + player.getName()
+						faction.msg("งbงl(!)ง7 " + player.getName()
 								+ " just puchased the 5th damage reduction upgrade!");
 						faction.setWealth(faction.getWealth() + 2000000);
 						player.closeInventory();
 						player.performCommand("f upgrade");
 					}
-				} else if (upgrade.equals("ยงcยงl>> ยงfFaction Warps Upgrade ยงcยงl<<")) {
+				} else if (upgrade.equals("งcงl>> งfFaction Warps Upgrade งcงl<<")) {
 					int currentLevel = faction.getMaxWarps();
 					if (currentLevel == 0) {
 						if (Econ.payForAction(150000.0D, mPlayer, "increase max faction warps")) {
 							faction.setMaxWarps(1);
-							faction.msg("ยงbยงl(!)ยง7 " + player.getName()
+							faction.msg("งbงl(!)ง7 " + player.getName()
 									+ " just puchased the 1st faction warp upgrade!");
 							faction.setWealth(faction.getWealth() + 150000);
 							player.closeInventory();
@@ -458,7 +458,7 @@ public class CmdFactionsUpgrade extends FactionsCommand implements Listener {
 					} else if (currentLevel == 1) {
 						if (Econ.payForAction(150000.0D, mPlayer, "increase max faction warps")) {
 							faction.setMaxWarps(2);
-							faction.msg("ยงbยงl(!)ยง7 " + player.getName()
+							faction.msg("งbงl(!)ง7 " + player.getName()
 									+ " just puchased the 2nd faction warp upgrade!");
 							faction.setWealth(faction.getWealth() + 150000);
 							player.closeInventory();
@@ -467,7 +467,7 @@ public class CmdFactionsUpgrade extends FactionsCommand implements Listener {
 					} else if (currentLevel == 2) {
 						if (Econ.payForAction(150000.0D, mPlayer, "increase max faction warps")) {
 							faction.setMaxWarps(3);
-							faction.msg("ยงbยงl(!)ยง7 " + player.getName()
+							faction.msg("งbงl(!)ง7 " + player.getName()
 									+ " just puchased the 3rd faction warp upgrade!");
 							faction.setWealth(faction.getWealth() + 150000);
 							player.closeInventory();
@@ -476,7 +476,7 @@ public class CmdFactionsUpgrade extends FactionsCommand implements Listener {
 					} else if (currentLevel == 3) {
 						if (Econ.payForAction(150000.0D, mPlayer, "increase max faction warps")) {
 							faction.setMaxWarps(4);
-							faction.msg("ยงbยงl(!)ยง7 " + player.getName()
+							faction.msg("งbงl(!)ง7 " + player.getName()
 									+ " just puchased the 4th faction warp upgrade!");
 							faction.setWealth(faction.getWealth() + 150000);
 							player.closeInventory();
@@ -486,28 +486,28 @@ public class CmdFactionsUpgrade extends FactionsCommand implements Listener {
 							&& (Econ.payForAction(150000.0D, mPlayer, "increase max faction warps"))) {
 						faction.setMaxWarps(5);
 						faction.msg(
-								"ยงbยงl(!)ยง7 " + player.getName() + " just puchased the 5th faction warp upgrade!");
+								"งbงl(!)ง7 " + player.getName() + " just puchased the 5th faction warp upgrade!");
 						faction.setWealth(faction.getWealth() + 150000);
 						player.closeInventory();
 						player.performCommand("f upgrade");
 					}
-				} else if (upgrade.equals("ยงcยงl>> ยงfHunger Loss Upgrade ยงcยงl<<")) {
+				} else if (upgrade.equals("งcงl>> งfHunger Loss Upgrade งcงl<<")) {
 					int currentLevel = faction.getHungerUpgradeLevel();
 					if ((currentLevel == 0)
 							&& (Econ.payForAction(1000000.0D, mPlayer, "prevent hunger loss in territory"))) {
 						faction.setHungerUpgradeLevel(1);
-						faction.msg("ยงbยงl(!)ยง7 " + player.getName() + " just puchased the hunger upgrade!");
+						faction.msg("งbงl(!)ง7 " + player.getName() + " just puchased the hunger upgrade!");
 						faction.setWealth(faction.getWealth() + 1000000);
 						player.closeInventory();
 						player.performCommand("f upgrade");
 					}
-				} else if (upgrade.equals("ยงcยงl>> ยงfTnt Smelting Upgrade ยงcยงl<<")) {
+				} else if (upgrade.equals("งcงl>> งfTnt Smelting Upgrade งcงl<<")) {
 					int currentLevel = faction.getSmeltingUpgradeLevel();
 					if (currentLevel == 0) {
 						if (Econ.payForAction(500000.0D, mPlayer, "increase chance of smelting tnt")) {
 							faction.setSmeltingUpgradeLevel(1);
 							faction.msg(
-									"ยงbยงl(!)ยง7 " + player.getName() + " just puchased the 1st tnt smelter upgrade!");
+									"งbงl(!)ง7 " + player.getName() + " just puchased the 1st tnt smelter upgrade!");
 							faction.setWealth(faction.getWealth() + 500000);
 							player.closeInventory();
 							player.performCommand("f upgrade");
@@ -516,7 +516,7 @@ public class CmdFactionsUpgrade extends FactionsCommand implements Listener {
 						if (Econ.payForAction(1000000.0D, mPlayer, "increase chance of smelting tnt")) {
 							faction.setSmeltingUpgradeLevel(2);
 							faction.msg(
-									"ยงbยงl(!)ยง7 " + player.getName() + " just puchased the 2nd tnt smelter upgrade!");
+									"งbงl(!)ง7 " + player.getName() + " just puchased the 2nd tnt smelter upgrade!");
 							faction.setWealth(faction.getWealth() + 1000000);
 							player.closeInventory();
 							player.performCommand("f upgrade");
@@ -524,18 +524,18 @@ public class CmdFactionsUpgrade extends FactionsCommand implements Listener {
 					} else if ((currentLevel == 2)
 							&& (Econ.payForAction(2000000.0D, mPlayer, "increase chance of smelting tnt"))) {
 						faction.setSmeltingUpgradeLevel(3);
-						faction.msg("ยงbยงl(!)ยง7 " + player.getName() + " just puchased the 3rd tnt smelter upgrade!");
+						faction.msg("งbงl(!)ง7 " + player.getName() + " just puchased the 3rd tnt smelter upgrade!");
 						faction.setWealth(faction.getWealth() + 2000000);
 						player.closeInventory();
 						player.performCommand("f upgrade");
 					}
-				} else if (upgrade.equals("ยงcยงl>> ยงfExperience Gain Upgrade ยงcยงl<<")) {
+				} else if (upgrade.equals("งcงl>> งfExperience Gain Upgrade งcงl<<")) {
 					int currentLevel = faction.getExpUpgradeLevel();
 					if (currentLevel == 0) {
 						if (Econ.payForAction(250000.0D, mPlayer, "increase experience gain")) {
 							faction.setExpUpgradeLevel(1);
 							faction.msg(
-									"ยงbยงl(!)ยง7 " + player.getName() + " just puchased the 1st experience upgrade!");
+									"งbงl(!)ง7 " + player.getName() + " just puchased the 1st experience upgrade!");
 							faction.setWealth(faction.getWealth() + 250000);
 							player.closeInventory();
 							player.performCommand("f upgrade");
@@ -544,7 +544,7 @@ public class CmdFactionsUpgrade extends FactionsCommand implements Listener {
 						if (Econ.payForAction(500000.0D, mPlayer, "increase experience gain")) {
 							faction.setExpUpgradeLevel(2);
 							faction.msg(
-									"ยงbยงl(!)ยง7 " + player.getName() + " just puchased the 2nd experience upgrade!");
+									"งbงl(!)ง7 " + player.getName() + " just puchased the 2nd experience upgrade!");
 							faction.setWealth(faction.getWealth() + 500000);
 							player.closeInventory();
 							player.performCommand("f upgrade");
@@ -553,7 +553,7 @@ public class CmdFactionsUpgrade extends FactionsCommand implements Listener {
 						if (Econ.payForAction(750000.0D, mPlayer, "increase experience gain")) {
 							faction.setExpUpgradeLevel(3);
 							faction.msg(
-									"ยงbยงl(!)ยง7 " + player.getName() + " just puchased the 3rd experience upgrade!");
+									"งbงl(!)ง7 " + player.getName() + " just puchased the 3rd experience upgrade!");
 							faction.setWealth(faction.getWealth() + 750000);
 							player.closeInventory();
 							player.performCommand("f upgrade");
@@ -562,7 +562,7 @@ public class CmdFactionsUpgrade extends FactionsCommand implements Listener {
 						if (Econ.payForAction(1000000.0D, mPlayer, "increase expreience gain")) {
 							faction.setExpUpgradeLevel(4);
 							faction.msg(
-									"ยงbยงl(!)ยง7 " + player.getName() + " just puchased the 4th experience upgrade!");
+									"งbงl(!)ง7 " + player.getName() + " just puchased the 4th experience upgrade!");
 							faction.setWealth(faction.getWealth() + 1000000);
 							player.closeInventory();
 							player.performCommand("f upgrade");
@@ -570,18 +570,18 @@ public class CmdFactionsUpgrade extends FactionsCommand implements Listener {
 					} else if ((currentLevel == 4)
 							&& (Econ.payForAction(1250000.0D, mPlayer, "increase experiecne gain"))) {
 						faction.setExpUpgradeLevel(5);
-						faction.msg("ยงbยงl(!)ยง7 " + player.getName() + " just puchased the 5th experience upgrade!");
+						faction.msg("งbงl(!)ง7 " + player.getName() + " just puchased the 5th experience upgrade!");
 						faction.setWealth(faction.getWealth() + 1250000);
 						player.closeInventory();
 						player.performCommand("f upgrade");
 					}
-				} else if (upgrade.equals("ยงcยงl>> ยงfTnt Storage Upgrade ยงcยงl<<")) {
+				} else if (upgrade.equals("งcงl>> งfTnt Storage Upgrade งcงl<<")) {
 					int currentLevel = faction.getTntUpgradeLevel();
 					if (currentLevel == 0) {
 						if (Econ.payForAction(200000.0D, mPlayer, "increase tnt storage")) {
 							faction.setTntUpgradeLevel(1);
 							faction.msg(
-									"ยงbยงl(!)ยง7 " + player.getName() + " just puchased the 1st tnt storage upgrade!");
+									"งbงl(!)ง7 " + player.getName() + " just puchased the 1st tnt storage upgrade!");
 							faction.setWealth(faction.getWealth() + 200000);
 							player.closeInventory();
 							player.performCommand("f upgrade");
@@ -590,7 +590,7 @@ public class CmdFactionsUpgrade extends FactionsCommand implements Listener {
 						if (Econ.payForAction(200000.0D, mPlayer, "increase tnt storage")) {
 							faction.setTntUpgradeLevel(2);
 							faction.msg(
-									"ยงbยงl(!)ยง7 " + player.getName() + " just puchased the 2nd tnt storage upgrade!");
+									"งbงl(!)ง7 " + player.getName() + " just puchased the 2nd tnt storage upgrade!");
 							faction.setWealth(faction.getWealth() + 200000);
 							player.closeInventory();
 							player.performCommand("f upgrade");
@@ -599,7 +599,7 @@ public class CmdFactionsUpgrade extends FactionsCommand implements Listener {
 						if (Econ.payForAction(200000.0D, mPlayer, "increase tnt storage")) {
 							faction.setTntUpgradeLevel(3);
 							faction.msg(
-									"ยงbยงl(!)ยง7 " + player.getName() + " just puchased the 3rd tnt storage upgrade!");
+									"งbงl(!)ง7 " + player.getName() + " just puchased the 3rd tnt storage upgrade!");
 							faction.setWealth(faction.getWealth() + 200000);
 							player.closeInventory();
 							player.performCommand("f upgrade");
@@ -608,25 +608,25 @@ public class CmdFactionsUpgrade extends FactionsCommand implements Listener {
 						if (Econ.payForAction(200000.0D, mPlayer, "increase tnt storage")) {
 							faction.setTntUpgradeLevel(4);
 							faction.msg(
-									"ยงbยงl(!)ยง7 " + player.getName() + " just puchased the 4th tnt storage upgrade!");
+									"งbงl(!)ง7 " + player.getName() + " just puchased the 4th tnt storage upgrade!");
 							faction.setWealth(faction.getWealth() + 200000);
 							player.closeInventory();
 							player.performCommand("f upgrade");
 						}
 					} else if ((currentLevel == 4) && (Econ.payForAction(200000.0D, mPlayer, "increase tnt storage"))) {
 						faction.setTntUpgradeLevel(5);
-						faction.msg("ยงbยงl(!)ยง7 " + player.getName() + " just puchased the 5th tnt storage upgrade!");
+						faction.msg("งbงl(!)ง7 " + player.getName() + " just puchased the 5th tnt storage upgrade!");
 						faction.setWealth(faction.getWealth() + 200000);
 						player.closeInventory();
 						player.performCommand("f upgrade");
 					}
-				} else if (upgrade.equals("ยงcยงl>> ยงfMcMMO Gain Upgrade ยงcยงl<<")) {
+				} else if (upgrade.equals("งcงl>> งfMcMMO Gain Upgrade งcงl<<")) {
 					int currentLevel = faction.getMcmmoUpgradeLevel();
 					if (currentLevel == 0) {
 						if (Econ.payForAction(500000.0D, mPlayer, "increase mcmmo gain")) {
 							faction.setMcmmoUpgradeLevel(1);
 							faction.msg(
-									"ยงbยงl(!)ยง7 " + player.getName() + " just puchased the 1st mcmmo gain upgrade!");
+									"งbงl(!)ง7 " + player.getName() + " just puchased the 1st mcmmo gain upgrade!");
 							faction.setWealth(faction.getWealth() + 500000);
 							player.closeInventory();
 							player.performCommand("f upgrade");
@@ -635,14 +635,14 @@ public class CmdFactionsUpgrade extends FactionsCommand implements Listener {
 						if (Econ.payForAction(1000000.0D, mPlayer, "increase mcmmo gain")) {
 							faction.setMcmmoUpgradeLevel(2);
 							faction.msg(
-									"ยงbยงl(!)ยง7 " + player.getName() + " just puchased the 2nd mcmmo gain upgrade!");
+									"งbงl(!)ง7 " + player.getName() + " just puchased the 2nd mcmmo gain upgrade!");
 							faction.setWealth(faction.getWealth() + 1000000);
 							player.closeInventory();
 							player.performCommand("f upgrade");
 						}
 					} else if ((currentLevel == 2) && (Econ.payForAction(2000000.0D, mPlayer, "increase mcmmo gain"))) {
 						faction.setMcmmoUpgradeLevel(3);
-						faction.msg("ยงbยงl(!)ยง7 " + player.getName() + " just puchased the 3rd mcmmo gain upgrade!");
+						faction.msg("งbงl(!)ง7 " + player.getName() + " just puchased the 3rd mcmmo gain upgrade!");
 						faction.setWealth(faction.getWealth() + 2000000);
 						player.closeInventory();
 						player.performCommand("f upgrade");

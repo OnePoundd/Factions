@@ -29,11 +29,11 @@ public class CmdFactionsSethome extends FactionsCommandHome {
 			return;
 		}
 		if ((!msender.isOverriding()) && (!faction.isValidHome(newHome))) {
-			msender.msg("ยงcยงl(!)ยง7 Faction homes can only be set inside your own territory.");
+			msender.msg("งcงl(!)ง7 Faction homes can only be set inside your own territory.");
 			return;
 		}
 		faction.setHome(newHome);
-		faction.msg("ยงdยงl(!)ยง7 " + msender.getName() + " has set the faction home!");
+		faction.msg("งdงl(!)ง7 " + msender.getName() + " has set the faction home!");
 	}
 }
 

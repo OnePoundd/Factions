@@ -24,7 +24,7 @@ public class CmdFactionsHome extends FactionsCommandHome {
 		if (msenderFaction.hasHome()) {
 			Teleport.tryTeleport(me, msenderFaction.getHome().asBukkitLocation());
 		} else {
-			msg("ยงcยงl(!)ยง7 Your faction does not have a home, use /f sethome.");
+			msg("งcงl(!)ง7 Your faction does not have a home, use /f sethome.");
 		}
 	}
 }
