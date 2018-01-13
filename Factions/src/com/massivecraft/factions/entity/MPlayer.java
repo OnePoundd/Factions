@@ -71,6 +71,7 @@ public class MPlayer extends SenderEntity<MPlayer> implements FactionsParticipat
 		setOverriding(that.overriding);
 		setTerritoryInfoTitles(that.territoryInfoTitles);
 		setExperience(that.experience);
+		setExperienceOnFriday(that.experienceOnFriday);
 		setLevel(that.Level);
 		setStealth(that.stealth);
 		setBoost(that.boost);
@@ -826,6 +827,15 @@ public class MPlayer extends SenderEntity<MPlayer> implements FactionsParticipat
 		}
 		changed();
 	}
+	
+	private int experienceOnFriday = 0;
+	public void setExperienceOnFriday(int exp) {
+		experienceOnFriday = exp;
+	}
+	public int getWeeklyExperience() {
+		return experience - experienceOnFriday;
+	}
+	
 
 	private MassiveMapDef<String, PS> homes = new MassiveMapDef();
 	private long lastTeleportReceivedMillis;
@@ -1076,7 +1086,8 @@ public class MPlayer extends SenderEntity<MPlayer> implements FactionsParticipat
 
 	public boolean getSkillBard() {
 		return Bard;
-	}
+	}	
+	
 }
 
 /*

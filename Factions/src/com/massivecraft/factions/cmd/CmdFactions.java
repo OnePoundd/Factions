@@ -73,6 +73,7 @@ public class CmdFactions extends FactionsCommand {
 	public CmdFactionsTnt cmdFactionsTnt = new CmdFactionsTnt();
 	public CmdFactionsBoost cmdFactionsBoost = new CmdFactionsBoost();
 	public CmdFactionsCastle cmdFactionsCastle = new CmdFactionsCastle();
+	public CmdFactionsPlayerLeaderboardSet cmdFactionsPlayerLeaderboardSet = new CmdFactionsPlayerLeaderboardSet();
 
 	public CmdFactions() {
 		addChild(new MassiveCommandDeprecated(cmdFactionsClaim.cmdFactionsClaimAuto, new String[] { "autoclaim" }));

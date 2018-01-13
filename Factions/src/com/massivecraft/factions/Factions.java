@@ -35,6 +35,8 @@ import net.OnePoundd.Patches.Experience;
 import net.OnePoundd.Patches.ItemDeny;
 import net.OnePoundd.Patches.McmmoBoosters;
 import net.OnePoundd.Patches.Messages;
+import net.OnePoundd.Patches.NPC;
+import net.OnePoundd.Patches.PlayerOfTheWeek;
 import net.OnePoundd.Patches.Raiding;
 import net.OnePoundd.Patches.SellWands;
 import net.OnePoundd.Patches.Skills;
@@ -106,6 +108,7 @@ public class Factions extends MassivePlugin {
 		getServer().getPluginManager().registerEvents(new Castle(), this);
 		getServer().getPluginManager().registerEvents(new Vanish(), this);
 		getServer().getPluginManager().registerEvents(new Skills(), this);
+		getServer().getPluginManager().registerEvents(new PlayerOfTheWeek(), this);
 		
 		getCommand("tpa").setExecutor(new Teleport());
 		getCommand("tpahere").setExecutor(new Teleport());
@@ -146,6 +149,7 @@ public class Factions extends MassivePlugin {
 		getServer().getPluginManager().addPermission(new Permission("mcmmo.boost.100"));
 
 		Castle.startCastle();
+		PlayerOfTheWeek.startPlayerOfTheWeekProcesses();
 	}
 
 	public List<Class<?>> getClassesActiveColls() {
