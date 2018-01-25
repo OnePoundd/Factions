@@ -74,6 +74,8 @@ public class CmdFactions extends FactionsCommand {
 	public CmdFactionsBoost cmdFactionsBoost = new CmdFactionsBoost();
 	public CmdFactionsCastle cmdFactionsCastle = new CmdFactionsCastle();
 	public CmdFactionsWeeklyTop cmdFactionsWeeklyTop = new CmdFactionsWeeklyTop();
+	public CmdFactionsBanner cmdFactionsBanner = new CmdFactionsBanner();
+	public CmdFactionsAssist cmdFactionsAssist = new CmdFactionsAssist();
 
 	public CmdFactions() {
 		addChild(new MassiveCommandDeprecated(cmdFactionsClaim.cmdFactionsClaimAuto, new String[] { "autoclaim" }));

@@ -75,59 +75,50 @@ public class Castle implements Listener {
 		BukkitScheduler scheduler = Factions.get().getServer().getScheduler();
 		scheduler.scheduleSyncRepeatingTask(Factions.get(), new Runnable(){
 			public void run(){
-				if (Castle.Capturing == null){
-					if ((Castle.PlayersInside.size() > 0) && (!MPlayer.get(Castle.PlayersInside.get(0)).getFaction().getName().equals("Wilderness"))) {
-						Castle.Capturing = MPlayer.get(Castle.PlayersInside.get(0)).getFaction();
+				if (Capturing == null){
+					if ((PlayersInside.size() > 0) && (!MPlayer.get(PlayersInside.get(0)).getFaction().getName().equals("Wilderness"))) {
+						Capturing = MPlayer.get(PlayersInside.get(0)).getFaction();
 					}
-				}else if (Castle.Capturing != Castle.Owner){
-					int amountOfCapturers = Castle.amountOfCapturers();
+				}else if (Capturing != Owner){
+					int amountOfCapturers = amountOfCapturers();
 					if (amountOfCapturers > 0){
-						if (Castle.PlayersInside.size() - amountOfCapturers <= 0){
-							Castle.Contested = false;
+						if (PlayersInside.size() - amountOfCapturers <= 0){
+							Contested = false;
 							double percentageToAdd = 1.5D + amountOfCapturers * 0.1D;
-							if (Castle.Percentage + percentageToAdd >= 100.0D){
-								if (Castle.Owner == null){
-									for (Player player : Bukkit.getOnlinePlayers()){
-										MPlayer mplayer = MPlayer.get(player);
-										mplayer.message("§5§l(!)§7§l The faction " + Castle.Capturing.getName(mplayer) + " §7§l has captured the castle!");
-									}
-									Castle.Owner.setOwnsCastle(false);
-									Castle.Owner = Castle.Capturing;
-									Castle.Owner.setOwnsCastle(true);
-									MConf.get().setCastleOwner(Castle.Owner);
-									Castle.Capturing = null;
-									Castle.Percentage = 0.0D;
+							if (Percentage + percentageToAdd >= 100.0D){
+								if (Owner == null){
+									captureEvent();
 								}else{
 									for (Player player : Bukkit.getOnlinePlayers()){
 										MPlayer mplayer = MPlayer.get(player);
-										mplayer.message("§5§l(!)§7§l The faction " + Castle.Capturing.getName(mplayer) + " §7§l has neutralised the castle!");
+										mplayer.message("§5§l(!)§7§l The faction " + Capturing.getName(mplayer) + " §7§l has neutralised the castle!");
 									}
-									Castle.Owner = null;
-									Castle.Percentage = 0.0D;
+									Owner = null;
+									Percentage = 0.0D;
 									Faction.get("Castle").setDescription("Owner: Wilderness");
 								}
 							} else {
-								Castle.Percentage += percentageToAdd;
+								Percentage += percentageToAdd;
 							}
 						} else {
-							Castle.Contested = false;
+							Contested = false;
 						}
-					} else if (Castle.Percentage - 3.0D > 0.0D) {
-						Castle.Percentage -= 3.0D;
+					} else if (Percentage - 3.0D > 0.0D) {
+						Percentage -= 3.0D;
 					} else {
-						Castle.Percentage = 0.0D;
-						Castle.Capturing = null;
+						Percentage = 0.0D;
+						Capturing = null;
 					}
 					DecimalFormat df2 = new DecimalFormat(".##");
-					for (Player player : Castle.PlayersInside) {
-						if (Castle.Contested) {
+					for (Player player : PlayersInside) {
+						if (Contested) {
 							player.sendMessage("§5§l(!)§7 The capture point is contested!");
-						} else if (Castle.Owner == null) {
-							player.sendMessage("§5§l(!)§7 The faction " + Castle.Capturing.getName(MPlayer.get(player))
-									+ "§7 is capturing the castle! (" + df2.format(Castle.Percentage) + "%)");
-						} else if (Castle.Capturing != null) {
-							player.sendMessage("§5§l(!)§7 The faction " + Castle.Capturing.getName(MPlayer.get(player))
-									+ "§7 is neutralising the castle! (" + df2.format(Castle.Percentage) + "%)");
+						} else if (Owner == null) {
+							player.sendMessage("§5§l(!)§7 The faction " + Capturing.getName(MPlayer.get(player))
+									+ "§7 is capturing the castle! (" + df2.format(Percentage) + "%)");
+						} else if (Capturing != null) {
+							player.sendMessage("§5§l(!)§7 The faction " + Capturing.getName(MPlayer.get(player))
+									+ "§7 is neutralising the castle! (" + df2.format(Percentage) + "%)");
 						}
 					}
 				}
@@ -136,9 +127,18 @@ public class Castle implements Listener {
 
 		scheduler.scheduleSyncRepeatingTask(Factions.get(), new Runnable() {
 			public void run() {
-				if (Castle.Owner != null) {
-					Castle.Owner.addVicotryPoints(1);
-					Castle.Owner.msg("§5§l(!)§7 The castle has given your faction 1 victory point!");
+				if (Owner != null) {
+					Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), "ecoadmin give " + Owner.getLeader().getName() + " 40000");
+					Owner.msg("§5§l(!)§7 The castle has given your faction leader $40,000!");
+				}
+			}
+		}, 0L, 12000L);
+		
+		scheduler.scheduleSyncRepeatingTask(Factions.get(), new Runnable() {
+			public void run() {
+				if (Owner != null) {
+					Owner.addVicotryPoints(1);
+					Owner.msg("§5§l(!)§7 The castle has given your faction 1 victory point!");
 				}
 			}
 		}, 0L, 36000L);
@@ -153,4 +153,31 @@ public class Castle implements Listener {
 		}
 		return count;
 	}
+	
+	private static void captureEvent() {
+		for (Player player : Bukkit.getOnlinePlayers()){
+			MPlayer mplayer = MPlayer.get(player);
+			mplayer.message("§5§l(!)§7§l The faction " + Capturing.getName(mplayer) + " §7§l has captured the castle!");
+		}
+		Owner.setOwnsCastle(false);
+		Owner = Capturing;
+		Owner.setOwnsCastle(true);
+		MConf.get().setCastleOwner(Owner);
+		Capturing = null;
+		Percentage = 0.0;
+		for(Player player : PlayersInside) {
+			if(MPlayer.get(player).getFaction().equals(Owner)) {
+				if(MConf.get().getWarp("castle") != null) {
+					player.teleport(MConf.get().getWarp("castle"));
+					player.sendMessage("§5§l(!)§7 Your faction has captured the castle and you have been teleported to the reward zone! You can return here at any time by typing /warp castle");
+				}else {
+					System.out.println("[Factions] Error: YOU MUST SET THE CASTLE WARP!");
+				}
+			}else {
+				player.teleport(Bukkit.getWorld("world").getSpawnLocation());
+				player.sendMessage("§5§l(!)§7 The faction " + Owner.getName() + " has captured the castle and you have been sent to spawn!");
+			}
+		}
+	}
+	
 }

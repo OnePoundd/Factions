@@ -5,6 +5,7 @@ import com.massivecraft.factions.adapter.BoardMapAdapter;
 import com.massivecraft.factions.adapter.RelAdapter;
 import com.massivecraft.factions.adapter.TerritoryAccessAdapter;
 import com.massivecraft.factions.chat.ChatActive;
+import com.massivecraft.factions.cmd.CmdFactionsBanner;
 import com.massivecraft.factions.cmd.CmdFactionsTop;
 import com.massivecraft.factions.cmd.CmdFactionsWealth;
 import com.massivecraft.factions.cmd.type.TypeFactionChunkChangeType;
@@ -29,16 +30,15 @@ import java.util.List;
 import net.OnePoundd.Essentials.Teleport;
 import net.OnePoundd.FactionUpgrades.CmdFactionsUpgrade;
 import net.OnePoundd.FactionUpgrades.Upgrades;
+import net.OnePoundd.Patches.Banner;
 import net.OnePoundd.Patches.BlockManipulation;
 import net.OnePoundd.Patches.Castle;
 import net.OnePoundd.Patches.Experience;
-import net.OnePoundd.Patches.ItemDeny;
+import net.OnePoundd.Patches.Introduction;
 import net.OnePoundd.Patches.McmmoBoosters;
-import net.OnePoundd.Patches.Messages;
 import net.OnePoundd.Patches.NPC;
 import net.OnePoundd.Patches.PlayerOfTheWeek;
 import net.OnePoundd.Patches.Raiding;
-import net.OnePoundd.Patches.SellWands;
 import net.OnePoundd.Patches.Skills;
 import net.OnePoundd.Patches.Trusted;
 import net.OnePoundd.Patches.Vanish;
@@ -96,12 +96,10 @@ public class Factions extends MassivePlugin {
 		getServer().getPluginManager().registerEvents(new Main(), this);
 		getServer().getPluginManager().registerEvents(new Raiding(), this);
 		getServer().getPluginManager().registerEvents(new Trusted(), this);
-		getServer().getPluginManager().registerEvents(new ItemDeny(), this);
 		getServer().getPluginManager().registerEvents(new BlockManipulation(), this);
-		getServer().getPluginManager().registerEvents(new Messages(), this);
+		getServer().getPluginManager().registerEvents(new Introduction(), this);
 		getServer().getPluginManager().registerEvents(new CmdFactionsUpgrade(), this);
 		getServer().getPluginManager().registerEvents(new Upgrades(), this);
-		getServer().getPluginManager().registerEvents(new SellWands(), this);
 		getServer().getPluginManager().registerEvents(new Experience(), this);
 		getServer().getPluginManager().registerEvents(new Teleport(), this);
 		getServer().getPluginManager().registerEvents(new McmmoBoosters(), this);
@@ -109,6 +107,7 @@ public class Factions extends MassivePlugin {
 		getServer().getPluginManager().registerEvents(new Vanish(), this);
 		getServer().getPluginManager().registerEvents(new Skills(), this);
 		getServer().getPluginManager().registerEvents(new PlayerOfTheWeek(), this);
+		getServer().getPluginManager().registerEvents(new CmdFactionsBanner(), this);
 		
 		getCommand("tpa").setExecutor(new Teleport());
 		getCommand("tpahere").setExecutor(new Teleport());
@@ -138,15 +137,16 @@ public class Factions extends MassivePlugin {
 
 		getServer().createWorld(new WorldCreator("world_introduction"));
 
-		getServer().getPluginManager().addPermission(new Permission("factions.admin"));
-		getServer().getPluginManager().addPermission(new Permission("factions.flysafezone"));
-		getServer().getPluginManager().addPermission(new Permission("factions.flywilderness"));
-		getServer().getPluginManager().addPermission(new Permission("factions.homes.1"));
-		getServer().getPluginManager().addPermission(new Permission("factions.homes.3"));
-		getServer().getPluginManager().addPermission(new Permission("factions.homes.5"));
-		getServer().getPluginManager().addPermission(new Permission("factions.homes.10"));
-		getServer().getPluginManager().addPermission(new Permission("mcmmo.boost.50"));
-		getServer().getPluginManager().addPermission(new Permission("mcmmo.boost.100"));
+//		getServer().getPluginManager().addPermission(new Permission("factions.admin"));
+//		getServer().getPluginManager().addPermission(new Permission("factions.flysafezone"));
+//		getServer().getPluginManager().addPermission(new Permission("factions.flywilderness"));
+//		getServer().getPluginManager().addPermission(new Permission("factions.back"));
+//		getServer().getPluginManager().addPermission(new Permission("factions.homes.1"));
+//		getServer().getPluginManager().addPermission(new Permission("factions.homes.3"));
+//		getServer().getPluginManager().addPermission(new Permission("factions.homes.5"));
+//		getServer().getPluginManager().addPermission(new Permission("factions.homes.10"));
+//		getServer().getPluginManager().addPermission(new Permission("mcmmo.boost.50"));
+//		getServer().getPluginManager().addPermission(new Permission("mcmmo.boost.100"));
 
 		Castle.startCastle();
 		PlayerOfTheWeek.startPlayerOfTheWeekProcesses();

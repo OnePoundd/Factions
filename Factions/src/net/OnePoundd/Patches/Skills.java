@@ -439,11 +439,10 @@ public class Skills implements Listener {
 		}
 	}
 
-	@EventHandler
+	@EventHandler //prevents players receiving combat mcmmo from mobs if they don't have the skill
 	public void onMcMMOGainEvent(McMMOPlayerXpGainEvent event) {
-		if (((event.getSkill().equals(SkillType.ARCHERY)) || (event.getSkill().equals(SkillType.AXES))
-				|| (event.getSkill().equals(SkillType.SWORDS))) && (event.getXpGainReason().equals(XPGainReason.PVE))
-				&& (!MPlayer.get(event.getPlayer()).getSkillCombatMcMMO())) {
+		if (((event.getSkill().equals(SkillType.ARCHERY)) || (event.getSkill().equals(SkillType.AXES)) || (event.getSkill().equals(SkillType.SWORDS)))
+		&& (event.getXpGainReason().equals(XPGainReason.PVE)) && (!MPlayer.get(event.getPlayer()).getSkillCombatMcMMO())) {
 			event.setRawXpGained(0.0F);
 		}
 	}

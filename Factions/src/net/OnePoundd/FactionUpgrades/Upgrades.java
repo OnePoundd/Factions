@@ -16,12 +16,14 @@ import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.block.Action;
 import org.bukkit.event.block.BlockGrowEvent;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.FoodLevelChangeEvent;
 import org.bukkit.event.entity.SpawnerSpawnEvent;
 import org.bukkit.event.inventory.FurnaceSmeltEvent;
 import org.bukkit.event.player.PlayerExpChangeEvent;
+import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.scheduler.BukkitScheduler;
 
@@ -95,36 +97,38 @@ public class Upgrades implements Listener {
 			}
 		}, 1L);
 	}
-
+	
 	@EventHandler
 	public void onSpawnerSpawnEvent(final SpawnerSpawnEvent event) {
-		Bukkit.getScheduler().scheduleSyncDelayedTask(Factions.get(), new Runnable() {
+		Bukkit.getScheduler().scheduleSyncDelayedTask(Factions.get(), new Runnable() { //waits one tick for the new delay value
 			public void run() {
-				CreatureSpawner spawner = event.getSpawner();
+				CreatureSpawner spawner = (CreatureSpawner) event.getSpawner().getBlock().getState();
 				Faction faction = BoardColl.get().getFactionAt(PS.valueOf(spawner.getLocation().getChunk()));
 				int spawnerUpgradeLevel = faction.getSpawnerUpgradeLevel();
+				
 				int castleFactor = 1;
 				if (faction.getOwnsCastle()) {
 					castleFactor = 2;
 				}
 				if (spawnerUpgradeLevel == 0) {
-					double newDelay = spawner.getDelay() * 2 / castleFactor;
+					double newDelay = (spawner.getDelay() * 2) / castleFactor;
 					spawner.setDelay((int) newDelay);
 					spawner.update();
 				} else if (spawnerUpgradeLevel == 1) {
-					double newDelay = spawner.getDelay() * 2 / 1.25D / castleFactor;
+					double newDelay = ((spawner.getDelay() * 1.5) / 1.25) / castleFactor;
 					spawner.setDelay((int) newDelay);
 					spawner.update();
 				} else if (spawnerUpgradeLevel == 2) {
-					double newDelay = spawner.getDelay() * 2 / 1.5D / castleFactor;
+					double newDelay = ((spawner.getDelay() * 1.5) / 1.5) / castleFactor;
+					System.out.println("New Delay: " + newDelay);
 					spawner.setDelay((int) newDelay);
 					spawner.update();
 				} else if (spawnerUpgradeLevel == 3) {
-					double newDelay = spawner.getDelay() * 2 / 1.75D / castleFactor;
+					double newDelay = ((spawner.getDelay() * 1.5) / 1.75) / castleFactor;
 					spawner.setDelay((int) newDelay);
 					spawner.update();
 				} else if (spawnerUpgradeLevel == 4) {
-					double newDelay = spawner.getDelay() * 2 / 2 / castleFactor;
+					double newDelay = ((spawner.getDelay() * 1.5) / 2) / castleFactor;
 					spawner.setDelay((int) newDelay);
 					spawner.update();
 				}

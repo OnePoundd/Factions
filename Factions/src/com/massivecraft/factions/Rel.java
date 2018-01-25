@@ -10,21 +10,14 @@ import java.util.Set;
 import org.bukkit.ChatColor;
 
 public enum Rel implements Colorized, Named {
-	ENEMY(
-
-			"an enemy", "enemies", "an enemy faction", "enemy factions", new String[] { "Enemy" }), NEUTRAL(
-					"someone neutral to you", "those neutral to you", "a neutral faction", "neutral factions",
-					new String[] { "Neutral" }), TRUCE("someone in truce with you", "those in truce with you",
-							"a faction in truce", "factions in truce", new String[] { "Truce" }), ALLY("an ally",
-									"allies", "an allied faction", "allied factions", new String[] { "Ally" }), RECRUIT(
-											"a recruit in your faction", "recruits in your faction", "", "",
-											new String[] { "Recruit" }), MEMBER("a member in your faction",
-													"members in your faction", "your faction", "your factions",
-													new String[] { "Member" }), OFFICER("an officer in your faction",
-															"officers in your faction", "", "",
-															new String[] { "Officer", "Moderator" }), LEADER(
-																	"your faction leader", "your faction leader", "",
-																	"", new String[] { "Leader", "Admin", "Owner" });
+	ENEMY("an enemy", "enemies", "an enemy faction", "enemy factions", new String[] { "Enemy" }),
+	NEUTRAL("someone neutral to you", "those neutral to you", "a neutral faction", "neutral factions",new String[] { "Neutral" }), 
+	TRUCE("someone in truce with you", "those in truce with you", "a faction in truce", "factions in truce", new String[] { "Truce" }), 
+	ALLY("an ally", "allies", "an allied faction", "allied factions", new String[] { "Ally" }), 
+	RECRUIT("a recruit in your faction", "recruits in your faction", "", "",new String[] { "Recruit" }), 
+	MEMBER("a member in your faction","members in your faction", "your faction", "your factions",new String[] { "Member" }), 
+	OFFICER("an officer in your faction","officers in your faction", "", "",new String[] { "Officer", "Moderator" }), 
+	LEADER("your faction leader", "your faction leader", "","", new String[] { "Leader", "Admin", "Owner" });
 
 	private final String descPlayerOne;
 	private final String descPlayerMany;

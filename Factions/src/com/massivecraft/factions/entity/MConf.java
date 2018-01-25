@@ -269,10 +269,6 @@ public class MConf extends Entity<MConf> {
 	public int beaconPrice = 100000;
 	public int hopperPrice = 50000;
 	public long lastWealthRewardTimeMillis = System.currentTimeMillis() - 86400000L;
-	public String SpawnWorldName = "world";
-	public double SpawnXCoord = 0.0D;
-	public double SpawnYCoord = 0.0D;
-	public double SpawnZCoord = 0.0D;
 	private MassiveMapDef<String, PS> warps = new MassiveMapDef();
 	private PS CastleLocation1;
 	private PS CastleLocation2;
@@ -335,6 +331,8 @@ public class MConf extends Entity<MConf> {
 	}
 	
 	public PS WeeklyPlayer1Location = null;
+	
+	public ArrayList<String> previouslyUsedIPs = new ArrayList<String>();
 }
 
 /*

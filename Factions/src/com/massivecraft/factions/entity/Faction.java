@@ -37,6 +37,8 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 import mkremins.fanciful.FancyMessage;
+import net.OnePoundd.Patches.Banner;
+
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
@@ -138,6 +140,7 @@ public class Faction extends Entity<Faction> implements FactionsParticipator {
 	private double mcmmoBoost;
 	private long boostEndMillis;
 	private boolean OwnsCastle;
+	private Banner placedBanner = null;
 
 	public boolean isNone() {
 		return getId().equals("none");
@@ -1225,6 +1228,15 @@ public class Faction extends Entity<Faction> implements FactionsParticipator {
 	public boolean getOwnsCastle() {
 		return OwnsCastle;
 	}
+	
+	public Banner getPlacedBanner() {
+		return placedBanner;
+	}
+	
+	public void setPlacedBanner(Banner b) {
+		placedBanner = b;
+	}
+	
 }
 
 /*

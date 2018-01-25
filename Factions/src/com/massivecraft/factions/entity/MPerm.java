@@ -60,6 +60,9 @@ public class MPerm extends Entity<MPerm> implements Prioritized, Registerable, N
 	public static final transient String ID_TNT_TAKE = "taketnt";
 	public static final transient String ID_TNT_ADD = "addtnt";
 	public static final transient String ID_TNT_VIEW = "seetnt";
+	public static final transient String ID_ASSIST = "assist";
+	public static final transient String ID_SET_BANNER = "setbanner";
+	public static final transient String ID_GET_BANNER = "getbanner";
 	public static final transient int PRIORITY_BUILD = 1000;
 	public static final transient int PRIORITY_PAINBUILD = 2000;
 	public static final transient int PRIORITY_DOOR = 3000;
@@ -96,6 +99,9 @@ public class MPerm extends Entity<MPerm> implements Prioritized, Registerable, N
 	public static final transient int PRIORITY_TNT_TAKE = 991;
 	public static final transient int PRIORITY_TNT_ADD = 990;
 	public static final transient int PRIORITY_TNT_VIEW = 989;
+	public static final transient int PRIORITY_ASSIST = 988;
+	public static final transient int PRIORITY_SET_BANNER = 987;
+	public static final transient int PRIORITY_GET_BANNER = 986;
 
 	public static MPerm get(Object oid) {
 		return (MPerm) MPermColl.get().get(oid);
@@ -150,6 +156,7 @@ public class MPerm extends Entity<MPerm> implements Prioritized, Registerable, N
 		getPermTntTake();
 		getPermTntAdd();
 		getPermTntView();
+		getPermAssist();
 	}
 
 	public static MPerm getPermBuild() {
@@ -328,8 +335,14 @@ public class MPerm extends Entity<MPerm> implements Prioritized, Registerable, N
 
 	public static MPerm getPermTntView() {
 		return getCreative(989, "seetnt", "seetnt", "see amount of tnt stored",
-				MUtil.set(new Rel[] { Rel.LEADER, Rel.OFFICER }), false, true, true);
+				MUtil.set(new Rel[] { Rel.LEADER, Rel.OFFICER, Rel.MEMBER, Rel.RECRUIT }), false, true, true);
 	}
+	
+	public static MPerm getPermAssist() {
+		return getCreative(988, "assist", "assist", "teleport to faction banners",
+				MUtil.set(new Rel[] { Rel.LEADER, Rel.OFFICER,  Rel.MEMBER, Rel.RECRUIT }), false, true, true);
+	}
+	
 
 	public static MPerm getCreative(int priority, String id, String name, String desc, Set<Rel> standard,
 			boolean territory, boolean editable, boolean visible) {

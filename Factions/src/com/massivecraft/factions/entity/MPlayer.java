@@ -737,8 +737,7 @@ public class MPlayer extends SenderEntity<MPlayer> implements FactionsParticipat
 		for (Entity entity : entityList) {
 			if (entity.getType().equals(EntityType.PLAYER)) {
 				MPlayer mPlayerEntity = get(entity);
-				if ((getRelationTo(mPlayerEntity).equals(Rel.ENEMY))
-						|| (getRelationTo(mPlayerEntity).equals(Rel.NEUTRAL))) {
+				if ((getRelationTo(mPlayerEntity).equals(Rel.ENEMY)) || (getRelationTo(mPlayerEntity).equals(Rel.NEUTRAL))) {
 					return true;
 				}
 			}

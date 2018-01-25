@@ -1,6 +1,6 @@
 package net.OnePoundd.Patches;
 
-import java.util.ArrayList;
+
 import java.util.Calendar;
 import java.util.Collections;
 import java.util.Comparator;
@@ -34,7 +34,7 @@ public class PlayerOfTheWeek implements Listener{
 		BukkitScheduler scheduler = Factions.get().getServer().getScheduler();
 		scheduler.scheduleSyncRepeatingTask(Factions.get(), new Runnable() {
 			public void run() {
-				updatePlayerOfTheWeek();
+				//updatePlayerOfTheWeek();
 			}
 		}, 0L, 1000L); // 6000L for 5 mins 
 	}
@@ -46,7 +46,6 @@ public class PlayerOfTheWeek implements Listener{
 		for (MPlayer player : MPlayerColl.get().getAll()) {
 			entries.put(player, Integer.valueOf(player.getWeeklyExperience()));
 		}
-		
 		Map<MPlayer, Integer> sorted = sortByValue(entries);
 		currentTop = sorted;
 		
@@ -61,7 +60,8 @@ public class PlayerOfTheWeek implements Listener{
 				}
 				for (Map.Entry<MPlayer, Integer> entry : currentTop.entrySet()) {
 					// entry.getKey().getName() give money to
-					break;
+					//break;
+					System.out.println("Name: " + entry.getKey().getName() + ", Experience: " + entry.getValue());
 				}
 				System.out.println("[Factions] Successfully reset the weekly experience gain leaderboard and rewarded the number 1 player!");
 			}
@@ -72,9 +72,12 @@ public class PlayerOfTheWeek implements Listener{
 			if(npc != null) {
 				npc.delete();
 			}
+			int i = 0;
 			for (Map.Entry<MPlayer, Integer> entry : currentTop.entrySet()) {
-				npc = new NPC(entry.getKey().getName(), MConf.get().WeeklyPlayer1Location.asBukkitLocation());
-				break;
+				if(i >= currentTop.size() - 1) {
+					npc = new NPC(entry.getKey().getName(), MConf.get().WeeklyPlayer1Location.asBukkitLocation());
+					break;
+				}
 			}
 		}else {
 			System.out.println("[Factions] Failed to create NPC for the player leaderboard!");
@@ -83,11 +86,13 @@ public class PlayerOfTheWeek implements Listener{
 	
 	@EventHandler
 	public void onPlayerMove(PlayerMoveEvent event) {
-		EntityPlayer player = npc.get();
-		if(event.getPlayer().getWorld().getName().equals(player.getWorld().getWorldData().getName())){
-			double distance = event.getPlayer().getLocation().distance(new Location(Bukkit.getWorld(player.getWorld().getWorldData().getName()), player.getX(), player.getY(), player.getZ()));
-			if(distance < 50) {
-				npc.showToPlayer(event.getPlayer());
+		if(npc != null) {
+			EntityPlayer player = npc.get();
+			if(event.getPlayer().getWorld().getName().equals(player.getWorld().getWorldData().getName())){
+				double distance = event.getPlayer().getLocation().distance(new Location(Bukkit.getWorld(player.getWorld().getWorldData().getName()), player.getX(), player.getY(), player.getZ()));
+				if(distance < 50) {
+					npc.showToPlayer(event.getPlayer());
+				}
 			}
 		}
 	}
@@ -100,7 +105,6 @@ public class PlayerOfTheWeek implements Listener{
 				return (o1.getValue()).compareTo(o2.getValue());
 			}
 		});
-
 		Map<K, V> result = new LinkedHashMap<K, V>();
 		for (Map.Entry<K, V> entry : list) {
 			result.put(entry.getKey(), entry.getValue());

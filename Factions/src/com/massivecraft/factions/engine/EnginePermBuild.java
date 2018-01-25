@@ -14,6 +14,9 @@ import com.massivecraft.factions.util.EnumerationUtil;
 import com.massivecraft.massivecore.Engine;
 import com.massivecraft.massivecore.ps.PS;
 import com.massivecraft.massivecore.util.MUtil;
+
+import net.OnePoundd.Patches.Banner;
+
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
@@ -85,6 +88,15 @@ public class EnginePermBuild extends Engine
 	@EventHandler(priority = EventPriority.NORMAL)
 	public void blockBuild(BlockPlaceEvent event)
 	{
+		Material m = event.getBlock().getType();
+		if(m.equals(Material.STANDING_BANNER) || m.equals(Material.WALL_BANNER)) {
+			if(event.getPlayer().getItemInHand().hasItemMeta() && event.getPlayer().getItemInHand().getItemMeta().hasDisplayName() ) {
+				if(event.getPlayer().getItemInHand().getItemMeta().getDisplayName().equals("§bFaction Banner")) {
+					return;
+					
+				}
+			}
+		}
 		if (!event.canBuild()) return;
 
 		boolean verboose = ! isFake(event);

@@ -31,19 +31,28 @@ public class CmdFactionsRelationSet extends FactionsCommand {
 		if (msenderFaction.getRelationWish(otherFaction) == newRelation) {
 			throw new MassiveException().setMsg("§c§l(!)§7 You've already requested or already have that relation!");
 		}
-		for (Faction faction : FactionColl.get().getAll()) {
-			if ((newRelation.equals(Rel.ALLY)) && (faction.getRelationTo(msenderFaction).equals(Rel.ALLY))) {
-				if ((!faction.getName().equals("WarZone")) && (!faction.getName().equals("SafeZone"))) {
-					throw new MassiveException()
-							.setMsg("§c§l(!)§7 Your faction already has the maximum of one ally!");
+		for (Faction faction : FactionColl.get().getAll()) { //makes sure you don't have an ally/truce
+			if ((!faction.getName().equals("WarZone")) && (!faction.getName().equals("SafeZone")) && (!faction.getName().equals("Castle")) && (!faction.getName().equals("Wilderness"))) {
+				if ((newRelation.equals(Rel.ALLY)) && (faction.getRelationTo(msenderFaction).equals(Rel.ALLY))) {
+					throw new MassiveException().setMsg("§c§l(!)§7 Your faction already has the maximum of one ally!");
+				} else if ((newRelation.equals(Rel.TRUCE)) && (faction.getRelationTo(msenderFaction).equals(Rel.TRUCE))){
+					System.out.println(faction.getName() + " is already truced to " + msenderFaction.getName());
+					throw new MassiveException().setMsg("§c§l(!)§7 Your faction already has the maximum of one truce!");
 				}
-			} else if ((newRelation.equals(Rel.TRUCE)) && (faction.getRelationTo(msenderFaction).equals(Rel.TRUCE))
-					&& (!faction.getName().equals("WarZone")) && (!faction.getName().equals("SafeZone"))) {
-				throw new MassiveException().setMsg("§c§l(!)§7 Your faction already has the maximum of one truce!");
 			}
 		}
-		EventFactionsRelationChange event = new EventFactionsRelationChange(sender, msenderFaction, otherFaction,
-				newRelation);
+		
+		for (Faction faction : FactionColl.get().getAll()) {
+			if ((!faction.getName().equals("WarZone")) && (!faction.getName().equals("SafeZone")) && (!faction.getName().equals("Castle")) && (!faction.getName().equals("Wilderness"))) {
+				if ((newRelation.equals(Rel.ALLY)) && (faction.getRelationTo(otherFaction).equals(Rel.ALLY))) {
+					throw new MassiveException().setMsg("§c§l(!)§7 The other faction already has the maximum of one ally!");
+				} else if ((newRelation.equals(Rel.TRUCE)) && (faction.getRelationTo(otherFaction).equals(Rel.TRUCE))){
+					throw new MassiveException().setMsg("§c§l(!)§7 The other faction already has the maximum of one truce!");
+				}
+			}
+		}
+		
+		EventFactionsRelationChange event = new EventFactionsRelationChange(sender, msenderFaction, otherFaction, newRelation);
 		event.run();
 		if (event.isCancelled()) {
 			return;

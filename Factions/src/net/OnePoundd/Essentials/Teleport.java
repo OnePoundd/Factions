@@ -20,6 +20,7 @@ import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.block.Block;
+import org.bukkit.block.CreatureSpawner;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -27,7 +28,9 @@ import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.event.player.PlayerRespawnEvent;
 import org.bukkit.event.player.PlayerTeleportEvent;
 import org.bukkit.event.player.PlayerTeleportEvent.TeleportCause;
 import org.bukkit.scheduler.BukkitScheduler;
@@ -37,7 +40,7 @@ public class Teleport implements Listener, CommandExecutor {
 	}
 
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-		if (cmd.getLabel().equals("tpa")) {
+		if (cmd.getLabel().equalsIgnoreCase("tpa")) {
 			if (args.length == 1) {
 				try {					
 					MPlayer playerTo = MPlayer.get(Bukkit.getPlayer(args[0]));
@@ -47,12 +50,11 @@ public class Teleport implements Listener, CommandExecutor {
 						+ " §7has requested to teleport to you. You have 20 seconds to click this message or type /tpyes!")
 						.color(ChatColor.GRAY).command("/tpaccept " + playerFrom.getName())
 						.send(playerTo.getPlayer());
-				playerTo.setLastTeleportReceivedMillis(System.currentTimeMillis());
-				playerTo.setLastTeleportReceivedPlayer(MPlayer.get(Bukkit.getPlayer(sender.getName())));
-				playerFrom.setLastTeleportedTo(playerTo);
-				playerFrom.setlastTeleportWasTPA(true);
-				sender.sendMessage("§6§l(!)§7 A teleport request has been sent to "
-						+ playerTo.getColorTo(playerFrom) + playerTo.getName() + "§7.");
+						playerTo.setLastTeleportReceivedMillis(System.currentTimeMillis());
+						playerTo.setLastTeleportReceivedPlayer(MPlayer.get(Bukkit.getPlayer(sender.getName())));
+						playerFrom.setLastTeleportedTo(playerTo);
+						playerFrom.setlastTeleportWasTPA(true);
+						sender.sendMessage("§6§l(!)§7 A teleport request has been sent to " + playerTo.getColorTo(playerFrom) + playerTo.getName() + "§7.");
 					}else {
 						sender.sendMessage("§c§l(!)§7 You cannot teleport to yourself!");
 					}
@@ -64,22 +66,21 @@ public class Teleport implements Listener, CommandExecutor {
 			} else {
 				sender.sendMessage("§c§l(!)§7 Too many arguments. Usage: /tpa <playername>");
 			}
-		} else if (cmd.getLabel().equals("tpahere")) {
+		} else if (cmd.getLabel().equalsIgnoreCase("tpahere")) {
 			if (args.length == 1) {
 				try {
 					MPlayer playerToTeleport = MPlayer.get(Bukkit.getPlayer(args[0]));
 					MPlayer playerToTeleportTo = MPlayer.get(Bukkit.getPlayer(sender.getName()));
-					new FancyMessage().text("§6§l(!) " + playerToTeleport.getColorTo(playerToTeleportTo)
-							+ sender.getName()
-							+ " §7has requested that you teleport to them. You have 20 seconds to click this message or type /tpyes!")
-							.color(ChatColor.GRAY).command("/tpaccept " + playerToTeleportTo.getName())
-							.send(playerToTeleport.getPlayer());
+					new FancyMessage().text("§6§l(!) " + playerToTeleport.getColorTo(playerToTeleportTo) + sender.getName()
+					+ " §7has requested that you teleport to them. You have 20 seconds to click this message or type /tpyes!")
+					.color(ChatColor.GRAY).command("/tpaccept " + playerToTeleportTo.getName())
+					.send(playerToTeleport.getPlayer());
 					playerToTeleport.setLastTeleportReceivedMillis(System.currentTimeMillis());
 					playerToTeleport.setLastTeleportReceivedPlayer(playerToTeleportTo);
 					playerToTeleportTo.setLastTeleportedTo(playerToTeleport);
 					playerToTeleportTo.setlastTeleportWasTPA(false);
 					sender.sendMessage("§6§l(!)§7 A teleport request has been sent to "
-							+ playerToTeleport.getColorTo(playerToTeleportTo) + playerToTeleport.getName() + "§7.");
+					+ playerToTeleport.getColorTo(playerToTeleportTo) + playerToTeleport.getName() + "§7.");
 				} catch (Exception e) {
 					sender.sendMessage("§c§l(!)§7 That player cannot be found!");
 				}
@@ -88,7 +89,7 @@ public class Teleport implements Listener, CommandExecutor {
 			} else {
 				sender.sendMessage("§c§l(!)§7 Too many arguments. Usage: /tpahere <playername>");
 			}
-		} else if ((cmd.getLabel().equals("tpyes")) || (cmd.getLabel().equals("tpaccept"))) {
+		} else if ((cmd.getLabel().equalsIgnoreCase("tpyes")) || (cmd.getLabel().equalsIgnoreCase("tpaccept"))) {
 			MPlayer player = MPlayer.get(Bukkit.getPlayer(sender.getName()));
 			MPlayer playerBeingAccepted = null;
 			if (args.length > 1) {
@@ -119,7 +120,7 @@ public class Teleport implements Listener, CommandExecutor {
 			} catch (Exception e) {
 				sender.sendMessage("§c§l(!)§7 That player cannot be found!");
 			}
-		} else if (cmd.getLabel().equals("sethome")) {
+		} else if (cmd.getLabel().equalsIgnoreCase("sethome")) {
 			if (args.length == 1) {
 				Player player = Bukkit.getPlayer(sender.getName());
 				int max = 0;
@@ -143,14 +144,14 @@ public class Teleport implements Listener, CommandExecutor {
 			} else {
 				sender.sendMessage("§c§l(!)§7 Too many/few arguments. Usage: /sethome <name>");
 			}
-		} else if (cmd.getLabel().equals("delhome")) {
+		} else if (cmd.getLabel().equalsIgnoreCase("delhome")) {
 			if (args.length == 1) {
 				MPlayer player = MPlayer.get(Bukkit.getPlayer(sender.getName()));
 				player.deleteHome(args[0]);
 			} else {
 				sender.sendMessage("§c§l(!)§7 Too many/few arguments. Usage: /sethome <name>");
 			}
-		} else if (cmd.getLabel().equals("home")) {
+		} else if (cmd.getLabel().equalsIgnoreCase("home")) {
 			if (args.length == 1) {
 				MPlayer player = MPlayer.get(Bukkit.getPlayer(sender.getName()));
 				if (player.getAllHomes().contains(args[0])) {
@@ -181,34 +182,32 @@ public class Teleport implements Listener, CommandExecutor {
 							+ homeList.substring(0, homeList.length() - 2).trim() + ".");
 				}
 			}
-		} else if (cmd.getLabel().equals("back")) {
+		} else if (cmd.getLabel().equalsIgnoreCase("back")) {
 			MPlayer player = MPlayer.get(Bukkit.getPlayer(sender.getName()));
-			if (player.getBackLocation() != null) {
-				tryTeleport(player.getPlayer(), player.getLocationBeforeTeleport());
+			if(player.getPlayer().hasPermission("factions.back")) {
+				if (player.getBackLocation() != null) {
+					tryTeleport(player.getPlayer(), player.getBackLocation());
+				} else {
+					sender.sendMessage("§c§l(!)§7 There is no location to go back to!");
+				}
 			} else {
-				sender.sendMessage("§c§l(!)§7 There is no location to go back to!");
+				sender.sendMessage("§c§l(!)§7 You must purchase a rank in order to use /back!");
 			}
 		} else if (cmd.getLabel().equals("spawn")) {
 			MPlayer player = MPlayer.get(Bukkit.getPlayer(sender.getName()));
-			MConf mconf = MConf.get();
-			tryTeleport(player.getPlayer(),
-					new Location(Bukkit.getWorld(MConf.get().SpawnWorldName), MConf.get().SpawnXCoord, MConf.get().SpawnYCoord, MConf.get().SpawnZCoord, 180.0F, 0.1F));
+			tryTeleport(player.getPlayer(), Bukkit.getWorld("world").getSpawnLocation().add(0.5,0,0.5));
 		} else if (cmd.getLabel().equals("setspawn")) {
 			Player player = Bukkit.getPlayer(sender.getName());
-			if (player.hasPermission("factions.setspawn")) {
-				MConf mconf = MConf.get();
-				MConf.get().SpawnWorldName = player.getWorld().getName();
-				MConf.get().SpawnXCoord = player.getLocation().getX();
-				MConf.get().SpawnYCoord = player.getLocation().getY();
-				MConf.get().SpawnZCoord = player.getLocation().getZ();
+			if (player.hasPermission("server.admin")) {
+				player.getWorld().setSpawnLocation(player.getLocation());
 				player.sendMessage("§a§l(!)§7 You have successfully set the /spawn location!");
 			} else {
 				player.sendMessage("§c§l(!)§7 You don't have permissions to do that!");
 			}
-		} else if (cmd.getLabel().equals("setwarp")) {
+		} else if (cmd.getLabel().equalsIgnoreCase("setwarp")) {
 			Player player = Bukkit.getPlayer(sender.getName());
 			if (args.length == 1) {
-				if (player.hasPermission("factions.warp")) {
+				if (player.hasPermission("server.admin")) {
 					if (MConf.get().setWarp(PS.valueOf(player.getLocation()), args[0])) {
 						player.sendMessage("§a§l(!)§7 You have successfully set the warp " + args[0] + "!");
 					} else {
@@ -220,11 +219,19 @@ public class Teleport implements Listener, CommandExecutor {
 			} else {
 				player.sendMessage("§c§l(!)§7 Not enough arguments!");
 			}
-		} else if (cmd.getLabel().equals("warp")) {
+		} else if (cmd.getLabel().equalsIgnoreCase("warp")) {
 			Player player = Bukkit.getPlayer(sender.getName());
 			if (args.length == 1) {
 				if (MConf.get().getWarp(args[0]) != null) {
-					tryTeleport(player, MConf.get().getWarp(args[0]));
+					if(args[0].equalsIgnoreCase("castle")) {
+						if(MPlayer.get(player).getFaction().getOwnsCastle()) {
+							tryTeleport(player, MConf.get().getWarp(args[0]));
+						}else {
+							player.sendMessage("§c§l(!)§7 Your faction must own the castle to warp there!");
+						}
+					}else {
+						tryTeleport(player, MConf.get().getWarp(args[0]));
+					}
 				} else {
 					player.sendMessage("§c§l(!)§7 That warp does not exist!");
 				}
@@ -237,10 +244,10 @@ public class Teleport implements Listener, CommandExecutor {
 				}
 				sender.sendMessage("§6§l(!)§7 Warps: " + warpList.substring(0, warpList.length() - 2).trim() + ".");
 			}
-		} else if (cmd.getLabel().equals("delwarp")) {
+		} else if (cmd.getLabel().equalsIgnoreCase("delwarp")) {
 			Player player = Bukkit.getPlayer(sender.getName());
 			if (args.length == 1) {
-				if (player.hasPermission("factions.warp")) {
+				if (player.hasPermission("server.admin")) {
 					if (MConf.get().deleteWarp(args[0])) {
 						player.sendMessage("§a§l(!)§7 You have successfully deleted the warp " + args[0] + "!");
 					} else {
@@ -252,7 +259,7 @@ public class Teleport implements Listener, CommandExecutor {
 			} else {
 				player.sendMessage("§c§l(!)§7 Not enough arguments!");
 			}
-		} else if (cmd.getLabel().equals("vanish")) {
+		} else if (cmd.getLabel().equalsIgnoreCase("vanish")) {
 			Player player = Bukkit.getPlayer(sender.getName());
 			if (player.hasPermission("server.admin")) {
 				if (Vanish.vanishedPlayers.contains(player)) {
@@ -263,7 +270,7 @@ public class Teleport implements Listener, CommandExecutor {
 			} else {
 				player.sendMessage("§c§l(!)§7 You don't have permission to vanish!");
 			}
-		} else if (cmd.getLabel().equals("skills")) {
+		} else if (cmd.getLabel().equalsIgnoreCase("skills")) {
 			if ((sender instanceof ConsoleCommandSender)) {
 				if (args.length == 1) {
 					if (Bukkit.getPlayer(args[0]).isOnline()) {
@@ -286,17 +293,13 @@ public class Teleport implements Listener, CommandExecutor {
 		try {
 			Faction factionAtCurrent = BoardColl.get().getFactionAt(PS.valueOf(player.getLocation()));
 			MPlayer mplayer = MPlayer.get(player);
-			if ((factionAtCurrent.getName().equalsIgnoreCase("Castle"))
-					|| (factionAtCurrent.getName().equalsIgnoreCase("Warzone"))
-					|| (mplayer.isEnemyNearby(50, 256, 50))) {
+			if ((factionAtCurrent.getName().equalsIgnoreCase("Castle")) || (factionAtCurrent.getName().equalsIgnoreCase("Warzone")) || (mplayer.isEnemyNearby(50, 256, 50))) {
 				mplayer.setLocationBeforeTeleport(player.getLocation());
-				mplayer.message(
-						"§6§l(!)§7 The teleport will commence in 5 seconds as there are some enemies nearby or you are in a warzone. Do not move!");
+				mplayer.message("§6§l(!)§7 The teleport will commence in 5 seconds as there are some enemies nearby or you are in a warzone. Do not move!");
 				Bukkit.getScheduler().runTaskLater(Factions.get(), new Runnable() {
 					public void run() {
 						if (MPlayer.get(player).getLocationBeforeTeleport().getBlock().equals(player.getLocation().getBlock())) {
-							player.teleport(location.subtract(0.0D, Teleport.getNumToSubtract(location, 0), 0.0D),
-									PlayerTeleportEvent.TeleportCause.COMMAND);
+							player.teleport(location.subtract(0, Teleport.getNumToSubtract(location, 0), 0), PlayerTeleportEvent.TeleportCause.COMMAND);
 							player.sendMessage("§6§l(!)§7 Teleporting...");
 						} else {
 							player.sendMessage("§c§l(!)§7 The teleport was cancelled because you moved!");
@@ -304,16 +307,14 @@ public class Teleport implements Listener, CommandExecutor {
 					}
 				}, 100L);
 			} else {
-				player.teleport(location.subtract(0.0D, getNumToSubtract(location, 0), 0.0D),
-						PlayerTeleportEvent.TeleportCause.COMMAND);
+				player.teleport(location.subtract(0.0, getNumToSubtract(location, 0), 0.0), PlayerTeleportEvent.TeleportCause.COMMAND);
 				player.sendMessage("§6§l(!)§7 Teleporting...");
 			}
-		} catch (NullPointerException localNullPointerException) {
-		}
+		} catch (NullPointerException localNullPointerException) {}
 	}
 
 	public static int getNumToSubtract(Location loc, int numToSubtract) {
-		Location locBelow = loc.subtract(0.0D, 1.0D, 0.0D);
+		Location locBelow = loc.subtract(0.0, 1.0, 0.0);
 		if (locBelow.getBlock().getType().equals(Material.AIR)) {
 			getNumToSubtract(locBelow, numToSubtract + 1);
 		}
@@ -331,22 +332,17 @@ public class Teleport implements Listener, CommandExecutor {
 				event.setCancelled(true);
 			}
 		} else if (event.getCause().equals(PlayerTeleportEvent.TeleportCause.COMMAND)) {
-			MPlayer.get(event.getPlayer()).setLocationBeforeTeleport(event.getFrom());
+			MPlayer.get(event.getPlayer()).setBackLocation(event.getFrom());
 		}
 	}
 
 	@EventHandler
 	public void onMemershipChange(EventFactionsMembershipChange event) {
-		if ((!event.isCancelled())
-				&& ((event.getReason().equals(EventFactionsMembershipChange.MembershipChangeReason.LEAVE))
-						|| (event.getReason().equals(EventFactionsMembershipChange.MembershipChangeReason.KICK)))
-				&& (BoardColl.get().getFactionAt(PS.valueOf(event.getMPlayer().getPlayer().getLocation()))
-						.equals(event.getMPlayer().getFaction()))) {
-			event.getMPlayer().message(
-					"§6§l(!)§7 You have been teleported to spawn as you are no longer a part of the faction who's territory you were in.");
-			MConf mconf = MConf.get();
-			event.getMPlayer().getPlayer().teleport(
-					new Location(Bukkit.getWorld(MConf.get().SpawnWorldName), MConf.get().SpawnXCoord, MConf.get().SpawnYCoord, MConf.get().SpawnZCoord, 180.0F, 0.1F));
+		if ((!event.isCancelled()) && ((event.getReason().equals(EventFactionsMembershipChange.MembershipChangeReason.LEAVE))
+		|| (event.getReason().equals(EventFactionsMembershipChange.MembershipChangeReason.KICK)))
+		&& (BoardColl.get().getFactionAt(PS.valueOf(event.getMPlayer().getPlayer().getLocation())).equals(event.getMPlayer().getFaction()))) {
+			event.getMPlayer().message("§6§l(!)§7 You have been teleported to spawn as you are no longer a part of the faction who's territory you were in.");
+			event.getMPlayer().getPlayer().teleport(Bukkit.getWorld("world").getSpawnLocation());
 		}
 	}
 
@@ -354,13 +350,9 @@ public class Teleport implements Listener, CommandExecutor {
 	public void onPlayerJoin(PlayerJoinEvent event) {
 		Rel relation = MPlayer.get(event.getPlayer())
 				.getRelationTo(BoardColl.get().getFactionAt(PS.valueOf(event.getPlayer().getLocation())));
-		if ((relation.equals(Rel.ENEMY)) || ((relation.equals(Rel.NEUTRAL)) && (!BoardColl.get()
-				.getFactionAt(PS.valueOf(event.getPlayer().getLocation())).getName().equals("Wilderness")))) {
-			MConf mconf = MConf.get();
-			event.getPlayer().teleport(
-					new Location(Bukkit.getWorld(MConf.get().SpawnWorldName), MConf.get().SpawnXCoord, MConf.get().SpawnYCoord, MConf.get().SpawnZCoord, 180.0F, 0.1F));
-			event.getPlayer().sendMessage(
-					"§6§l(!)§7 You have been teleported to spawn because you logged out in territory which is owned by a neutral or enemy faction!");
+		if ((relation.equals(Rel.ENEMY)) || ((relation.equals(Rel.NEUTRAL)) && (!BoardColl.get().getFactionAt(PS.valueOf(event.getPlayer().getLocation())).getName().equals("Wilderness")))) {
+			event.getPlayer().teleport(Bukkit.getWorld("world").getSpawnLocation());
+			event.getPlayer().sendMessage("§6§l(!)§7 You have been teleported to spawn because you logged out in territory which is owned by a neutral or enemy faction!");
 		}
 	}
 }

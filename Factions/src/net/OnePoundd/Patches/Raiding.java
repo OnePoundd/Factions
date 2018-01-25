@@ -194,13 +194,6 @@ public class Raiding implements Listener {
 		}
 	}
 
-	@EventHandler
-	public void onHopperPickupItemEvent(InventoryPickupItemEvent event) {
-		if ((event.getInventory().getType().equals(InventoryType.HOPPER))
-				&& (event.getItem().getItemStack().getType().equals(Material.MOB_SPAWNER))) {
-			event.setCancelled(true);
-		}
-	}
 }
 
 /*

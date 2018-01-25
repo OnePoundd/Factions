@@ -5,6 +5,8 @@ import com.massivecraft.factions.Rel;
 import com.massivecraft.factions.cmd.type.TypeFaction;
 import com.massivecraft.factions.entity.Faction;
 import com.massivecraft.factions.entity.FactionColl;
+import com.massivecraft.factions.entity.MConf;
+import com.massivecraft.factions.entity.MFlag;
 import com.massivecraft.factions.entity.MPlayer;
 import com.massivecraft.massivecore.MassiveException;
 import com.massivecraft.massivecore.command.requirement.Requirement;
@@ -25,31 +27,44 @@ public class CmdFactionsFaction extends FactionsCommand {
 	public void perform() throws MassiveException {
 		Faction faction = (Faction) readArg(msenderFaction);
 		CommandSender sender = this.sender;
-		
-		System.out.println("Faction Looked Up: " + msenderFaction.getName());
 
 		int size = faction.getName().length();
-		String name = faction.getColorTo(msenderFaction) + faction.getName();
+
+		Rel relation = faction.getRelationTo(msender.getFaction());
+		char c = 'N';
+		if(relation.getName().equals("Recruit") || relation.getName().equals("Member") || relation.getName().equals("Officer") || relation.getName().equals("Leader")) {
+			c = 'a';
+		}else if(relation.getName().equals("Neutral")) {
+			c = 'f';
+		}else if(relation.getName().equals("Truce")) {
+			c = 'd';
+		}else if(relation.getName().equals("Ally")) {
+			c = '5';
+		}else if(relation.getName().equals("Enemy")) {
+			c = '4';
+		}
+		
+		String name = c + faction.getName();
 		if (size == 3) {
-			msg("§8§l§m-------------------§7§l[ §d" + name + "§7§l ]§8§l§m---------------------");
+			msg("§8§l§m-------------------§7§l[ §" + name + "§7§l ]§8§l§m---------------------");
 		} else if (size == 4) {
-			msg("§8§l§m-------------------§7§l[ §d" + name + "§7§l ]§8§l§m--------------------");
+			msg("§8§l§m-------------------§7§l[ §" + name + "§7§l ]§8§l§m--------------------");
 		} else if (size == 5) {
-			msg("§8§l§m-------------------§7§l[ §d" + name + "§7§l ]§8§l§m-------------------");
+			msg("§8§l§m-------------------§7§l[ §" + name + "§7§l ]§8§l§m-------------------");
 		} else if (size == 6) {
-			msg("§8§l§m------------------§7§l[ §d" + name + "§7§l ]§8§l§m-------------------");
+			msg("§8§l§m------------------§7§l[ §" + name + "§7§l ]§8§l§m-------------------");
 		} else if (size == 7) {
-			msg("§8§l§m------------------§7§l[ §d" + name + "§7§l ]§8§l§m------------------");
+			msg("§8§l§m------------------§7§l[ §" + name + "§7§l ]§8§l§m------------------");
 		} else if (size == 8) {
-			msg("§8§l§m-----------------§7§l[ §d" + name + "§7§l ]§8§l§m------------------");
+			msg("§8§l§m-----------------§7§l[ §" + name + "§7§l ]§8§l§m------------------");
 		} else if (size == 9) {
-			msg("§8§l§m-----------------§7§l[ §d" + name + "§7§l ]§8§l§m-----------------");
+			msg("§8§l§m-----------------§7§l[ §" + name + "§7§l ]§8§l§m-----------------");
 		} else if (size == 10) {
-			msg("§8§l§m----------------§7§l[ §d" + name + "§7§l ]§8§l§m-----------------");
+			msg("§8§l§m----------------§7§l[ §" + name + "§7§l ]§8§l§m-----------------");
 		} else if (size == 11) {
-			msg("§8§l§m---------------§7§l[ §d" + name + "§7§l ]§8§l§m-----------------");
+			msg("§8§l§m---------------§7§l[ §" + name + "§7§l ]§8§l§m-----------------");
 		} else {
-			msg("§8§l§m---------------§7§l[ §dWilderness§7§l ]§8§l§m-----------------");
+			msg("§8§l§m-----------------§7§l[ §cERROR§7§l ]§8§l§m-------------------");
 		}
 		int minutes;
 		if (!faction.isRaidCooldownOver()) {
@@ -80,10 +95,10 @@ public class CmdFactionsFaction extends FactionsCommand {
 		} else {
 			msg("§eRecruitment Status: §7Closed!");
 		}
-		String allies = "§eAllies: §5";
+		String allies = "§eAllied Faction: §5";
 		for (Faction otherFaction : FactionColl.get().getAll()) {
-			if (faction.getRelationTo(otherFaction).equals(Rel.ALLY)) {
-				if (allies == "§eAllies: §5") {
+			if (faction.getRelationTo(otherFaction).equals(Rel.ALLY) && (!otherFaction.getFlag(MFlag.ID_PERMANENT))) {
+				if (allies == "§eAllied Faction: §5") {
 					allies = allies + otherFaction.getName();
 				} else {
 					allies = allies + ", " + otherFaction.getName();
@@ -92,11 +107,10 @@ public class CmdFactionsFaction extends FactionsCommand {
 		}
 		msg(allies);
 
-		String truces = "§eTruces: §d";
+		String truces = "§eTruced Faction: §d";
 		for (Faction otherFaction : FactionColl.get().getAll()) {
-			if ((faction.getRelationTo(otherFaction).equals(Rel.TRUCE)) && (!otherFaction.getName().equals("WarZone"))
-					&& (!otherFaction.getName().equals("SafeZone")) && (!otherFaction.getName().equals("Castle"))) {
-				if (truces == "§eTruces: §d") {
+			if ((faction.getRelationTo(otherFaction).equals(Rel.TRUCE)) && (!otherFaction.getFlag(MFlag.ID_PERMANENT))) {
+				if (truces == "§eTruced Faction: §d") {
 					truces = truces + otherFaction.getName();
 				} else {
 					truces = truces + ", " + otherFaction.getName();
