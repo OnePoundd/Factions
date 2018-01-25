@@ -113,6 +113,8 @@ public class Factions extends MassivePlugin {
 		getCommand("tpahere").setExecutor(new Teleport());
 		getCommand("tpyes").setExecutor(new Teleport());
 		getCommand("tpaccept").setExecutor(new Teleport());
+		getCommand("tptoggle").setExecutor(new Teleport());
+		getCommand("toggletp").setExecutor(new Teleport());
 		getCommand("sethome").setExecutor(new Teleport());
 		getCommand("delhome").setExecutor(new Teleport());
 		getCommand("home").setExecutor(new Teleport());

@@ -46,15 +46,19 @@ public class Teleport implements Listener, CommandExecutor {
 					MPlayer playerTo = MPlayer.get(Bukkit.getPlayer(args[0]));
 					MPlayer playerFrom = MPlayer.get(Bukkit.getPlayer(sender.getName()));
 					if(playerTo.getName() != playerFrom.getName()) {
-						new FancyMessage().text("§6§l(!) " + playerTo.getColorTo(playerFrom) + sender.getName()
-						+ " §7has requested to teleport to you. You have 20 seconds to click this message or type /tpyes!")
-						.color(ChatColor.GRAY).command("/tpaccept " + playerFrom.getName())
-						.send(playerTo.getPlayer());
-						playerTo.setLastTeleportReceivedMillis(System.currentTimeMillis());
-						playerTo.setLastTeleportReceivedPlayer(MPlayer.get(Bukkit.getPlayer(sender.getName())));
-						playerFrom.setLastTeleportedTo(playerTo);
-						playerFrom.setlastTeleportWasTPA(true);
-						sender.sendMessage("§6§l(!)§7 A teleport request has been sent to " + playerTo.getColorTo(playerFrom) + playerTo.getName() + "§7.");
+						if(!playerTo.getPreventTP()) {
+							new FancyMessage().text("§6§l(!) " + playerTo.getColorTo(playerFrom) + sender.getName()
+							+ " §7has requested to teleport to you. You have 20 seconds to click this message or type /tpyes!")
+							.color(ChatColor.GRAY).command("/tpaccept " + playerFrom.getName())
+							.send(playerTo.getPlayer());
+							playerTo.setLastTeleportReceivedMillis(System.currentTimeMillis());
+							playerTo.setLastTeleportReceivedPlayer(MPlayer.get(Bukkit.getPlayer(sender.getName())));
+							playerFrom.setLastTeleportedTo(playerTo);
+							playerFrom.setlastTeleportWasTPA(true);
+							sender.sendMessage("§6§l(!)§7 A teleport request has been sent to " + playerTo.getColorTo(playerFrom) + playerTo.getName() + "§7.");
+						}else {
+							sender.sendMessage("§c§l(!)§7 That player is not accepting teleport requests!");
+						}
 					}else {
 						sender.sendMessage("§c§l(!)§7 You cannot teleport to yourself!");
 					}
@@ -119,6 +123,15 @@ public class Teleport implements Listener, CommandExecutor {
 				}
 			} catch (Exception e) {
 				sender.sendMessage("§c§l(!)§7 That player cannot be found!");
+			}
+		} else if (cmd.getLabel().equalsIgnoreCase("tptoggle") || cmd.getLabel().equalsIgnoreCase("toggletp")) {
+			MPlayer mplayer = MPlayer.get(Bukkit.getPlayer(sender.getName()));
+			if(mplayer.getPreventTP()) {
+				mplayer.setPreventTP(false);
+				sender.sendMessage("§a§l(!)§7 You will now receive teleport requests!");
+			}else {
+				mplayer.setPreventTP(true);
+				sender.sendMessage("§a§l(!)§7 You will no longer receive teleport requests!");
 			}
 		} else if (cmd.getLabel().equalsIgnoreCase("sethome")) {
 			if (args.length == 1) {

@@ -76,6 +76,7 @@ public class MPlayer extends SenderEntity<MPlayer> implements FactionsParticipat
 		setStealth(that.stealth);
 		setBoost(that.boost);
 		setBoostEndMillis(that.boostEndMillis);
+		setPreventTP(that.PreventTP);
 
 		setTokens(that.tokens);
 		setSkillArcher(that.Archer);
@@ -1086,6 +1087,14 @@ public class MPlayer extends SenderEntity<MPlayer> implements FactionsParticipat
 	public boolean getSkillBard() {
 		return Bard;
 	}	
+	
+	private boolean PreventTP = false;
+	public void setPreventTP(boolean bool) {
+		PreventTP = bool;
+	}
+	public boolean getPreventTP() {
+		return PreventTP;
+	}
 	
 }
 

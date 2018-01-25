@@ -5,6 +5,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
 import com.massivecraft.factions.Factions;
+import com.massivecraft.factions.entity.MPerm;
 import com.massivecraft.factions.entity.MPlayer;
 import com.massivecraft.massivecore.MassiveException;
 import com.massivecraft.massivecore.command.requirement.Requirement;
@@ -21,13 +22,17 @@ public class CmdFactionsAssist extends FactionsCommand{
 	public void perform() throws MassiveException {
 		if(msender.hasFaction()) {
 			if(msenderFaction.getPlacedBanner() != null){
-				msg("§6§l(!)§7 Wait 5 Seconds for teleport process to commence!");
-				Player player = msender.getPlayer();
-				Bukkit.getScheduler().runTaskLater(Factions.get(), new Runnable() {
-					public void run() {
-						Teleport.tryTeleport(player, MPlayer.get(player).getFaction().getPlacedBanner().getBlock().getLocation().add(0.5,0,0.5));
-					}
-				}, 20*5);
+				if(MPerm.getPermAssist().has(msender, msenderFaction, true)){
+					msg("§6§l(!)§7 Wait 5 Seconds for teleport process to commence!");
+					Player player = msender.getPlayer();
+					Bukkit.getScheduler().runTaskLater(Factions.get(), new Runnable() {
+						public void run() {
+							Teleport.tryTeleport(player, MPlayer.get(player).getFaction().getPlacedBanner().getBlock().getLocation().add(0.5,0,0.5));
+						}
+					}, 20*5);
+				}else {
+					msg("§c§l(!)§7 Your faction does not allow you to teleport to banners!");
+				}
 			}else {
 				msg("§c§l(!)§7 Your faction has not got a banner placed!");
 			}

@@ -61,8 +61,7 @@ public class MPerm extends Entity<MPerm> implements Prioritized, Registerable, N
 	public static final transient String ID_TNT_ADD = "addtnt";
 	public static final transient String ID_TNT_VIEW = "seetnt";
 	public static final transient String ID_ASSIST = "assist";
-	public static final transient String ID_SET_BANNER = "setbanner";
-	public static final transient String ID_GET_BANNER = "getbanner";
+	public static final transient String ID_ANNOUNCE = "announce";
 	public static final transient int PRIORITY_BUILD = 1000;
 	public static final transient int PRIORITY_PAINBUILD = 2000;
 	public static final transient int PRIORITY_DOOR = 3000;
@@ -100,8 +99,7 @@ public class MPerm extends Entity<MPerm> implements Prioritized, Registerable, N
 	public static final transient int PRIORITY_TNT_ADD = 990;
 	public static final transient int PRIORITY_TNT_VIEW = 989;
 	public static final transient int PRIORITY_ASSIST = 988;
-	public static final transient int PRIORITY_SET_BANNER = 987;
-	public static final transient int PRIORITY_GET_BANNER = 986;
+	public static final transient int PRIORITY_ANNOUNCE = 987;
 
 	public static MPerm get(Object oid) {
 		return (MPerm) MPermColl.get().get(oid);
@@ -157,6 +155,7 @@ public class MPerm extends Entity<MPerm> implements Prioritized, Registerable, N
 		getPermTntAdd();
 		getPermTntView();
 		getPermAssist();
+		getPermAnnounce();
 	}
 
 	public static MPerm getPermBuild() {
@@ -343,7 +342,13 @@ public class MPerm extends Entity<MPerm> implements Prioritized, Registerable, N
 				MUtil.set(new Rel[] { Rel.LEADER, Rel.OFFICER,  Rel.MEMBER, Rel.RECRUIT }), false, true, true);
 	}
 	
+	public static MPerm getPermAnnounce() {
+		return getCreative(988, "announce", "announce", "message all members",
+				MUtil.set(new Rel[] { Rel.LEADER, Rel.OFFICER }), false, true, true);
+	}
+	
 
+	
 	public static MPerm getCreative(int priority, String id, String name, String desc, Set<Rel> standard,
 			boolean territory, boolean editable, boolean visible) {
 		MPerm ret = (MPerm) MPermColl.get().get(id, false);

@@ -166,7 +166,8 @@ permissions:
   factions.boost.setfaction: {description: set your faction mcmmo boosts, default: true}
   factions.playerleaderboardset: {description: set leaderboard locations, default: false}
   factions.banner: {description: get a faction banner, default: true}
-  factions.assist: {descriptionL teleport to a faction banner, default: true}
+  factions.assist: {description: teleport to a faction banner, default: true}
+  factions.announce: {description: broadcast a message to faction members, default: true}
   
 # -------------------------------------------- #
 # STAR NOTATION
