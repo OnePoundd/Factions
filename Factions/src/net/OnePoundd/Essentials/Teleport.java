@@ -242,6 +242,8 @@ public class Teleport implements Listener, CommandExecutor {
 						}else {
 							player.sendMessage("§c§l(!)§7 Your faction must own the castle to warp there!");
 						}
+					}else if(args[0].equalsIgnoreCase("jail")){
+						player.sendMessage("§c§l(!)§7 You can't warp to the jail!");
 					}else {
 						tryTeleport(player, MConf.get().getWarp(args[0]));
 					}
