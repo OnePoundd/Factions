@@ -28,6 +28,12 @@ commands:
   tpahere:
     description: teleport a player to you
     usage: /tpahere <name>
+  tptoggle:
+    description: toggle tp requests
+    usage: /tptoggle
+  toggletp:
+    description: toggle tp requests
+    usage: /toggletp
   back:
     description: teleport to your previous location
     usage: /back
