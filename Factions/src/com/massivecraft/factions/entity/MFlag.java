@@ -173,14 +173,14 @@ public class MFlag extends Entity<MFlag> implements Prioritized, Registerable, N
 	}
 
 	public MFlag load(MFlag that) {
-		priority = priority;
-		name = name;
-		desc = desc;
-		descYes = descYes;
-		descNo = descNo;
-		standard = standard;
-		editable = editable;
-		visible = visible;
+		this.priority = priority;
+		this.name = that.name;
+		this.desc = that.desc;
+		this.descYes = that.descYes;
+		this.descNo = that.descNo;
+		this.standard = that.standard;
+		this.editable = that.editable;
+		this.visible = that.visible;
 
 		return this;
 	}

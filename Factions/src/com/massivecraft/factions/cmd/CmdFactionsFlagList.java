@@ -15,44 +15,115 @@ import org.bukkit.Bukkit;
 import org.bukkit.scheduler.BukkitScheduler;
 
 public class CmdFactionsFlagList extends FactionsCommand {
-	public CmdFactionsFlagList() {
-		addParameter(Parameter.getPage());
+
+	// -------------------------------------------- //
+
+	// CONSTRUCT
+
+	// -------------------------------------------- //
+
+	
+
+	public CmdFactionsFlagList()
+
+	{
+
+		// Parameters
+
+		this.addParameter(Parameter.getPage());
+
 	}
 
-	public void perform() throws MassiveException {
-		int page = ((Integer) readArg()).intValue();
+	
+
+	// -------------------------------------------- //
+
+	// OVERRIDE
+
+	// -------------------------------------------- //
+
+	
+
+	@Override
+
+	public void perform() throws MassiveException
+
+	{
+
+		// Parameter
+
+		final int page = this.readArg();
+
 		final MPlayer mplayer = msender;
 
+		
+
+		// Pager create
+
 		String title = "Flag List for " + msenderFaction.describeTo(mplayer);
-		final Pager<MFlag> pager = new Pager(this, title, Integer.valueOf(page), new Stringifier() {
-			public String toString(MFlag mflag, int index) {
-				return mflag.getStateDesc(false, false, true, true, true, false);
-			}
+
+		final Pager<MFlag> pager = new Pager<>(this, title, page, new Stringifier<MFlag>()
+
+		{
 
 			@Override
-			public String toString(Object item, int index) {
-				// TODO Auto-generated method stub
-				return null;
+
+			public String toString(MFlag mflag, int index)
+
+			{
+
+				return mflag.getStateDesc(false, false, true, true, true, false);
+
 			}
+
 		});
-		Bukkit.getScheduler().runTaskAsynchronously(Factions.get(), new Runnable() {
-			public void run() {
-				List<MFlag> items = MFlagColl.get().getAll(mplayer.isOverriding() ? null : new Predicate() {
-					public boolean apply(MFlag mflag) {
-						return mflag.isVisible();
-					}
+
+		
+
+		Bukkit.getScheduler().runTaskAsynchronously(Factions.get(), new Runnable()
+
+		{
+
+			@Override
+
+			public void run()
+
+			{
+
+				// Get items
+
+				List<MFlag> items = MFlagColl.get().getAll(mplayer.isOverriding() ? null : new Predicate<MFlag>()
+
+				{
 
 					@Override
-					public boolean apply(Object type) {
-						// TODO Auto-generated method stub
-						return false;
+
+					public boolean apply(MFlag mflag)
+
+					{
+
+						return mflag.isVisible();
+
 					}
+
 				});
+
+				
+
+				// Pager items
+
 				pager.setItems(items);
 
+			
+
+				// Pager message
+
 				pager.message();
+
 			}
+
 		});
+
 	}
 }
 

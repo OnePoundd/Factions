@@ -365,13 +365,13 @@ public class MPerm extends Entity<MPerm> implements Prioritized, Registerable, N
 	}
 
 	public MPerm load(MPerm that) {
-		priority = priority;
-		name = name;
-		desc = desc;
-		standard = standard;
-		territory = territory;
-		editable = editable;
-		visible = visible;
+		this.priority = that.priority;
+		this.name = that.name;
+		this.desc = that.desc;
+		this.standard = that.standard;
+		this.territory = that.territory;
+		this.editable = that.editable;
+		this.visible = that.visible;
 
 		return this;
 	}
