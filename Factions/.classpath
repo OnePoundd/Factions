@@ -12,5 +12,6 @@
 	<classpathentry kind="lib" path="C:/Jars/worldguard-6.2.1.jar"/>
 	<classpathentry kind="lib" path="C:/Jars/worldedit-bukkit-6.1.7.2.jar"/>
 	<classpathentry kind="lib" path="C:/Jars/[Dependency] MassiveCore.jar"/>
+	<classpathentry kind="lib" path="C:/Jars/LightWeightNPCS.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

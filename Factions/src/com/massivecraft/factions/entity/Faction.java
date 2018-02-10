@@ -42,6 +42,7 @@ import net.OnePoundd.Patches.Banner;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import org.bukkit.scoreboard.Team;
 
 public class Faction extends Entity<Faction> implements FactionsParticipator {
 	public static final transient String NODESCRIPTION = Txt.parse("<em><silver>no description set");
@@ -87,6 +88,7 @@ public class Faction extends Entity<Faction> implements FactionsParticipator {
 		setMcmmoBoost(that.mcmmoBoost);
 		setBoostEndMillis(that.boostEndMillis);
 		setOwnsCastle(that.OwnsCastle);
+		setTeam(that.team);
 		for (Map.Entry<String, PS> entry : that.warps.entrySet()) {
 			setWarp((PS) entry.getValue(), (String) entry.getKey(), (String) that.warpsPasswords.get(entry.getValue()));
 		}
@@ -141,6 +143,7 @@ public class Faction extends Entity<Faction> implements FactionsParticipator {
 	private long boostEndMillis;
 	private boolean OwnsCastle;
 	private Banner placedBanner = null;
+	private Team team;
 
 	public boolean isNone() {
 		return getId().equals("none");
@@ -1235,6 +1238,13 @@ public class Faction extends Entity<Faction> implements FactionsParticipator {
 	
 	public void setPlacedBanner(Banner b) {
 		placedBanner = b;
+	}
+	
+	public void setTeam(Team newTeam) {
+		team = newTeam;
+	}
+	public Team getTeam() {
+		return team;
 	}
 	
 }

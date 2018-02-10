@@ -330,7 +330,7 @@ public class MConf extends Entity<MConf> {
 		return CastleOwner;
 	}
 	
-	public PS WeeklyPlayer1Location = null;
+	public PS WeeklyPlayer1Location;
 	
 	public ArrayList<String> previouslyUsedIPs = new ArrayList<String>();
 }
